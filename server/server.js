@@ -4,6 +4,9 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
+import favicon96 from './favicon/favicon96.png';
+import favicon144 from './favicon/favicon144.png';
+import favicon192 from './favicon/favicon192.png';
 
 // Initialize the Express App
 const app = new Express();
@@ -79,7 +82,6 @@ const renderFullPage = (html, initialState) => {
   // Import Manifests
   const assetsManifest = process.env.webpackAssets && JSON.parse(process.env.webpackAssets);
   const chunkManifest = process.env.webpackChunkAssets && JSON.parse(process.env.webpackChunkAssets);
-
   return `
     <!doctype html>
     <html>
@@ -92,7 +94,9 @@ const renderFullPage = (html, initialState) => {
 
         ${isProdMode ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
-        <link rel="shortcut icon" href="http://res.cloudinary.com/hashnode/image/upload/v1455629445/static_imgs/mern/mern-favicon-circle-fill.png" type="image/png" />
+        <link rel="icon" type="image/png" href=${favicon96} sizes="96x96" />
+        <link rel="icon" type="image/png" href=${favicon144} sizes="144x144" />
+        <link rel="icon" type="image/png" href=${favicon192} sizes="192x192" />
       </head>
       <body>
         <div id="root">${process.env.NODE_ENV === 'production' ? html : `<div>${html}</div>`}</div>
@@ -129,7 +133,7 @@ app.use((req, res, next) => {
     }
 
     if (!renderProps) {
-      return next();
+      return res.status(404);
     }
 
     const store = configureStore();
@@ -157,7 +161,7 @@ app.use((req, res, next) => {
 // start app
 app.listen(serverConfig.port, (error) => {
   if (!error) {
-    console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
+    console.log(`Tobcity is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
   }
 });
 

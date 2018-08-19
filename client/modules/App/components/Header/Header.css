@@ -1,5 +1,5 @@
 .header {
-  background: #eee url('../../header-bk.png') center;
+  background: #00BFB5;
   background-size: cover;
   border-bottom: 1px solid #ccc;
 }
@@ -23,10 +23,9 @@
   color: #FFF;
 }
 
-.add-post-button {
+.add-travel-button {
   display: inline-block;
   color: #FFF;
-  background: #03A9F4;
   padding: 8px 16px;
   text-decoration: none;
   border-radius: 1000px;
@@ -39,7 +38,7 @@
 
 .language-switcher ul {
   list-style: none;
-  width: 980px;
+  width: 100%;
   margin: auto;
   text-align: right;
 }

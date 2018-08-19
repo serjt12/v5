@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Loading from 'react-loading-components';
 
 // Import Style
 import styles from './App.css';
@@ -11,7 +12,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
 // Import Actions
-import { toggleAddPost } from './AppActions';
+import { toggleAddTravel } from './AppActions';
 import { switchLanguage } from '../../modules/Intl/IntlActions';
 
 let DevTools;
@@ -23,15 +24,20 @@ if (process.env.NODE_ENV === 'development') {
 export class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { isMounted: false };
+    this.state = {
+      isLogged: false,
+      isMounted: false,
+    };
   }
 
   componentDidMount() {
-    this.setState({isMounted: true}); // eslint-disable-line
+    setTimeout(() => {
+      this.setState({ isMounted: true });
+    }, 1000);// eslint-disable-line
   }
 
-  toggleAddPostSection = () => {
-    this.props.dispatch(toggleAddPost());
+  toggleAddTravellSection = () => {
+    this.props.dispatch(toggleAddTravel());
   };
 
   render() {
@@ -40,8 +46,8 @@ export class App extends Component {
         {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
         <div>
           <Helmet
-            title="MERN Starter - Blog App"
-            titleTemplate="%s - Blog App"
+            title="Tobcity Divide tus gastos"
+            titleTemplate="%s - Web App"
             meta={[
               { charset: 'utf-8' },
               {
@@ -57,10 +63,11 @@ export class App extends Component {
           <Header
             switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
             intl={this.props.intl}
-            toggleAddPost={this.toggleAddPostSection}
+            toggleAddTravel={this.toggleAddTravellSection}
+            Logged={this.state.isLogged}
           />
           <div className={styles.container}>
-            {this.props.children}
+            {(this.state.isMounted) ? this.props.children : <Loading type="oval" width={200} height={200} fill="#00BFB5" />}
           </div>
           <Footer />
         </div>

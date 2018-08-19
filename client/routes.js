@@ -2,6 +2,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './modules/App/App';
+import NotFoundPage from './components/NotFound/NotFoundPage';
+import Travel from './modules/Post/pages/PostListPage/PostListPage';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -19,7 +21,6 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
 }
-
 // react-router setup with code-splitting
 // More info: http://blog.mxstbr.com/2016/01/react-apps-with-pages/
 export default (
@@ -27,7 +28,7 @@ export default (
     <IndexRoute
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostListPage/PostListPage').default);
+          cb(null, require('./modules/Home/Home').default);
         });
       }}
     />
@@ -39,5 +40,7 @@ export default (
         });
       }}
     />
+    <Route exact path="travel" component={Travel} />
+    <Route path="*" component={NotFoundPage} />
   </Route>
 );

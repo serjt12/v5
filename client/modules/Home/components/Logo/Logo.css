@@ -1,0 +1,20 @@
+.circulo {
+  background-image: url('./images/circulo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.emojis {
+  background-image: url('./images/circuloemoji.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  text-align: center;
+  height: 350px;
+}
+.logo {
+  width: 220px;
+  position: relative;
+  top: 55px;
+  left: 11px;
+}
