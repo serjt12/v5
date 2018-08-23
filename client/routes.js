@@ -3,7 +3,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './modules/App/App';
 import NotFoundPage from './components/NotFound/NotFoundPage';
-import Travel from './modules/Post/pages/PostListPage/PostListPage';
+import Travel from './modules/Home/temp';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {

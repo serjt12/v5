@@ -13,3 +13,4 @@ images/
 *.svg
 *.png
 *.jpg
+config.js
