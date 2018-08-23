@@ -12,7 +12,6 @@ const AppReducer = (state = initialState, action) => {
       return {
         showAddTravel: !state.showAddTravel,
       };
-
     default:
       return state;
   }

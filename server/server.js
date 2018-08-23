@@ -2,6 +2,8 @@ import Express from 'express';
 import compression from 'compression';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import cookieSession from 'cookie-session';
+import cors from 'cors';
 import path from 'path';
 import IntlWrapper from '../client/modules/Intl/IntlWrapper';
 import favicon96 from './favicon/favicon96.png';
@@ -10,6 +12,7 @@ import favicon192 from './favicon/favicon192.png';
 
 // Initialize the Express App
 const app = new Express();
+const passport = require('./util/passport/passport');
 
 // Set Development modes checks
 const isDevMode = process.env.NODE_ENV === 'development' || false;
@@ -45,10 +48,14 @@ import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import Helmet from 'react-helmet';
 
+
 // Import required modules
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
+import auth from './routes/auth.routes';
+import user from './routes/user.routes';
+import currentUser from './routes/currentUser.routes';
 import dummyData from './dummyData';
 import serverConfig from './config';
 
@@ -72,8 +79,41 @@ if (process.env.NODE_ENV !== 'test') {
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
+app.use(cors());
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [serverConfig.cookieKey],
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
+app.use('/auth', auth);
 app.use('/api', posts);
+app.use('/api', user);
+app.use('/api', currentUser);
+// ===== testing middleware =====
+// app.use(function(req, res, next) {
+// 	console.log('===== passport user =======')
+// 	console.log(req.session)
+// 	console.log(req.user)
+// 	console.log('===== END =======')
+// 	next()
+// })
+// testing
+// app.get(
+// 	'/auth/google/callback',
+// 	(req, res, next) => {
+// 		console.log(`req.user: ${req.user}`)
+// 		console.log('======= /auth/google/callback was called! =====')
+// 		next()
+// 	},
+// 	passport.authenticate('google', { failureRedirect: '/travel' }),
+// 	(req, res) => {
+// 		res.redirect('/')
+// 	}
+// )
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {

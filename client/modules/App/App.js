@@ -13,6 +13,7 @@ import Footer from './components/Footer/Footer';
 
 // Import Actions
 import { toggleAddTravel } from './AppActions';
+import { fetchCurrentUser } from '../Home/AuthActions';
 import { switchLanguage } from '../../modules/Intl/IntlActions';
 
 let DevTools;
@@ -33,6 +34,7 @@ export class App extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ isMounted: true });
+      this.props.dispatch(fetchCurrentUser());
     }, 1000);// eslint-disable-line
   }
 
@@ -81,6 +83,7 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
 };
+
 
 // Retrieve data from store as props
 function mapStateToProps(store) {
