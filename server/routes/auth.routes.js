@@ -15,5 +15,17 @@ router.get(
   failureRedirect: '/travel',
 	})
 );
+router.get(
+  '/facebook',
+  passport.authenticate('facebook')
+);
+
+router.get(
+	'/facebook/callback',
+	passport.authenticate('facebook', {
+  successRedirect: '/',
+  failureRedirect: '/travel',
+	})
+);
 
 export default router;

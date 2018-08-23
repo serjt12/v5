@@ -6,7 +6,7 @@ const router = new Router();
 // Get current user
 router.get('/current_user', (req, res) => {
   // console.log('===== user!!======');
-  console.log(req.user);
+  // console.log(req.user);
   const userInfo = req.user
   // console.log(userInfo);
   if (userInfo) {
