@@ -29,10 +29,13 @@ class SignupForm extends Component {
   handleSubmit(event) {
     event.preventDefault()
     const { state: { username, password, cellphone } } = this;
-    console.log(password.split(''))
-    const validateName = username.split('').length > 3
-    const validatePass = password.split('').length > 5
-    const validatecellphone = password.split('').length === 7
+    console.log(password.split(''));
+    const validateName = username.split('').length > 3;
+    const validatePass = password.split('').length > 5;
+    const validateCellphone = password.split('').length === 7;
+    if (!validateName) {
+      return (<div>ERROR!!!</div>)
+    }
 
 		// TODO - validate!
   }
