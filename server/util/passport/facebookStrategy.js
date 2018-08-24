@@ -12,16 +12,16 @@ const strategy = new FacebookStrategy(
   },
   function (accessToken, refreshToken, profile, done) {
    // testing
-    console.log('===== FACEBOOK PROFILE =======')
-    console.log(profile)
-    console.log('======== END ===========')
+    // console.log('===== FACEBOOK PROFILE =======')
+    // console.log(profile)
+    // console.log('======== END ===========')
    // code
     const { id, displayName, photos, emails } = profile;
     User.findOne({ 'facebook.facebookId': id }, (err, userMatch) => {
      // handle errors here:
       if (err) {
-        console.log('Error!! trying to find user with facebookId')
-        console.log(err)
+        // console.log('Error!! trying to find user with facebookId')
+        // console.log(err)
         return done(null, false);
       }
      // if there is already someone with that facebookId
@@ -29,10 +29,10 @@ const strategy = new FacebookStrategy(
         return done(null, userMatch);
       } if (!userMatch) {
        // if no user in our db, create a new user with that facebookId
-       console.log('====== PRE SAVE =======')
-       console.log(id)
-       console.log(profile)
-       console.log('====== post save ....')
+       // console.log('====== PRE SAVE =======')
+       console.log(photos)
+       // console.log(profile)
+       // console.log('====== post save ....')
         const newFacebookUser = new User({
           'facebook.facebookId': id,
           name: displayName,
@@ -42,8 +42,8 @@ const strategy = new FacebookStrategy(
        // save this user
         newFacebookUser.save((err1, savedUser) => {
           if (err1) {
-            console.log('Error!! saving the new facebook user');
-            console.log(err1);
+            // console.log('Error!! saving the new facebook user');
+            // console.log(err1);
             return done(null, false);
           } if (!err1) {
             return done(null, savedUser);

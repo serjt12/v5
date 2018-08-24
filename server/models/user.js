@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
+mongoose.promise = Promise
 
 const userSchema = new Schema({
   Id: { type: 'String' },
@@ -21,7 +22,7 @@ const userSchema = new Schema({
     facebookId: { type: String, required: false },
   },
   local: {
-    username: { type: String, unique: false, required: false },
+    cellphone: { type: Number, unique: false, required: false },
     password: { type: String, unique: false, required: false },
   },
 });

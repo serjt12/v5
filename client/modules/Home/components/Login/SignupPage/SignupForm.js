@@ -3,7 +3,7 @@ import React from 'react';
 import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
-import styles from './LoginForm.css';
+import styles from './SignUpForm.css';
 
 const MyForm = ({
     errors,
@@ -30,6 +30,15 @@ const MyForm = ({
           placeholder="Contraseña"
         />
         {touched.password && errors.password && <div className={styles.error}>{errors.password}</div>}
+      </div>
+      <div>
+        <Field
+          type="password"
+          name="confirmPassword"
+          onBlur={handleBlur}
+          placeholder="Confirma tu contraseña"
+        />
+        {touched.confirmPassword && errors.confirmPassword && <div className={styles.error}>{errors.confirmPassword}</div>}
       </div>
       <div className={styles['submit-container']}>
         <button className={styles['submit-button']} disabled={isSubmitting} type="submit" disabled={isSubmitting}>
@@ -69,9 +78,9 @@ const SignUpForm = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    cellphone: Yup.string().min(10, 'Favor ingresa los 10 digitos de tu celular').required('Es necesario tu celular'),
+    cellphone: Yup.string().max(10, 'Favor ingresa los 10 digitos de tu celular').required('Es necesario tu que ingreses tu numero celular'),
     password: Yup.string().min(6, 'La contraseña debe tener minimo 6 caracteres').required('Tu contraseña es necesaria para continuar'),
-    confirmPassword: Yup.string().equalTo(Yup.ref('password'), 'Comprueba que tengas la misma contraseña').required('Required'),
+    confirmPassword: Yup.string().equalTo(Yup.ref('password'), 'Comprueba que tengas la misma contraseña').required('Es necesario que ingreses la misma contraseña'),
   }),
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     console.log(values)
