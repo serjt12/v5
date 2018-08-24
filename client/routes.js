@@ -4,6 +4,8 @@ import { Route, IndexRoute } from 'react-router';
 import App from './modules/App/App';
 import NotFoundPage from './components/NotFound/NotFoundPage';
 import Travel from './modules/Home/temp';
+import LogInForm from './modules/Home/components/Login/LoginPage/LoginPage';
+import SignUpForm from './modules/Home/components/Login/SignupPage/SignupPage';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -41,6 +43,8 @@ export default (
       }}
     />
     <Route exact path="travel" component={Travel} />
+    <Route exact path="login" component={LogInForm} />
+    <Route exact path="signup" component={SignUpForm} />
     <Route path="*" component={NotFoundPage} />
   </Route>
 );

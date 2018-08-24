@@ -13,7 +13,7 @@ import routes from './routes';
 // Base stylesheet
 require('./main.css');
 
-export default function App(props) {
+function App(props) {
   return (
     <Provider store={props.store}>
       <IntlWrapper>
@@ -28,3 +28,6 @@ export default function App(props) {
 App.propTypes = {
   store: PropTypes.object.isRequired,
 };
+
+
+export default App;

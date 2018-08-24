@@ -19,5 +19,6 @@ export default {
     logout: 'Salir',
     loginface: 'Ingresa con Facebook',
     logingoogle: 'Ingresa con Google',
+    cellphonelogin: 'Ingresa con tu numero celular',
   },
 };
