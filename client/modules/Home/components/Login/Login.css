@@ -2,24 +2,57 @@
   font-size: 34px;
 }
 .face {
-  border: 1px solid blue;
-  color: blue;
+  text-decoration: none;
+  color: #eee;
+  display: inline-block;
+  background-color: #3b5998;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 3px;
 }
 .google {
-  border: 1px solid red;
-  color: red;
+  text-decoration: none;
+  color: #eee;
+  display: inline-block;
+  background-color: #d62d20;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 3px;
 }
 
 .logout {
   text-decoration: none;
-  color: #f6a42b;
-  border: none;
-  width: 100%;
-  padding: .5rem;
-  font-size: 2em;
-  text-align: center;
+  color: #ff332d;
+  display: inline-block;
   background-color: #00BFB5;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 3px;
 }
 .accessbtn {
   display: inline-grid;
+}
+
+.cell {
+  text-decoration: none;
+  color: #eee;
+  display: inline-block;
+  background-color: #25d366;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 3px;
+}
+
+.face
+.google
+.logout
+.cell:hover {
+  background-color: darken(#25d366, 5%);
+}
+
+.face
+.google
+.logout
+.cell:focus {
+  background-color: darken(#25d366, 15%);
 }
