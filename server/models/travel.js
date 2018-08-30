@@ -10,14 +10,9 @@ const travelSchema = new Schema({
   content: { type: 'String' },
   cuid: { type: 'String', required: true },
   dateAdded: { type: 'Date', default: Date.now, required: true },
+  dateUpdated: { type: 'Date' },
   likes: { type: Schema.Types.ObjectId, ref: 'Like' },
-  author: {
-    id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
-    name: String,
-  },
+  author: { type: Schema.Types.ObjectId, ref: 'User' },
 });
 
 export default mongoose.model('Travel', travelSchema);

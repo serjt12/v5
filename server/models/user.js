@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 mongoose.promise = Promise;
 
 const userSchema = new Schema({
-  Id: { type: 'String' },
   name: { type: 'String', required: false },
   email: {
     type: String, required: false,
@@ -22,9 +21,13 @@ const userSchema = new Schema({
     facebookId: { type: String, required: false },
   },
   local: {
-    cellphone: { type: Number, unique: false, required: false },
-    password: { type: String, unique: false, required: false },
+    cellphone: { type: Number, unique: false },
+    password: { type: String, unique: false },
   },
+  travels: [{ type: Schema.Types.ObjectId, ref: 'Travel' }],
+  likes: { type: Schema.Types.ObjectId, ref: 'Like' },
+  dateCreated: { type: 'Date', default: Date.now, required: true },
+  dateUpdated: { type: 'Date' },
 });
 // Define schema methods
 userSchema.methods = {
@@ -37,9 +40,8 @@ userSchema.methods = {
 };
 
 // Define hooks for pre-saving
-userSchema.pre('save', function (next) {
+userSchema.pre('save', (next) => {
   if (!this.local.password) {
-    console.log('=======NO PASSWORD PROVIDED=======');
     next();
   } else {
     this.local.password = this.hashPassword(this.local.password);

@@ -1,4 +1,5 @@
 import Travel from '../models/travel';
+import User from '../models/user';
 import cuid from 'cuid';
 import sanitizeHtml from 'sanitize-html';
 
@@ -24,7 +25,6 @@ export function getTravels(req, res) {
  * @returns void
  */
 export function addTravel(req, res) {
-  console.log(req.body)
 
   const newTravel = new Travel(req.body.travel);
 
@@ -36,8 +36,10 @@ export function addTravel(req, res) {
   newTravel.price = sanitizeHtml(newTravel.price);
   newTravel.model = sanitizeHtml(newTravel.model);
   newTravel.content = sanitizeHtml(newTravel.content);
-
+  newTravel.author = User._id
   newTravel.cuid = cuid();
+  console.log(newTravel)
+  console.log(User)
   newTravel.save((err, saved) => {
     if (err) {
       res.status(500).send(err);
