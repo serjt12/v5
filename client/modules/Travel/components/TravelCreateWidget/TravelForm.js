@@ -15,7 +15,7 @@ const MyForm = ({
     isSubmitting,
   }) => (
     (<Form className={styles['form-container']}>
-      <div className="animated fadeInDown">
+      <div>
         <Field
           className={styles.input}
           type="string"
@@ -57,7 +57,7 @@ const MyForm = ({
           type="number"
           name="price"
           onBlur={handleBlur}
-          placeholder="Ingresa eel costo por persona"
+          placeholder="Ingresa el costo por persona"
         />
         {touched.price && errors.price && <div className={styles.error}>{errors.price}</div>}
       </div>

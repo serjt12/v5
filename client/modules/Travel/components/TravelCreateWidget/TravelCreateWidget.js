@@ -8,8 +8,9 @@ import styles from './TravelCreateWidget.css';
 export class TravelCreateWidget extends Component {
   render() {
     // console.log(this)
+    const cls = `${styles.form} ${(this.props.showAddPost ? styles.appear : '')}`;
     return (
-      <div >
+      <div className={cls}>
         <div className={styles['form-content']}>
           <h2 className={styles['form-title']}><FormattedMessage id="createNewPost" /></h2>
           <TravelForm addTravel={this.props.addTravel} />
