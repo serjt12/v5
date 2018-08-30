@@ -2,7 +2,7 @@ import { Router } from 'express';
 const passport = require('passport');
 // import * as UserController from '../controllers/user.controller';
 import User from '../models/user';
-const requireLogin = require('../middlewares/requireLogin');
+// const requireLogin = require('../middlewares/requireLogin');
 
 const router = new Router();
 
