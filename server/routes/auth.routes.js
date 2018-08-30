@@ -11,8 +11,8 @@ router.get(
 router.get(
 	'/google/callback',
 	passport.authenticate('google', {
-  successRedirect: '/',
-  failureRedirect: '/travel',
+  successRedirect: '/profile',
+  failureRedirect: '/',
 	})
 );
 router.get(
@@ -23,30 +23,9 @@ router.get(
 router.get(
 	'/facebook/callback',
 	passport.authenticate('facebook', {
-  successRedirect: '/',
-  failureRedirect: '/travel',
+  successRedirect: '/profile',
+  failureRedirect: '/',
 	})
 );
-
-router.post(
-  '/login',
-  (req, res, next) => {
-    console.log(req.body);
-    console.log('================');
-    next();
-  },
-  passport.authenticate('local'),
-    (req, res) => {
-      console.log('POST to /login');
-      const user = JSON.parse(JSON.stringify(req.user)); // hack
-      const cleanUser = Object.assign({}, user);
-      if (cleanUser.local) {
-        console.log(`Deleting ${cleanUser.local.password}`);
-        delete cleanUser.local.password;
-      }
-      res.json({ user: cleanUser });
-    }
-);
-
 
 export default router;

@@ -1,9 +1,11 @@
 // Higher Order Component
 import React from 'react';
+import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
 import styles from './SignUpForm.css';
+import { addUser } from '../../../AuthActions';
 
 const MyForm = ({
     errors,
@@ -69,7 +71,7 @@ function equalTo(ref: any, msg: any) {
   });
 }
 Yup.addMethod(Yup.string, 'equalTo', equalTo);
-const SignUpForm = withFormik({
+const EnhancedForm = withFormik({
   mapPropsToValues({ cellphone, password, confirmPassword }) {
     return {
       cellphone: cellphone || '',
@@ -82,9 +84,15 @@ const SignUpForm = withFormik({
     password: Yup.string().min(6, 'La contraseña debe tener minimo 6 caracteres').required('Tu contraseña es necesaria para continuar'),
     confirmPassword: Yup.string().equalTo(Yup.ref('password'), 'Comprueba que tengas la misma contraseña').required('Es necesario que ingreses la misma contraseña'),
   }),
-  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
-    console.log(values)
+  handleSubmit(values, { props, resetForm, setSubmitting }) {
+    console.log('PROPS', props)
+    props.dispatch(addUser(values));
+    setSubmitting(false);
+    resetForm();
+    // props.router.push('/');
   },
 })(MyForm);
+
+const SignUpForm = connect(null)(EnhancedForm);
 
 export default SignUpForm;

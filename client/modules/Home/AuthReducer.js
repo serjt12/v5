@@ -1,9 +1,22 @@
-import { FETCH_CURRENT_USER } from './AuthActions';
+import { FETCH_CURRENT_USER, ACTIVE_USER } from './AuthActions';
 
-const AuthReducer = (state = null, action) => {
+// Initial State
+const initialState = {
+  currentUser: null,
+  user: null,
+};
+const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_CURRENT_USER:
-      return action.payload.userInfo || false;
+      return {
+        ...state,
+        currentUser: action.payload.userInfo || false,
+      };
+    case ACTIVE_USER:
+      return {
+        ...state,
+        user: action.user || false,
+      };
     default:
       return state;
   }

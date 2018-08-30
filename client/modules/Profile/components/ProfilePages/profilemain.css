@@ -1,0 +1,82 @@
+.profile-container {
+  height: 618px;
+}
+.sky {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  margin-top: -15px;
+  background-size: 100% 100%;
+}
+
+.skyprofile {
+  height: 237px;
+}
+
+.circulo {
+  position: absolute;
+  left: -28px;
+  top: 34px;
+  width: 261px;
+  background-size: 100% 100%;
+}
+.avatar {
+  position: absolute;
+  left: 32px;
+  width: 106px;
+  top: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profiletop {
+  position: relative;
+}
+.logo {
+  width: 102px;
+  position: absolute;
+  right: 32px;
+}
+.profile-data {
+  position: relative;
+  top: 20px;
+  width: 320px;
+  height: 201px;
+  display: inline-block;
+  color: gray;
+}
+.profile-data h4 {
+  width: 240px;
+  display: inline-block;
+}
+
+.box {
+  position: relative;
+  padding: 6px;
+  margin: 10px;
+}
+
+.box img {
+  width: 10%;
+  position: absolute;
+  left: 0px;
+}
+.citybox {
+  position: relative;
+  bottom: 12px;
+}
+.city {
+  position: absolute;
+  width: 227px;
+  right: 0px;
+}
+
+.logout {
+  color: #ff332d;
+  background-color: #00BFB5;
+  font-weight: bold;
+  padding: .1rem 1rem;
+  border-radius: 3px;
+  position: absolute;
+  left: 42px;
+  top: 200px;
+}

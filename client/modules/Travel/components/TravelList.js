@@ -29,8 +29,8 @@ TravelList.propTypes = {
     price: PropTypes.number.isRequired,
     content: PropTypes.string.isRequired,
     cuid: PropTypes.string.isRequired,
-  })).isRequired,
-  handleDeleteTravel: PropTypes.func.isRequired,
+  })),
+  handleDeleteTravel: PropTypes.func,
 };
 
 export default TravelList;

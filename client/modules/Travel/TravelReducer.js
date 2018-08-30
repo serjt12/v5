@@ -27,10 +27,10 @@ const TravelReducer = (state = initialState, action) => {
 
 /* Selectors */
 
-// Get all posts
+// Get all travels
 export const getTravels = state => state.travel.data;
 
-// Get post by cuid
+// Get travel by cuid
 export const getTravel = (state, cuid) => state.travel.data.filter(travel => travel.cuid === cuid)[0];
 
 // Export Reducer

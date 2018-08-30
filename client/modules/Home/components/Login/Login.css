@@ -1,23 +1,7 @@
 .login-container {
   font-size: 34px;
-}
-.face {
-  text-decoration: none;
-  color: #eee;
-  display: inline-block;
-  background-color: #3b5998;
-  font-weight: bold;
-  padding: 1rem 2rem;
-  border-radius: 3px;
-}
-.google {
-  text-decoration: none;
-  color: #eee;
-  display: inline-block;
-  background-color: #d62d20;
-  font-weight: bold;
-  padding: 1rem 2rem;
-  border-radius: 3px;
+  position: relative;
+  top: 28px;
 }
 
 .logout {
@@ -26,28 +10,35 @@
   display: inline-block;
   background-color: #00BFB5;
   font-weight: bold;
-  padding: 1rem 2rem;
+  padding: 0.2rem 3.2rem;
   border-radius: 3px;
+  margin-top: 10px;
 }
-.accessbtn {
-  display: inline-grid;
-}
-
-.cell {
+.toprofile {
   text-decoration: none;
-  color: #eee;
+  color: #fff;
   display: inline-block;
-  background-color: #25d366;
+  background-color: #00BFB5;
   font-weight: bold;
-  padding: 1rem 2rem;
+  padding: 0.2rem  0.9rem;
   border-radius: 3px;
+  margin-top: 10px;
 }
 
 .face
 .google
 .logout
 .cell:hover {
-  background-color: darken(#25d366, 5%);
+  transform: scale3d(1.1);
+}
+.face img {
+  width: 92%;
+}
+.google img{
+  width: 92%;
+}
+.cell img {
+  width: 92%;
 }
 
 .face

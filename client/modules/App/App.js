@@ -26,7 +26,6 @@ export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogged: false,
       isMounted: false,
     };
   }
@@ -35,7 +34,7 @@ export class App extends Component {
     setTimeout(() => {
       this.setState({ isMounted: true });
       this.props.dispatch(fetchCurrentUser());
-    }, 1000);// eslint-disable-line
+    }, 1);// eslint-disable-line
   }
 
   toggleAddTravellSection = () => {
@@ -46,7 +45,7 @@ export class App extends Component {
     return (
       <div>
         {this.state.isMounted && !window.devToolsExtension && process.env.NODE_ENV === 'development' && <DevTools />}
-        <div>
+        <div className={styles.main}>
           <Helmet
             title="Tobcity Divide tus gastos"
             titleTemplate="%s - Web App"
@@ -66,7 +65,7 @@ export class App extends Component {
             switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
             intl={this.props.intl}
             toggleAddTravel={this.toggleAddTravellSection}
-            Logged={this.state.isLogged}
+            Logged={(this.props.auth.currentUser)}
           />
           <div className={styles.container}>
             {(this.state.isMounted) ? this.props.children : <Loading type="oval" width={200} height={200} fill="#00BFB5" />}
@@ -82,6 +81,7 @@ App.propTypes = {
   children: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
+  auth: PropTypes.object,
 };
 
 
@@ -89,6 +89,7 @@ App.propTypes = {
 function mapStateToProps(store) {
   return {
     intl: store.intl,
+    auth: store.auth,
   };
 }
 

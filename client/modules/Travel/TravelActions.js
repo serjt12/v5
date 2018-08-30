@@ -14,6 +14,7 @@ export function addTravel(travel) {
 }
 
 export function addTravelRequest(travel) {
+  console.log(travel)
   return (dispatch) => {
     return callApi('travels', 'post', {
       travel: {

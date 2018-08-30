@@ -1,0 +1,20 @@
+.item {
+  background-color: #FDFDFD;
+  color: #9B9794;
+  width: 255px;
+  margin: 6px;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+}
+.myhistory-container ul {
+  display: inline-block;
+}
+.myhistory-container {
+  position: relative;
+}
+
+.myhistory-title {
+  color: #9B9794;
+  font-size: 20px;
+  height: 5s0px;
+}

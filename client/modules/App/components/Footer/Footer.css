@@ -1,17 +1,17 @@
 .footer{
   text-align: center;
   padding: 56px 0;
-  background: #00BFB5;
+  background-image: url('./images/bgfooter.png');
+  background-repeat: no-repeat;
 }
 
-.footer p{
-  margin: 0 0 8px 0;
-  font-size: 14px;
-  color: #FFF;
-}
-
-.footer a{
-  color: #FFF;
-  text-decoration: none;
-  font-weight: 700;
+.face,
+.google,
+.twitter,
+.insta,
+.phone {
+  width: 39px;
+  margin: 8px;
+  position: relative;
+  bottom: -41px;
 }

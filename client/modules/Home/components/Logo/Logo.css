@@ -1,9 +1,4 @@
-.circulo {
-  background-image: url('./images/circulo.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
+
 .emojis {
   background-image: url('./images/circuloemoji.png');
   background-repeat: no-repeat;
@@ -13,8 +8,8 @@
   height: 350px;
 }
 .logo {
-  width: 220px;
+  width: 176px;
   position: relative;
-  top: 55px;
+  top: 77px;
   left: 11px;
 }

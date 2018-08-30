@@ -54,9 +54,9 @@ import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import auth from './routes/auth.routes';
-import user from './routes/user.routes';
 import currentUser from './routes/currentUser.routes';
-import dummyData from './dummyData';
+import travel from './routes/travel.routes';
+import dummyDataTravel from './dummyDataTravel';
 import serverConfig from './config';
 
 // Set native promises as mongoose promise
@@ -71,7 +71,7 @@ if (process.env.NODE_ENV !== 'test') {
     }
 
     // feed some dummy data in DB.
-    dummyData();
+    dummyDataTravel();
   });
 }
 
@@ -91,8 +91,8 @@ app.use(passport.session());
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 app.use('/auth', auth);
 app.use('/api', posts);
-app.use('/api', user);
 app.use('/api', currentUser);
+app.use('/api', travel);
 // ===== testing middleware =====
 // app.use(function(req, res, next) {
 // 	console.log('===== passport user =======')

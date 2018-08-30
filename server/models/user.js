@@ -1,20 +1,20 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
-mongoose.promise = Promise
+mongoose.promise = Promise;
 
 const userSchema = new Schema({
   Id: { type: 'String' },
-  name: { type: 'String', required: true },
+  name: { type: 'String', required: false },
   email: {
-    type: String, required: true,
-    trim: true, unique: true,
+    type: String, required: false,
+    trim: true,
     match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
   },
   credit: { type: 'Number', default: 0 },
-  cellphone: { type: 'Number' },
-  city: String,
-  avatar: { data: Buffer, contentType: String },
+  cellphone: { type: 'Number', default: '3777777777' },
+  city: { type: String, default: 'Indicanos tu ciudadd de origen' },
+  avatar: { type: String, default: 'https://via.placeholder.com/106x106' },
   google: {
     googleId: { type: String, required: false },
   },

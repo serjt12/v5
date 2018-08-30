@@ -5,10 +5,8 @@
 }
 
 .content {
-  width: 100%;
+  width: 40%;
   max-width: 980px;
-  margin: auto;
-  padding: 64px 16px;
   overflow: auto;
 }
 
@@ -24,12 +22,12 @@
 }
 
 .add-travel-button {
-  display: inline-block;
-  color: #FFF;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 1000px;
   float: right;
+  width: 97px;
+  color: #00BFB5;
+  font-weight: 700;
+  text-align: center;
+  background-color: white;
 }
 
 .language-switcher {
@@ -37,15 +35,11 @@
 }
 
 .language-switcher ul {
-  list-style: none;
-  width: 100%;
-  margin: auto;
-  text-align: right;
+
 }
 
 .language-switcher li {
   display: inline-block;
-  margin: 10px;
   padding: 5px;
   cursor: pointer;
   color: #fff;

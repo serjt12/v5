@@ -30,7 +30,7 @@ const strategy = new FacebookStrategy(
       } if (!userMatch) {
        // if no user in our db, create a new user with that facebookId
        // console.log('====== PRE SAVE =======')
-       console.log(photos)
+       // console.log(photos[0].value)
        // console.log(profile)
        // console.log('====== post save ....')
         const newFacebookUser = new User({
