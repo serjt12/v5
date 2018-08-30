@@ -24,9 +24,7 @@ export function getTravels(req, res) {
  * @returns void
  */
 export function addTravel(req, res) {
-  if (!req.body.travel.from || !req.body.travel.to || !req.body.travel.content) {
-    res.status(403).end();
-  }
+  console.log(req.body)
 
   const newTravel = new Travel(req.body.travel);
 
