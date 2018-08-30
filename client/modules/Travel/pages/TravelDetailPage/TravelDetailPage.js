@@ -17,10 +17,10 @@ export function TravelDetailPage(props) {
   return (
     <div>
       <Helmet title={props.travel.from} />
-      <div className={`${styles['single-post']} ${styles['post-detail']}`}>
-        <h3 className={styles['post-title']}>{props.travel.from}</h3>
+      <div className={`${styles['single-travel']} ${styles['travel-detail']}`}>
+        <h3 className={styles['travel-title']}>{props.travel.from}</h3>
         <p className={styles['author-name']}><FormattedMessage id="by" /> {props.travel.to}</p>
-        <p className={styles['post-desc']}>{props.travel.content}</p>
+        <p className={styles['travel-desc']}>{props.travel.content}</p>
       </div>
     </div>
   );
@@ -39,7 +39,7 @@ function mapStateToProps(state, props) {
 }
 
 TravelDetailPage.propTypes = {
-  travel: PropTypes.arrayOf(PropTypes.shape({
+  travel: PropTypes.objectOf(PropTypes.shape({
     from: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,

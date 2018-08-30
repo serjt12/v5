@@ -27,16 +27,15 @@ const strategy = new GoogleStrategy(
         return done(null, userMatch);
       } if (!userMatch) {
        // if no user in our db, create a new user with that googleId
-       console.log('====== PRE SAVE =======')
-       console.log(id)
-       console.log(profile)
-       console.log('====== post save ....')
+       // console.log('====== PRE SAVE =======')
+       // console.log(id)
+       // console.log(profile)
+       // console.log('====== post save ....')
         const newGoogleUser = new User({
           'google.googleId': id,
           name: displayName,
-          lastName: name.familyName,
           email: emails[0].value,
-          avatar: photos.value,
+          avatar: photos[0].value,
         });
        // save this user
         newGoogleUser.save((err1, savedUser) => {

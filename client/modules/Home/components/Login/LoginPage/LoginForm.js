@@ -1,5 +1,6 @@
 // Higher Order Component
 import React from 'react';
+import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
@@ -33,7 +34,7 @@ const MyForm = ({
       </div>
       <div className={styles['submit-container']}>
         <button className={styles['submit-button']} disabled={isSubmitting} type="submit" disabled={isSubmitting}>
-          Registrarse
+          Ingresar!
         </button>
       </div>
     </Form>)
@@ -46,36 +47,26 @@ MyForm.propTypes = {
   handleBlur: PropTypes.func,
   isSubmitting: PropTypes.bool,
 };
-function equalTo(ref: any, msg: any) {
-  return Yup.mixed().test({
-    name: 'equalTo',
-    exclusive: false,
-    message: msg || '${path} must be the same as ${reference}',
-    params: {
-      reference: ref.path,
-    },
-    test(value: any) {
-      return value === this.resolve(ref);
-    },
-  });
-}
-Yup.addMethod(Yup.string, 'equalTo', equalTo);
-const SignUpForm = withFormik({
-  mapPropsToValues({ cellphone, password, confirmPassword }) {
+
+const EnhancedForm = withFormik({
+  mapPropsToValues({ cellphone, password }) {
     return {
       cellphone: cellphone || '',
       password: password || '',
-      confirmPassword: confirmPassword || '',
     };
   },
   validationSchema: Yup.object().shape({
     cellphone: Yup.string().min(10, 'Favor ingresa los 10 digitos de tu celular').required('Es necesario tu celular'),
     password: Yup.string().min(6, 'La contraseña debe tener minimo 6 caracteres').required('Tu contraseña es necesaria para continuar'),
-    confirmPassword: Yup.string().equalTo(Yup.ref('password'), 'Comprueba que tengas la misma contraseña').required('Required'),
   }),
-  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
-    console.log(values)
+  handleSubmit(values, { resetForm, props, setSubmitting }) {
+    console.log('VALUES 1', values)
+    props.dispatch(validateUser(values));
+    setSubmitting(false);
+    resetForm();
   },
 })(MyForm);
 
-export default SignUpForm;
+const LoginForm = connect()(EnhancedForm);
+
+export default LoginForm;

@@ -6,4 +6,5 @@ const router = new Router();
 // Get current user
 router.route('/user').post(UserController.addUser);
 
+
 export default router;

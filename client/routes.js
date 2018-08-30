@@ -5,7 +5,7 @@ import App from './modules/App/App';
 import NotFoundPage from './components/NotFound/NotFoundPage';
 import Travel from './modules/Home/temp';
 import LogInForm from './modules/Home/components/Login/LoginPage/LoginPage';
-import SignUpForm from './modules/Home/components/Login/SignupPage/SignupPage';
+import Profile from './modules/Profile/Profile';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -22,6 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
   // Require async routes only in development for react-hot-reloader to work.
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
+  require('./modules/Home/components/Login/SignupPage/SignupPage');
 }
 // react-router setup with code-splitting
 // More info: http://blog.mxstbr.com/2016/01/react-apps-with-pages/
@@ -35,16 +36,25 @@ export default (
       }}
     />
     <Route
-      path="/posts/:slug-:cuid"
+      path="/travels/:cuid"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
-          cb(null, require('./modules/Post/pages/PostDetailPage/PostDetailPage').default);
+          cb(null, require('./modules/Travel/pages/TravelDetailPage/TravelDetailPage').default);
         });
       }}
     />
     <Route exact path="travel" component={Travel} />
     <Route exact path="login" component={LogInForm} />
-    <Route exact path="signup" component={SignUpForm} />
+    <Route
+      exact
+      path="/signup"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Home/components/Login/SignupPage/SignupPage').default);
+        });
+      }}
+    />
+    <Route exact path="/profile" component={Profile} />
     <Route path="*" component={NotFoundPage} />
   </Route>
 );

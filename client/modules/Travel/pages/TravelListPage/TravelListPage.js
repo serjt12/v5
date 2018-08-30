@@ -7,9 +7,10 @@ import TravelList from '../../components/TravelList';
 
 // Import Actions
 import { fetchTravels } from '../../TravelActions';
+import { toggleAddTravel } from '../../../App/AppActions';
 
 // Import Selectors
-import { getShowAddTravel } from '../../../Home/HomeReducer';
+import { getShowAddTravel } from '../../../App/AppReducer';
 import { getTravels } from '../../TravelReducer';
 
 class TravelListPage extends Component {
@@ -31,8 +32,9 @@ TravelListPage.need = [() => { return fetchTravels(); }];
 
 // Retrieve data from store as props
 function mapStateToProps(state) {
+  console.log(state)
   return {
-    showAddTravel: getShowAddTravel(state.home.showAddTravel),
+    showAddTravel: getShowAddTravel(state),
     travels: getTravels(state),
   };
 }

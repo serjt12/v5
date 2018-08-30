@@ -1,0 +1,17 @@
+.search-local {
+  width: 239px;
+}
+.search-nacional {
+  width: 239px;
+}
+.title-container {
+  margin: 10px;
+  height: 35px;
+  background: #00BFB5;
+  color: white;
+  width: 50%;
+  display: inline-block;
+}
+.search-underline {
+  border-bottom: 1px solid white;
+}

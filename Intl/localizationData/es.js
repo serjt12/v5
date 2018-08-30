@@ -1,8 +1,7 @@
 export default {
   locale: 'es',
   messages: {
-    siteTitle: 'TOBCITY divide tus gastos',
-    addTravel: 'Agregar Viaje',
+    addTravel: 'Postular Viaje',
     switchLanguage: 'Cambiar Idioma',
     twitterMessage: 'Estamos en twitter',
     by: 'Por',
