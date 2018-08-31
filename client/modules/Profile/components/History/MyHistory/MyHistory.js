@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 
 
 // Import Actions
-import { fetchTravels, fetchMyTravels } from '../../../../Travel/TravelActions';
-import { getTravels, getMyTravels } from '../../../../Travel/TravelReducer';
+import { fetchTravels } from '../../../../Travel/TravelActions';
+import { getTravels } from '../../../../Travel/TravelReducer';
 import moment from 'moment';
 
 class MyHistory extends PureComponent {
@@ -15,10 +15,13 @@ class MyHistory extends PureComponent {
   }
 
   renderTravels() {
-    return (!this.props.travels.length === 0) ? (this.props.travels.map)(travel => {
+    return (!this.props.travels.lenght !== 0) ? (this.props.travels.map)(travel => {
       return (
         <li className={styles.item} key={travel._id}>
-          <Link to={`/travels/${travel.cuid}`}>{travel.from}/{travel.to}/{moment(travel.date).format('MMM Do YY')}</Link>
+          {
+          (travel.author !== undefined && travel.author.id === this.props.userID)
+          && <Link to={`/travels/${travel.cuid}`}>{travel.from}/{travel.to}/{moment(travel.date).format('MMM Do YY')}</Link>
+          }
         </li>
       );
     }) : <li className={styles.item}><h2 className={styles.none} >Aun no haz postulado ningun viaje!!</h2></li>;
@@ -41,12 +44,9 @@ class MyHistory extends PureComponent {
   }
 }
 
-
-function mapStateToProps(store, props) {
-  console.log(store)
+function mapStateToProps(store) {
   return {
     userID: store.auth.currentUser._id,
-    // mytravels: getMyTravels(store, props.userID),
     travels: getTravels(store),
     showAddTravel: store.app.showAddTravel,
   };
