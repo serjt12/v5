@@ -52,18 +52,6 @@ export function fetchTravel(cuid) {
   };
 }
 
-export function addMyTravels(myTravels) {
-  return {
-    type: ADD_MY_TRAVELS,
-    myTravels,
-  };
-}
-
-export function fetchMyTravels(user) {
-  return (dispatch) => {
-    return callApi(`travels/${user}`).then(res => dispatch(addMyTravels(res.mytravels)));
-  };
-}
 
 export function deleteTravel(cuid) {
   return {

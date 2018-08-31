@@ -22,8 +22,8 @@ export function getTravels(req, res) {
 
 // Find my travels
 export function getMyTravels(req, res) {
-  console.log('USER ID', req.params.user)
-  Travel.find({ author: req.params.user }).populate('user').exec((err, mytravels) => {
+  console.log('USER ID', req.user._id)
+  Travel.find({ author: req.user._id }).populate('user').exec((err, mytravels) => {
     if (err) {
       res.status(500).send(err);
     }
@@ -39,9 +39,11 @@ export function getMyTravels(req, res) {
  */
 export function addTravel(req, res) {
   const newTravel = new Travel(req.body.travel);
-  const user = new User();
-  const like = new Like();
-
+  const author = {
+    id: req.user._id,
+    username: req.user.name,
+  };
+  console.log(author)
   // Let's sanitize inputs
   newTravel.from = sanitizeHtml(newTravel.from);
   newTravel.to = sanitizeHtml(newTravel.to);
@@ -50,12 +52,10 @@ export function addTravel(req, res) {
   newTravel.price = sanitizeHtml(newTravel.price);
   newTravel.model = sanitizeHtml(newTravel.model);
   newTravel.content = sanitizeHtml(newTravel.content);
-  newTravel.author = user._id;
-  newTravel.likes = like._id;
+  newTravel.author = author;
   newTravel.cuid = cuid();
+
   console.log('NEW TRAVEL', newTravel);
-  console.log('User', user);
-  console.log('Likes', like);
   newTravel.save((err, saved) => {
     if (err) {
       res.status(500).send(err);
