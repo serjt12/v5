@@ -1,4 +1,4 @@
-import { ADD_TRAVEL, ADD_TRAVELS, DELETE_TRAVEL } from './TravelActions';
+import { ADD_TRAVEL, ADD_TRAVELS, DELETE_TRAVEL, ADD_MY_TRAVELS } from './TravelActions';
 
 // Initial State
 const initialState = { data: [] };
@@ -8,6 +8,11 @@ const TravelReducer = (state = initialState, action) => {
     case ADD_TRAVEL :
       return {
         data: [action.travel, ...state.data],
+      };
+    case ADD_MY_TRAVELS :
+    console.log('my travels', action)
+      return {
+        data: action.mytravels,
       };
 
     case ADD_TRAVELS :
@@ -29,6 +34,9 @@ const TravelReducer = (state = initialState, action) => {
 
 // Get all travels
 export const getTravels = state => state.travel.data;
+
+// Get user travels
+// export const getMyTravels = (state, user) => state.travel.data.filter(travel => travel.author === user);
 
 // Get travel by cuid
 export const getTravel = (state, cuid) => state.travel.data.filter(travel => travel.cuid === cuid)[0];

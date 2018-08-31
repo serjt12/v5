@@ -115,7 +115,7 @@ const EnhancedForm = withFormik({
 })(MyForm);
 
 function mapStateToProps(store) {
-  console.log(store)
+  // console.log(store)
   return {
     store,
   };

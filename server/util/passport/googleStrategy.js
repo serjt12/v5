@@ -14,7 +14,7 @@ const strategy = new GoogleStrategy(
     // console.log(profile)
     // console.log('======== END ===========')
    // code
-    const { id, displayName, name, photos, emails } = profile;
+    const { id, displayName, _json, emails } = profile;
     User.findOne({ 'google.googleId': id }, (err, userMatch) => {
      // handle errors here:
       if (err) {
@@ -35,7 +35,7 @@ const strategy = new GoogleStrategy(
           'google.googleId': id,
           name: displayName,
           email: emails[0].value,
-          avatar: photos[0].value,
+          avatar: _json.image.url,
         });
        // save this user
         newGoogleUser.save((err1, savedUser) => {

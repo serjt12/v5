@@ -1,5 +1,6 @@
 import Travel from '../models/travel';
 import User from '../models/user';
+import Like from '../models/likes';
 import cuid from 'cuid';
 import sanitizeHtml from 'sanitize-html';
 
@@ -10,11 +11,23 @@ import sanitizeHtml from 'sanitize-html';
  * @returns void
  */
 export function getTravels(req, res) {
+  console.log('GET TRAVELS')
   Travel.find().sort('-dateAdded').exec((err, travels) => {
     if (err) {
       res.status(500).send(err);
     }
     res.json({ travels });
+  });
+}
+
+// Find my travels
+export function getMyTravels(req, res) {
+  console.log('USER ID', req.params.user)
+  Travel.find({ author: req.params.user }).populate('user').exec((err, mytravels) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ mytravels });
   });
 }
 
@@ -25,8 +38,9 @@ export function getTravels(req, res) {
  * @returns void
  */
 export function addTravel(req, res) {
-
   const newTravel = new Travel(req.body.travel);
+  const user = new User();
+  const like = new Like();
 
   // Let's sanitize inputs
   newTravel.from = sanitizeHtml(newTravel.from);
@@ -36,13 +50,16 @@ export function addTravel(req, res) {
   newTravel.price = sanitizeHtml(newTravel.price);
   newTravel.model = sanitizeHtml(newTravel.model);
   newTravel.content = sanitizeHtml(newTravel.content);
-  newTravel.author = User._id
+  newTravel.author = user._id;
+  newTravel.likes = like._id;
   newTravel.cuid = cuid();
-  console.log(newTravel)
-  console.log(User)
+  console.log('NEW TRAVEL', newTravel);
+  console.log('User', user);
+  console.log('Likes', like);
   newTravel.save((err, saved) => {
     if (err) {
       res.status(500).send(err);
+      console.log(err)
     }
     res.json({ travel: saved });
   });
