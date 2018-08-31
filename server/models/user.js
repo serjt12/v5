@@ -12,7 +12,7 @@ const userSchema = new Schema({
   },
   credit: { type: 'Number', default: 0 },
   cellphone: { type: 'Number', default: '3777777777' },
-  city: { type: String, default: 'Indicanos tu ciudadd de origen' },
+  city: { type: String, default: 'Indicanos tu ciudad de origen' },
   avatar: { type: String, default: 'https://via.placeholder.com/106x106' },
   google: {
     googleId: { type: String, required: false },
@@ -40,7 +40,7 @@ userSchema.methods = {
 };
 
 // Define hooks for pre-saving
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function HashPassword(next) {
   if (!this.local.password) {
     next();
   } else {

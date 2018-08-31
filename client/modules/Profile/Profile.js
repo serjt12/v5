@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import ProfilePage from './components/ProfilePages/ProfileMain';
-import HystoryPage from './components/History/history';
+import HystoryPage from './components/History/History';
 import SearchPage from '../Search/Search';
 import requireAuth from '../../components/hocs/requireAuth';
 

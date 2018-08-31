@@ -12,7 +12,7 @@ const travelSchema = new Schema({
   dateAdded: { type: 'Date', default: Date.now, required: true },
   dateUpdated: { type: 'Date' },
   likes: { type: Schema.Types.ObjectId, ref: 'Like' },
-  author: { type: Schema.Types.ObjectId, ref: 'User' },
+  author: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 export default mongoose.model('Travel', travelSchema);

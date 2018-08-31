@@ -3,6 +3,7 @@ import callApi from '../../util/apiCaller';
 // Export Constants
 export const ADD_TRAVEL = 'ADD_TRAVEL';
 export const ADD_TRAVELS = 'ADD_TRAVELS';
+export const ADD_MY_TRAVELS = 'ADD_MY_TRAVELS';
 export const DELETE_TRAVEL = 'DELETE_TRAVEL';
 
 // Export Actions
@@ -48,6 +49,19 @@ export function fetchTravels() {
 export function fetchTravel(cuid) {
   return (dispatch) => {
     return callApi(`travels/${cuid}`).then(res => dispatch(addTravel(res.travel)));
+  };
+}
+
+export function addMyTravels(myTravels) {
+  return {
+    type: ADD_MY_TRAVELS,
+    myTravels,
+  };
+}
+
+export function fetchMyTravels(user) {
+  return (dispatch) => {
+    return callApi(`travels/${user}`).then(res => dispatch(addMyTravels(res.mytravels)));
   };
 }
 
