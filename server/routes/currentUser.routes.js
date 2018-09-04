@@ -1,24 +1,13 @@
 import { Router } from 'express';
 const passport = require('passport');
-// import * as UserController from '../controllers/user.controller';
+import * as CurrentUserController from '../controllers/currentUser.controller';
 import User from '../models/user';
 // const requireLogin = require('../middlewares/requireLogin');
 
 const router = new Router();
 
 // Get current user
-router.get('/current_user',
-  (req, res) => {
-  // console.log('===== user!!======');
-  // console.log(req.user);
-    const userInfo = req.user;
-  // console.log(userInfo);
-    if (userInfo) {
-      return res.send({ userInfo });
-    } if (!userInfo) {
-      return res.json({ user: null });
-    }
-  });
+router.route('/current_user').get(CurrentUserController.checkCurrentUser);
 
 router.post('/signup', (req, res) => {
   const { cellphone, password } = req.body.user;

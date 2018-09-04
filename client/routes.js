@@ -6,6 +6,9 @@ import NotFoundPage from './components/NotFound/NotFoundPage';
 import Travel from './modules/Home/temp';
 import LogInForm from './modules/Home/components/Login/LoginPage/LoginPage';
 import Profile from './modules/Profile/Profile';
+import LocalTravels from './modules/Search/pages/LocalSearch/LocalSearch';
+import NationalTravels from './modules/Search/pages/NationalSearch/NationalSearch';
+
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -55,6 +58,8 @@ export default (
       }}
     />
     <Route exact path="/profile" component={Profile} />
+    <Route exact path="/local_travels" component={LocalTravels} />
+    <Route exact path="/national_travels" component={NationalTravels} />
     <Route path="*" component={NotFoundPage} />
   </Route>
 );

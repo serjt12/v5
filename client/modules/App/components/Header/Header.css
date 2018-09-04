@@ -29,13 +29,22 @@
   text-align: center;
   background-color: white;
 }
+.logout-button {
+  float: right;
+  width: 97px;
+  color: #00BFB5;
+  font-weight: 700;
+  text-align: center;
+  background-color: white;
+}
 
 .language-switcher {
   background: rgba(0, 0, 0, 0.1);
 }
 
 .language-switcher ul {
-
+  display: flex;
+  justify-content: space-around;
 }
 
 .language-switcher li {
@@ -52,10 +61,9 @@
 .selected {
   border-bottom: 1px solid #fff;
 }
-
+.btncont {
+  display: inline-flex;
+}
 @media (max-width: 767px){
-  .add-post-button{
-    float: left;
-    margin-top: 16px;
-  }
+
 }

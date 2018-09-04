@@ -11,23 +11,14 @@ import sanitizeHtml from 'sanitize-html';
  * @returns void
  */
 export function getTravels(req, res) {
-  console.log('GET TRAVELS')
-  Travel.find().sort('-dateAdded').exec((err, travels) => {
+  Travel.find()
+  .populate('author')
+  .sort('-dateAdded')
+  .exec((err, travels) => {
     if (err) {
       res.status(500).send(err);
     }
     res.json({ travels });
-  });
-}
-
-// Find my travels
-export function getMyTravels(req, res) {
-  console.log('USER ID', req.user._id)
-  Travel.find({ author: req.user._id }).populate('user').exec((err, mytravels) => {
-    if (err) {
-      res.status(500).send(err);
-    }
-    res.json({ mytravels });
   });
 }
 
@@ -39,11 +30,8 @@ export function getMyTravels(req, res) {
  */
 export function addTravel(req, res) {
   const newTravel = new Travel(req.body.travel);
-  const author = {
-    id: req.user._id,
-    username: req.user.name,
-  };
-  console.log(author)
+
+  console.log(req.body.travel)
   // Let's sanitize inputs
   newTravel.from = sanitizeHtml(newTravel.from);
   newTravel.to = sanitizeHtml(newTravel.to);
@@ -52,14 +40,14 @@ export function addTravel(req, res) {
   newTravel.price = sanitizeHtml(newTravel.price);
   newTravel.model = sanitizeHtml(newTravel.model);
   newTravel.content = sanitizeHtml(newTravel.content);
-  newTravel.author = author;
+  newTravel.sits = sanitizeHtml(newTravel.sits);
+  newTravel.author = req.user._id;
   newTravel.cuid = cuid();
-
-  console.log('NEW TRAVEL', newTravel);
+  newTravel.markModified('hour');
   newTravel.save((err, saved) => {
     if (err) {
       res.status(500).send(err);
-      console.log(err)
+      console.log(err);
     }
     res.json({ travel: saved });
   });
@@ -72,7 +60,9 @@ export function addTravel(req, res) {
  * @returns void
  */
 export function getTravel(req, res) {
-  Travel.findOne({ cuid: req.params.cuid }).exec((err, travel) => {
+  Travel.findOne({ cuid: req.params.cuid })
+  .populate('author')
+  .exec((err, travel) => {
     if (err) {
       res.status(500).send(err);
     }

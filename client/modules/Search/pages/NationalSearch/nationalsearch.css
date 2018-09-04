@@ -1,0 +1,122 @@
+.nationalsearchtop {
+  height: 290px;
+  position: relative;
+}
+
+.nationalsearchtop h2{
+  width: 196px;
+  right: 60px;
+  color: #989895;
+  position: relative;
+  display: inline-block;
+  font-family: 'Baloo Tammudu', cursive;
+}
+
+.circulo {
+  position: absolute;
+  top: 104px;
+  width: 261px;
+  right: 19px;
+  background-size: 100% 100%;
+}
+
+.avatar{
+  position: absolute;
+  width: 90px;
+  right: 35px;
+  top: 121px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: 100% 100%;
+  transition: all 3s;
+  transition-timing: ease-in-out;
+}
+.avatar:hover {
+    transform: rotate(360deg);
+}
+
+.ticket_container {
+  display: inline-block;
+}
+
+.tickets-inside {
+  position: relative;
+  width: 328px;
+}
+
+.tickets-inside h5{
+  width: 166px;
+  position: absolute;
+  left: 102px;
+  text-align: left;
+  display: inline-block;
+  top: 43px;
+  color: #8f8f8f;
+}
+.tickets-inside .ticket {
+  width: 100%;
+}
+.cities {
+  position: absolute;
+  right: 15px;
+  top: 42px;
+  color: #61605B;
+  font-weight: 700;
+}
+.info {
+  text-align: left;
+  position: relative;
+  right: 0px;
+  bottom: 59px;
+  display: inline-block;
+  color: #3b3b3b;
+}
+.fecha {
+  font-size: 14px;
+  color: #3b3b3b
+}
+.cupos {
+  font-size: 11px;
+  color: #3b3b3b;
+}
+.car {
+  position: absolute;
+  bottom: 63px;
+  width: 76px;
+  right: 17px;
+}
+.car:hover {
+  transform: scale(1.1);
+}
+.options-container {
+  display: inline-block;
+  width: 107px;
+  position: absolute;
+  top: 44px;
+  left: 0px;
+}
+.optionsimg {
+  border-radius: 50%;
+  width: 30px;
+  height: 28px;
+  margin: 3px;
+}
+
+.price {
+  position: absolute;
+  background: #00ACA3;
+  color: white;
+  position: absolute;
+  top: 20px;
+  width: 75px;
+  right: 19px;
+  border-radius: 4px 4px 4px 0px;
+}
+.preferencias {
+  font-size: 10px;
+  position: absolute;
+  top: -19px;
+  left: 16px;
+  color: white;
+  font-weight: 800;
+}

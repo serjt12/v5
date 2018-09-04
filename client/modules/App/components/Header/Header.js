@@ -14,18 +14,22 @@ export function Header(props) {
     <div className={styles.header}>
       <div className={styles['language-switcher']}>
         <ul>
-          <li><FormattedMessage id="switchLanguage" /></li>
           {languageNodes}
-          <li>
-            <Link to="/"><img src={Home} alt="Home tobcity" /></Link>
-          </li>
-          <li>
           {
             (props.Logged)
-            ? <a href="#" className={styles['add-travel-button']} onClick={props.toggleAddTravel}><FormattedMessage id="addTravel" /></a>
+            ?
+            (
+              <div className={styles.btncont}>
+                <li>
+                  <a href="#" className={styles['add-travel-button']} onClick={props.toggleAddTravel}><FormattedMessage id="addTravel" /></a>
+                </li>
+                <li>
+                  <a href="api/logout" className={styles['logout-button']} ><FormattedMessage id="logout" /></a>
+                </li>
+              </div>
+            )
             : null
           }
-          </li>
         </ul>
       </div>
     </div>

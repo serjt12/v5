@@ -17,16 +17,20 @@
   position: absolute;
   left: -28px;
   top: 34px;
-  width: 261px;
+  width: 313px;
   background-size: 100% 100%;
 }
 .avatar {
+  transition: all 3s;
   position: absolute;
-  left: 32px;
-  width: 106px;
+  left: 37px;
+  width: 141px;
   top: 60px;
   border-radius: 50%;
   overflow: hidden;
+}
+.avatar:hover {
+    transform: rotate(360deg);
 }
 .profiletop {
   position: relative;
@@ -38,15 +42,18 @@
 }
 .profile-data {
   position: relative;
+  text-align: left;
   top: 20px;
   width: 320px;
   height: 201px;
   display: inline-block;
   color: gray;
 }
-.profile-data h4 {
-  width: 240px;
+.profile-data h2 {
   display: inline-block;
+  position: relative;
+  right: -21px;
+  font-weight: bolder;
 }
 
 .box {
@@ -60,23 +67,15 @@
   position: absolute;
   left: 0px;
 }
+.box span {
+  margin-left: 33px;
+}
 .citybox {
-  position: relative;
-  bottom: 12px;
+  position: absolute;
+  bottom: 0px;
+  right: 10px;
 }
 .city {
-  position: absolute;
+  position: relative;
   width: 227px;
-  right: 0px;
-}
-
-.logout {
-  color: #ff332d;
-  background-color: #00BFB5;
-  font-weight: bold;
-  padding: .1rem 1rem;
-  border-radius: 3px;
-  position: absolute;
-  left: 42px;
-  top: 200px;
 }

@@ -1,17 +1,28 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import styles from './history.css';
 import MyHistory from './MyHistory/MyHistory';
-
-class Profile extends PureComponent {
+import Title from '../ProfilePages/images/title.png'
+class History extends PureComponent {
   render() {
     return (
+
+      <div>
+      {(!this.props.showAddTravel) ?
       <div className={styles['history-container']}>
-        <h1>Mis Viajes</h1>
+        <img className={styles.title} src={Title} alt="Mis Viajes Tobcity" />
         <MyHistory />
+      </div> : null }
       </div>
     );
   }
 
 }
 
-export default (Profile);
+function mapStateToProps({ app: { showAddTravel } }) {
+  // console.log(store)
+  return { showAddTravel };
+}
+
+
+export default connect(mapStateToProps)(History);

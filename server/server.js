@@ -56,7 +56,6 @@ import posts from './routes/post.routes';
 import auth from './routes/auth.routes';
 import currentUser from './routes/currentUser.routes';
 import travel from './routes/travel.routes';
-import dummyDataTravel from './dummyDataTravel';
 import serverConfig from './config';
 
 // Set native promises as mongoose promise
@@ -71,7 +70,6 @@ if (process.env.NODE_ENV !== 'test') {
     }
 
     // feed some dummy data in DB.
-    dummyDataTravel();
   });
 }
 
@@ -137,6 +135,7 @@ const renderFullPage = (html, initialState) => {
         <link rel="icon" type="image/png" href=${favicon96} sizes="96x96" />
         <link rel="icon" type="image/png" href=${favicon144} sizes="144x144" />
         <link rel="icon" type="image/png" href=${favicon192} sizes="192x192" />
+        <link href="https://fonts.googleapis.com/css?family=Baloo+Tammudu|Quicksand|Raleway" rel="stylesheet">
       </head>
       <body>
         <div id="root">${process.env.NODE_ENV === 'production' ? html : `<div>${html}</div>`}</div>

@@ -11,7 +11,7 @@ export function userAuth(user) {
 
 export function fetchCurrentUser() {
   return (dispatch) => {
-    return callApi('/current_user').then(res => dispatch(userAuth(res)));
+    return callApi('current_user').then(res => dispatch(userAuth(res)));
   };
 }
 
