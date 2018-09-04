@@ -24,7 +24,7 @@ import { getTravel } from '../../TravelReducer';
 
 export function TravelDetailPage(props) {
   const avatar = ((props.user !== null) ? (props.user.avatar) : ('https://via.placeholder.com/350x150'));
-  const typeOfTravel = (props.travel !== null && props.travel.typeOfTravel === '/local') ? '/local_travels' : '/national_travels'
+  const firstName = (props.user !== null) && props.user.name.split(' ')[0];
   console.log(props)
   return (
     <div>
@@ -38,7 +38,7 @@ export function TravelDetailPage(props) {
               <img className={styles.circulo} src={Circulo} alt="Tobcity Divide Tus gastos" />
               <Link to="/profile"><img className={styles.avatar} src={avatar} alt="Tobcity Divide Tus gastos" /></Link>
             </div>
-            <h2>HOLA! <br /> {props.user.name.toUpperCase()}</h2>
+            <h2>HOLA! {firstName.toUpperCase()}</h2>
           </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
         }
         {(props.travel !== null) ?
@@ -60,8 +60,8 @@ export function TravelDetailPage(props) {
             </div>
             <img className={styles.car} src={Car} alt="Viaja con Tobcity" />
             <div className={styles.actionsbtns}>
-              <a href="#" className={styles.viajar}>VIAJAR</a>
-              <Link to={typeOfTravel} className={styles.cancelar}>CANCELAR</Link>
+              <button><a href="/api/user_to_travel" className={styles.viajar}>VIAJAR</a></button>
+              <button onClick={props.router.goBack} className={styles.cancelar}>CANCELAR</button>
             </div>
           </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
         }

@@ -14,10 +14,9 @@ class NationalSearch extends PureComponent {
     this.props.dispatch(fetchTravels());
   }
   render() {
-    // const mytravels = travels.filter(travel => (travel.author.id === userID))
     const nationaltravels = (this.props.travels !== undefined) ? this.props.travels.filter((nationalTravel) => (nationalTravel.traveltype === 'nacional')) : [];
     const avatar = ((this.props.user.currentUser !== null) ? (this.props.user.currentUser.avatar) : ('https://via.placeholder.com/350x150'));
-    const name = ((this.props.user.currentUser !== null) && (this.props.user.currentUser.name));
+    const firstName = ((this.props.user.currentUser !== null) && (this.props.user.currentUser.name.split(' ')[0]));
     return (
       <section className={styles.national_container}>
         <TravelCreateWidget showAddTravel={this.props.showAddTravel} />
@@ -28,7 +27,7 @@ class NationalSearch extends PureComponent {
               <img className={styles.circulo} src={Circulo} alt="Tobcity Divide Tus gastos" />
               <Link to="/profile"><img className={styles.avatar} src={avatar} alt="Tobcity Divide Tus gastos" /></Link>
             </div>
-            <h2>HOLA! <br /> {name.toUpperCase()}</h2>
+            <h2>HOLA! <br /> {firstName.toUpperCase()}</h2>
           </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
         }
         <NationalTravels national={nationaltravels} />

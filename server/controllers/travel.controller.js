@@ -1,6 +1,4 @@
 import Travel from '../models/travel';
-import User from '../models/user';
-import Like from '../models/likes';
 import cuid from 'cuid';
 import sanitizeHtml from 'sanitize-html';
 
@@ -31,7 +29,6 @@ export function getTravels(req, res) {
 export function addTravel(req, res) {
   const newTravel = new Travel(req.body.travel);
 
-  console.log(req.body.travel)
   // Let's sanitize inputs
   newTravel.from = sanitizeHtml(newTravel.from);
   newTravel.to = sanitizeHtml(newTravel.to);

@@ -93,7 +93,7 @@
   width: 319px;
   position: absolute;
   bottom: 42px;
-  right: 50px;
+  right: 9px;
 }
 .optionsimg {
   border-radius: 50%;
@@ -125,6 +125,7 @@
   background-color: #00BFB5;
 }
 .cancelar {
+  cursor: pointer;
   float: right;
   width: 97px;
   color: #00BFB5;

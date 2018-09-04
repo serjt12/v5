@@ -56,6 +56,7 @@ import posts from './routes/post.routes';
 import auth from './routes/auth.routes';
 import currentUser from './routes/currentUser.routes';
 import travel from './routes/travel.routes';
+import user from './routes/user.routes';
 import serverConfig from './config';
 
 // Set native promises as mongoose promise
@@ -91,6 +92,7 @@ app.use('/auth', auth);
 app.use('/api', posts);
 app.use('/api', currentUser);
 app.use('/api', travel);
+app.use('/api', user);
 // ===== testing middleware =====
 // app.use(function(req, res, next) {
 // 	console.log('===== passport user =======')
