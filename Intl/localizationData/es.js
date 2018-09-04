@@ -13,7 +13,7 @@ export default {
     plate: 'Placa de tu carro',
     price: 'Precio por persona',
     model: 'Modelo del carro',
-    submit: 'Publicar',
+    submit: 'PUBLICAR',
     comment: 'Que otras cosas deben saber los pasajeros',
     logout: 'Salir',
     loginface: 'Ingresa con Facebook',

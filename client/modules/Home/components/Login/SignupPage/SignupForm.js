@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
 import styles from './SignUpForm.css';
-import { addUser } from '../../../AuthActions';
+import { addUserRequest } from '../../../AuthActions';
 
 const MyForm = ({
     errors,
@@ -85,14 +85,21 @@ const EnhancedForm = withFormik({
     confirmPassword: Yup.string().equalTo(Yup.ref('password'), 'Comprueba que tengas la misma contraseña').required('Es necesario que ingreses la misma contraseña'),
   }),
   handleSubmit(values, { props, resetForm, setSubmitting }) {
-    console.log('PROPS', props)
-    props.dispatch(addUser(values));
+    props.dispatch(addUserRequest(values));
     setSubmitting(false);
     resetForm();
-    // props.router.push('/');
+    props.router.push('/login');
   },
 })(MyForm);
 
-const SignUpForm = connect(null)(EnhancedForm);
+function mapStateToProps(store) {
+  console.log(store)
+  return {
+    errormsg: store.auth.msg,
+  };
+}
+
+
+const SignUpForm = connect(mapStateToProps)(EnhancedForm);
 
 export default SignUpForm;

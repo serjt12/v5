@@ -1,6 +1,7 @@
 import callApi from '../../util/apiCaller';
 export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 export const ACTIVE_USER = 'ACTIVE_USER';
+export const SIGNUP_MSG = 'SIGNUP_MSG';
 
 export function userAuth(user) {
   return {
@@ -11,29 +12,25 @@ export function userAuth(user) {
 
 export function fetchCurrentUser() {
   return (dispatch) => {
-    return callApi('/current_user').then(res => dispatch(userAuth(res)));
+    return callApi('current_user').then(res => dispatch(userAuth(res)));
   };
 }
 
-export function activeUser(user) {
+export function sendMsg(msg) {
   return {
-    type: ACTIVE_USER,
-    user,
+    type: SIGNUP_MSG,
+    payload: msg,
   };
 }
 
-export function addUser(user) {
-  // console.log(user)
+export function addUserRequest(user) {
   return (dispatch) => {
     return callApi('signup', 'post', {
       user: {
         cellphone: user.cellphone,
         password: user.password,
       },
-    }).then(res => {
-      // console.log('RES', res);
-      dispatch(activeUser(res));
-    });
+    }).then(res => dispatch(sendMsg(res)));
   };
 }
 

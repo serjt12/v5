@@ -9,12 +9,6 @@ const TravelReducer = (state = initialState, action) => {
       return {
         data: [action.travel, ...state.data],
       };
-    case ADD_MY_TRAVELS :
-    console.log('my travels', action)
-      return {
-        data: action.mytravels,
-      };
-
     case ADD_TRAVELS :
       return {
         data: action.travels,
@@ -34,9 +28,6 @@ const TravelReducer = (state = initialState, action) => {
 
 // Get all travels
 export const getTravels = state => state.travel.data;
-
-// Get user travels
-// export const getMyTravels = (state, user) => state.travel.data.filter(travel => travel.author === user);
 
 // Get travel by cuid
 export const getTravel = (state, cuid) => state.travel.data.filter(travel => travel.cuid === cuid)[0];

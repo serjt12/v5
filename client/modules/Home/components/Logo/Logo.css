@@ -7,7 +7,12 @@
   text-align: center;
   height: 350px;
 }
+.logo:hover {
+    transform: rotate(1080deg);
+  }
 .logo {
+  transition: all 3s;
+  transition-timing: ease-in-out;
   width: 176px;
   position: relative;
   top: 77px;

@@ -6,13 +6,16 @@ import { withFormik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
 import styles from './TravelForm.css';
 import { addTravelRequest } from '../../TravelActions';
-
-
+import { toggleAddTravel } from '../../../App/AppActions';
+import Options from './Options';
 const MyForm = ({
     errors,
     touched,
     handleBlur,
     isSubmitting,
+    setFieldValue,
+    values,
+    handleChange
   }) => (
     (<Form className={styles['form-container']}>
       <div>
@@ -36,7 +39,7 @@ const MyForm = ({
       </div>
       <div>
         <Field
-          type="date"
+          type="datetime-local"
           name="date"
           onBlur={handleBlur}
           placeholder="Fecha en la que viajaras"
@@ -70,9 +73,40 @@ const MyForm = ({
         />
         {touched.content && errors.content && <div className={styles.error}>{errors.content}</div>}
       </div>
+      <div className={styles.select}>
+        <select
+          name="traveltype"
+          value={values.traveltype}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        >
+          <option value="" label="Selecciona tu tipo de viaje" />
+          <option value="local" label="Local" />
+          <option value="nacional" label="Nacional" />
+        </select>
+        <div className={styles.select_arrow} />
+        {touched.traveltype && errors.traveltype && <div className={styles.error}>{errors.traveltype}</div>}
+      </div>
+      <div className={styles.select}>
+        <select
+          name="sits"
+          value={values.cupos}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        >
+          <option value="" label="Cuantos cupos tienes disponibles" />
+          <option value="1" label="1" />
+          <option value="2" label="2" />
+          <option value="3" label="3" />
+          <option value="4" label="4" />
+        </select>
+        <div className={styles.select_arrow} />
+        {touched.sits && errors.sits && <div className={styles.error}>{errors.sits}</div>}
+      </div>
+      <Options />
       <div className={styles['submit-container']}>
         <button className={styles['submit-button']} disabled={isSubmitting} type="submit" disabled={isSubmitting}>
-          Postular tu viaje!
+          POSTULAR TU VIAJE!
         </button>
       </div>
     </Form>)
@@ -80,6 +114,7 @@ const MyForm = ({
 
 MyForm.propTypes = {
   values: PropTypes.object,
+  setFieldValue: PropTypes.func,
   errors: PropTypes.object,
   touched: PropTypes.object,
   handleBlur: PropTypes.func,
@@ -87,7 +122,7 @@ MyForm.propTypes = {
 };
 
 const EnhancedForm = withFormik({
-  mapPropsToValues({ from, to, date, plate, price, content }) {
+  mapPropsToValues({ from, to, date, plate, price, content, traveltype, sits }) {
     return {
       from: from || '',
       to: to || '',
@@ -95,22 +130,27 @@ const EnhancedForm = withFormik({
       plate: plate || '',
       price: price || '',
       content: content || '',
+      traveltype: traveltype || '',
+      sits: sits || '',
     };
   },
   validationSchema: Yup.object().shape({
     from: Yup.string().required('Debes ingresar una ciudad de origen'),
     to: Yup.string().required('Debes ingresar una ciudad de destino'),
-    date: Yup.date().required('Debes ingresar la fecha de tu viaje'),
+    date: Yup.date().min(Date(Date.now()), 'Minimo 12 horas de anterioridad').required('Ingresar la fecha y hora de tu viaje'),
     plate: Yup.string().max(6, 'Debe ser la placa de tu vehiculo').required('Debes ingresar la placa de tu vehiculo'),
     price: Yup.number().required('Debes ingresar el valor por persona'),
     content: Yup.string(),
+    traveltype: Yup.string().required('Es necesario que selecciones tu tipo de viaje'),
+    sits: Yup.number().max(4, 'Maximo 4 cupos').required('Es necesario que ingreses los cupos disponibles'),
   }),
   handleSubmit(values, { resetForm, props, setSubmitting }) {
     console.log('VALUES 1', values);
     console.log('PROPS', props);
+    props.dispatch(toggleAddTravel());
     props.dispatch(addTravelRequest(values));
-    // setSubmitting(false);
-    // resetForm();
+    setSubmitting(false);
+    resetForm();
   },
 })(MyForm);
 

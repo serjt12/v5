@@ -1,7 +1,12 @@
 .history-container {
-  height: 435px;
+  height: 600px;
   background: #00BFB5;
   color: white;
   background-size: 100% 100%;
   width: 100%;
+}
+
+.title {
+  width: 200px;
+  text-align: right;
 }

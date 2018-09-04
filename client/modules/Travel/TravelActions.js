@@ -26,6 +26,8 @@ export function addTravelRequest(travel) {
         price: travel.price,
         model: travel.model,
         content: travel.content,
+        traveltype: travel.traveltype,
+        sits: travel.sits,
       },
     }).then(res => dispatch(addTravel(res.travel)));
   };

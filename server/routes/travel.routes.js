@@ -6,9 +6,6 @@ const requireLogin = require('../middlewares/requireLogin');
 // Get all travels
 router.route('/travels', requireLogin).get(TravelController.getTravels);
 
-// Get all travels by user
-router.route('/travels/:user', requireLogin).get(TravelController.getMyTravels);
-
 // Get one travel by cuid
 router.route('/travels/:cuid', requireLogin).get(TravelController.getTravel);
 

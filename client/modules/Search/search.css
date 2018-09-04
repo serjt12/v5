@@ -1,8 +1,10 @@
 .search-local {
   width: 239px;
+  cursor: pointer;
 }
 .search-nacional {
   width: 239px;
+  cursor: pointer;
 }
 .title-container {
   margin: 10px;

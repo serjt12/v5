@@ -1,7 +1,7 @@
 .item {
   background-color: #FDFDFD;
   color: #9B9794;
-  width: 255px;
+  width: 314px;
   margin: 6px;
   border-radius: 5px;
   border-bottom-left-radius: 0;
@@ -21,4 +21,10 @@
 }
 .none {
   color: rgba(175,161,13,.32)
+}
+.deletebtn {
+  color: red;
+  cursor: pointer;
+  z-index: 100;
+  float: right;
 }
