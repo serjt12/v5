@@ -145,8 +145,6 @@ const EnhancedForm = withFormik({
     sits: Yup.number().max(4, 'Maximo 4 cupos').required('Es necesario que ingreses los cupos disponibles'),
   }),
   handleSubmit(values, { resetForm, props, setSubmitting }) {
-    console.log('VALUES 1', values);
-    console.log('PROPS', props);
     props.dispatch(toggleAddTravel());
     props.dispatch(addTravelRequest(values));
     setSubmitting(false);

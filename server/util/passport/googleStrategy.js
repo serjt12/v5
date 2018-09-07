@@ -4,8 +4,8 @@ import keys from '../../config';
 
 const strategy = new GoogleStrategy(
   {
-    clientID: '935751292286-e1a2ba2bmbk6fsahs65sgii2hj9vvcai.apps.googleusercontent.com',
-    clientSecret: 'nPLz2CdPaw88dRNUC28lxJaJ',
+    clientID: keys.googleID,
+    clientSecret: keys.googleSecret,
     callbackURL: 'http://localhost:8000/auth/google/callback',
   },
   function (token, tokenSecret, profile, done) {

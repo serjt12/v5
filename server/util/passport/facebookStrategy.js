@@ -4,8 +4,8 @@ import keys from '../../config';
 
 const strategy = new FacebookStrategy(
   {
-    clientID: '299960864082504',
-    clientSecret: '16ddbe32c735ea78b675491057652efa',
+    clientID: keys.facebookAppID,
+    clientSecret: keys.facebookAppSecret,
     callbackURL: 'http://localhost:8000/auth/facebook/callback',
     profileFields: ['id', 'displayName', 'photos', 'email'],
     enableProof: true,
