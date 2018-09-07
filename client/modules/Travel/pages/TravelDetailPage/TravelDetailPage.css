@@ -50,7 +50,6 @@
   color: #989895;
   position: relative;
   display: inline-block;
-  font-family: 'Baloo Tammudu', cursive;
 }
 .cities {
   position: absolute;
@@ -117,6 +116,7 @@
   display: inline-block;
 }
 .viajar {
+  cursor: pointer;
   float: right;
   width: 97px;
   color: white;
@@ -140,4 +140,13 @@
   display: flex;
   justify-content: space-around;
   width: 100%;
+}
+.comments {
+  position: absolute;
+  right: 0px;
+  position: absolute;
+  right: 32px;
+  top: 75px;
+  color: #8f8f8f;
+  width: 130px;
 }

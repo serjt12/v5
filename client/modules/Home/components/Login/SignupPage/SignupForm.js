@@ -16,7 +16,7 @@ const MyForm = ({
     (<Form className={styles['form-container']}>
       <div>
         <Field
-          className={styles.input}
+          className={styles.upload}
           type="number"
           name="cellphone"
           onBlur={handleBlur}

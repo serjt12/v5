@@ -11,9 +11,6 @@ class MyHistory extends Component {
   componentDidMount() {
     this.props.dispatch(fetchTravels());
   }
-  shouldComponentUpdate(nextProps) {
-    return this.props.travels !== nextProps.travels
-  }
   handleDeleteTravel = travel => {
     if (confirm('Do you want to delete this post')) { // eslint-disable-line
       this.props.dispatch(deleteTravelRequest(travel));

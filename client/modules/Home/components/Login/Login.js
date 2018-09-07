@@ -20,14 +20,14 @@ class Login extends PureComponent {
     const { props: { auth: { currentUser } } } = this;
     const authButton = currentUser ? (
       <div>
-        <Link className={styles.toprofile} to="/profile"><span className="animated FadeIn">Ve a tu Perfil</span></Link>
+        <Link className={styles.toprofile} to="/profile"><span>Ve a tu Perfil</span></Link>
         <a className={styles.logout} href="api/logout"><FormattedMessage id="logout" /></a>
       </div>
     ) : (
       <div className={styles.accessbtn}>
         <a className={styles.google} href="/auth/google"><img src={LoginGoogle} alt="Ingreso con google " /></a>
         <a className={styles.face} href="/auth/facebook"><img src={LoginFace} alt="Ingreso con facebook" /></a>
-        <a className={styles.cell} href="/login"><img src={LoginCell} alt="Ingreso con celular" /></a>
+        <Link className={styles.cell} href="/login"><img src={LoginCell} alt="Ingreso con celular" /></Link>
       </div>
     );
     // console.log(this.props)

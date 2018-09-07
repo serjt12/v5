@@ -54,6 +54,12 @@ export function fetchTravel(cuid) {
   };
 }
 
+export function AddTravelToUser(cuid) {
+  return (dispatch) => {
+    return callApi(`travels/${cuid}`).then(res => dispatch(addTravel(res.travel)));
+  };
+}
+
 
 export function deleteTravel(cuid) {
   return {

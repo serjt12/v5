@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import styles from './profilemain.css';
 import { connect } from 'react-redux';
+import moment from 'moment';
+import { Link } from 'react-router';
 import Helmet from 'react-helmet';
 import Sky from './images/superior.png';
 import Circulo from './images/circulo-perfil.png';
@@ -15,7 +17,9 @@ import TravelCreateWidget from '../../../Travel/components/TravelCreateWidget/Tr
 class ProfileMain extends PureComponent {
 
   render() {
-    const { avatar, name, email, cellphone, city, credit } = (this.props.auth.currentUser);
+    const userID = this.props.auth.currentUser._id;
+    const name = (this.props.auth && this.props.auth.currentUser.name !== undefined) ? (this.props.auth.currentUser.name) : [];
+    const { avatar, email, cellphone, city, credit, dateUpdated } = (this.props.auth.currentUser);
     return (
       <section className={styles['profile-container']}>
         <Helmet title={`TOBCITY - ${this.props.auth.currentUser.name}`} />
@@ -31,7 +35,7 @@ class ProfileMain extends PureComponent {
               <img className={styles.logo} src={Logo} alt="Tobcity Divide Tus gastos" />
             </div>
             <div className={styles['profile-data']}>
-              <h2>{name.toUpperCase()}</h2>
+              <h2>{name}</h2>
               <div className={styles.box}><img src={MailIcon} alt="mail de registro para Tobcity" /> <span>{email} </span></div>
               <div className={styles.box}><img src={CellIcon} alt="cell de registro para Tobcity" /> <span>{cellphone}</span> </div>
               <div className={styles.box}><img src={CityIcon} alt="ciudad de registro para Tobcity" /> <span>{city}</span> </div>
@@ -39,6 +43,10 @@ class ProfileMain extends PureComponent {
             </div>
             <div className={styles.citybox}>
               <img className={styles.city} src={Cityimg} alt="Tobcity Divide Tus gastos" />
+            </div>
+            <div className={styles.editbox}>
+              <Link className={styles.edit} to={`/edit_form/${userID}`}>EDITAR PERFIL</Link>
+              <small><em>ultima actualizacion hace {moment(dateUpdated).locale('es').fromNow(true)}</em></small>
             </div>
           </div> : null
       }
@@ -48,7 +56,6 @@ class ProfileMain extends PureComponent {
 }
 
 function mapStateToProps(store) {
-  // console.log(store)
   return store;
 }
 

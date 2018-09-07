@@ -2,6 +2,7 @@
   background: #00BFB5;
   background-size: cover;
   border-bottom: 1px solid #ccc;
+  height: 44px;
 }
 
 .content {
@@ -38,12 +39,10 @@
   background-color: white;
 }
 
-.language-switcher {
-  background: rgba(0, 0, 0, 0.1);
-}
-
 .language-switcher ul {
   display: flex;
+  position: relative;
+  top: 9px;
   justify-content: space-around;
 }
 

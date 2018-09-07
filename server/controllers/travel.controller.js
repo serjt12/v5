@@ -68,7 +68,7 @@ export function getTravel(req, res) {
 }
 
 /**
- * Delete a post
+ * Delete a trvel
  * @param req
  * @param res
  * @returns void

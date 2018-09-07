@@ -24,7 +24,7 @@ export function Header(props) {
                   <a href="#" className={styles['add-travel-button']} onClick={props.toggleAddTravel}><FormattedMessage id="addTravel" /></a>
                 </li>
                 <li>
-                  <a href="api/logout" className={styles['logout-button']} ><FormattedMessage id="logout" /></a>
+                  <a href="http://localhost:8000/api/logout" className={styles['logout-button']} ><FormattedMessage id="logout" /></a>
                 </li>
               </div>
             )

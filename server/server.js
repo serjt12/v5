@@ -1,4 +1,6 @@
 import Express from 'express';
+import corsPrefetch from 'cors-prefetch-middleware';
+import imagesUpload from 'images-upload-middleware';
 import compression from 'compression';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
@@ -52,7 +54,6 @@ import Helmet from 'react-helmet';
 // Import required modules
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
-import posts from './routes/post.routes';
 import auth from './routes/auth.routes';
 import currentUser from './routes/currentUser.routes';
 import travel from './routes/travel.routes';
@@ -78,6 +79,7 @@ if (process.env.NODE_ENV !== 'test') {
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
+app.use(corsPrefetch);
 app.use(cors());
 app.use(
   cookieSession({
@@ -89,10 +91,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
 app.use('/auth', auth);
-app.use('/api', posts);
 app.use('/api', currentUser);
 app.use('/api', travel);
 app.use('/api', user);
+app.post('/upload_image', imagesUpload('../dist/client',
+    'http://localhost:8000/dist/client'
+));
 // ===== testing middleware =====
 // app.use(function(req, res, next) {
 // 	console.log('===== passport user =======')

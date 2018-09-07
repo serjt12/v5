@@ -1,8 +1,8 @@
 import User from '../models/user';
 
 export function addUserTravel(req, res) {
-  console.log('REQ', req)
-  console.log('RES', res)
+  console.log('userID', req.params.userID)
+  console.log('body', req.body)
 }
 
 export function addUser(req, res) {
@@ -10,7 +10,7 @@ export function addUser(req, res) {
   User.findOne({ 'local.cellphone': cellphone }, (err, userMatch) => {
     if (userMatch) {
       return res.json({
-        error: `Lo sentimos pero el numero ${cellphone} ya esta registrado`,
+        error: `El numero ${cellphone} ya esta registrado`,
       });
     }
     const newUser = new User({
@@ -25,62 +25,10 @@ export function addUser(req, res) {
   });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // import User from '../models/user';
-// //
-// export function addUser(req, res) {
-//   if (!req.body.user.Id || !req.body.user.name || !req.body.user.email || !req.body.user.avatar) {
-//     res.status(403).end();
-//   }
-//   const currentUser = new User(req.body.user);
-//   const existingUser = User.findOne({
-//     Id: req.body.user.Id,
-//   });
-//   if (existingUser) {
-//     currentUser.save((userLogged, saved) => {
-//       if (userLogged) {
-//         res.json({ userLogged });
-//       }
-//       console.log(saved);
-//     });
-//   }
-// }
-//
-// // export function addUser(req, res) {
-// //   if (!req.body.user.Id || !req.body.user.name || !req.body.user.email || !req.body.user.avatar) {
-// //     res.status(403).end();
-// //   }
-// //   const currentUser = new User(req.body.user);
-// //   const existingUser = User.findOne({
-// //     Id: req.body.user.Id,
-// //   });
-// //   if (existingUser) {
-// //     currentUser.save((userLogged, saved) => {
-// //       if (userLogged) {
-// //         res.json({ userLogged });
-// //       }
-// //       console.log(saved);
-// //     });
-// //   }
-// // }
+/* UPDATE a user */
+export function updateUser(req, res, next) {
+  User.findByIdAndUpdate(req.params.userID, req.body.user, {new: true}, function (err, user) {
+    if (err) return next(err);
+    res.json({ userInfo: user });
+  });
+}

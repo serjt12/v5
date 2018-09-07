@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FormLogin from './LoginForm';
 
@@ -16,10 +17,13 @@ class LoginPage extends Component {
   }
 }
 function mapStateToProps(store) {
-  console.log(store)
   return {
     signupmsg: store.auth.msg,
   };
 }
+
+LoginPage.propTypes = {
+  signupmsg: PropTypes.string,
+};
 
 export default connect(mapStateToProps)(LoginPage);

@@ -13,10 +13,9 @@ const AuthReducer = (state = initialState, action) => {
         currentUser: action.payload.userInfo || false,
       };
     case SIGNUP_MSG:
-    console.log(action)
       return {
         ...state,
-        msg: (action.payload.userInfo) ? 'Bienvenido a TOBCITY ingresa en login' : (action.payload.error) ,
+        msg: (action.payload.userInfo) ? 'Bienvenido a TOBCITY ingresa en login' : (action.payload.error),
       };
     default:
       return state;

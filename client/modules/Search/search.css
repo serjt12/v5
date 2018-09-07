@@ -7,11 +7,11 @@
   cursor: pointer;
 }
 .title-container {
-  margin: 10px;
-  height: 35px;
+  margin: 23px;
+  height: 36px;
   background: #00BFB5;
   color: white;
-  width: 50%;
+  width: 67%;
   display: inline-block;
 }
 .search-underline {

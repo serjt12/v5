@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
 import styles from './LoginForm.css';
+import { validateUser } from '../../../AuthActions';
 
 const MyForm = ({
     errors,

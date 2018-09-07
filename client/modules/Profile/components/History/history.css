@@ -9,4 +9,6 @@
 .title {
   width: 200px;
   text-align: right;
+  position: relative;
+  top: 21px;
 }

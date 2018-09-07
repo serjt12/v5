@@ -79,3 +79,45 @@
   position: relative;
   width: 227px;
 }
+.editbox {
+  display: inline-flex;
+  flex-direction: column;
+  position: relative;
+  width: 92px;
+  left: 118px;
+  top: -113px;
+  font-size: 12px;
+}
+.edit {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  background-color: #00BFB5;
+  font-weight: bold;
+  padding: 0.2rem 1rem;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  font-size: .65rem;
+  position: relative;
+  top: -17px;
+}
+.btnfinalcontainer{
+  display: inline-flex;
+  justify-content: space-between;
+  width: 282px;
+}
+.btnfinal {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  background-color: #00BFB5;
+  font-weight: bold;
+  padding: 0.2rem 1rem;
+  border-radius: 3px;
+  margin-top: 10px;
+}

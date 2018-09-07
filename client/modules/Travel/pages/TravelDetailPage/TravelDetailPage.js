@@ -16,7 +16,7 @@ import Car from './images/carro.png';
 import Barra from './images/barra.png';
 
 // Import Style
-import styles from './traveldetailpage.css';
+import styles from './TravelDetailPage.css';
 
 // Import Actions
 import { fetchTravel } from '../../TravelActions';
@@ -25,7 +25,8 @@ import { getTravel } from '../../TravelReducer';
 export function TravelDetailPage(props) {
   const avatar = ((props.user !== null) ? (props.user.avatar) : ('https://via.placeholder.com/350x150'));
   const firstName = (props.user !== null) && props.user.name.split(' ')[0];
-  console.log(props)
+  const travelID = (props.travel !== null) && props.travel._id;
+  const cuid = (props.travel !== null) && props.travel.cuid;
   return (
     <div>
       <Helmet title={`Viaje hacia ${props.travel.to}`} />
@@ -47,6 +48,10 @@ export function TravelDetailPage(props) {
             <p className={styles.cities}>{props.travel.from.substring(0, 3).toUpperCase()}/{props.travel.to.substring(0, 3).toUpperCase()}</p>
             <h3 className={styles.price}>$ {props.travel.price}</h3>
             <h2>DRIVER: <br /> {props.travel.author.name}</h2>
+            <div className={styles.comments}>
+              <h4>Comentarios del TOBDRIVER: </h4>
+              <p>{props.travel.content}</p>
+            </div>
             <div className={styles['options-container']}>
               <img className={styles.optionsimg} alt="Opciones de viaje" src={Mascotas} />
               <img className={styles.optionsimg} alt="Opciones de viaje" src={Equipaje} />
@@ -60,8 +65,12 @@ export function TravelDetailPage(props) {
             </div>
             <img className={styles.car} src={Car} alt="Viaja con Tobcity" />
             <div className={styles.actionsbtns}>
-              <button><a href="/api/user_to_travel" className={styles.viajar}>VIAJAR</a></button>
-              <button onClick={props.router.goBack} className={styles.cancelar}>CANCELAR</button>
+            {
+              (props.user !== undefined && props.user !== null && props.user &&  props.user.name === props.travel.author.name) ?
+                null
+              : <Link to={`/payment/${cuid}`} ><button className={styles.viajar}>VIAJAR</button></Link>
+            }
+              <button onClick={props.router.goBack} className={styles.cancelar}>CERRAR</button>
             </div>
           </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
         }
@@ -85,15 +94,7 @@ function mapStateToProps(store, props) {
 }
 
 TravelDetailPage.propTypes = {
-  travel: PropTypes.objectOf(PropTypes.shape({
-    from: PropTypes.string.isRequired,
-    to: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    plate: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    content: PropTypes.string.isRequired,
-    cuid: PropTypes.string.isRequired,
-  })).isRequired,
+
 };
 
 export default connect(mapStateToProps)(TravelDetailPage);
