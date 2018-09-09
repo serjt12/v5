@@ -10,10 +10,13 @@ class MyTravels extends Component {
   componentDidMount() {
     this.props.dispatch(fetchTravels());
   }
-  render(){
+  render() {
     const mytravels = this.props.travels.filter(travel => (travel.author._id === this.props.userID))
     return (
       <div>
+        <li className={styles.item}>
+          <h1 className={styles['myhistory-title']}>Viajes Postulados</h1>
+        </li>
       {(mytravels.length !== 0 && mytravels !== null) ?
         mytravels.map((travel) => {
           return (

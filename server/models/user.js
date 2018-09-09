@@ -24,7 +24,6 @@ const userSchema = new Schema({
     cellphone: { type: Number, unique: false },
     password: { type: String, unique: false },
   },
-  travels: [{ type: Schema.Types.ObjectId, ref: 'Travel' }],
   likes: { type: Schema.Types.ObjectId, ref: 'Like' },
   dateCreated: { type: 'Date', default: Date.now, required: true },
   dateUpdated: { type: 'Date' },

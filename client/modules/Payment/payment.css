@@ -4,6 +4,7 @@
   height: 464px;
   display: inline-block;
   border-radius: 5px 5px 5px 0px;
+  position: relative;
 }
 
 .infobox {
@@ -13,7 +14,7 @@
 }
 
 .info {
-  border-radius: 5px 5px 5px 0px;
+  border-radius: 3px 3px 3px 0px;
   border: 1px solid rgba(177,177,177,.84);
   height: 155px;
   width: 175px;
@@ -88,8 +89,9 @@
   color: white;
   width: 235px;
   display: inline-flex;
+  flex-direction: column;
   border-radius: 5px;
-  height: 60px;
+  height: 78px;
 }
 .pricepayment {
   position: absolute;
@@ -97,7 +99,33 @@
   color: white;
   position: absolute;
   top: 83px;
-    width: 99px;
+  width: 99px;
   right: 85px;
   border-radius: 4px 4px 4px 0px;
+}
+
+.continuar {
+  height: 31px;
+  background-color: #FFC736;
+  cursor: pointer;
+  color: #3d3d3d;
+  font-weight: 800;
+  width: 100px;
+  position: absolute;
+  bottom: -15px;
+  left: 65px;
+  border-style: none;
+  border-radius: 3px;
+}
+
+.closepayment{
+  top: 5px;
+  position: absolute;
+  right: 8px;
+  border: 1px solid white;
+  background: #FFC736;
+  cursor: pointer;
+  width: 20px;
+  border-radius: 50%;
+
 }

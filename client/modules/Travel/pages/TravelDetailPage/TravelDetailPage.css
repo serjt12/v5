@@ -52,12 +52,13 @@
   display: inline-block;
 }
 .cities {
+  width: 215px;
   position: absolute;
   left: 35px;
-  top: 18px;
+  top: 10px;
   color: #fff;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 .barra {

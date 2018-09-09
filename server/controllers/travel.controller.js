@@ -11,6 +11,7 @@ import sanitizeHtml from 'sanitize-html';
 export function getTravels(req, res) {
   Travel.find()
   .populate('author')
+  .populate('passenger')
   .sort('-dateAdded')
   .exec((err, travels) => {
     if (err) {
@@ -40,7 +41,6 @@ export function addTravel(req, res) {
   newTravel.sits = sanitizeHtml(newTravel.sits);
   newTravel.author = req.user._id;
   newTravel.cuid = cuid();
-  newTravel.markModified('hour');
   newTravel.save((err, saved) => {
     if (err) {
       res.status(500).send(err);
@@ -59,6 +59,7 @@ export function addTravel(req, res) {
 export function getTravel(req, res) {
   Travel.findOne({ cuid: req.params.cuid })
   .populate('author')
+  .populate('passenger')
   .exec((err, travel) => {
     if (err) {
       res.status(500).send(err);
@@ -83,4 +84,24 @@ export function deleteTravel(req, res) {
       res.status(200).end();
     });
   });
+}
+
+export function addUserTravel(req, res) {
+  const data = req.body.data
+  const { travelid, userid } = data
+  Travel.findByIdAndUpdate(
+    travelid,
+    { $push: { passenger: userid } },
+    { new: true },
+  )
+  .populate('passengers')
+  .exec(function (err, user) {
+    if (err) {
+      res.json({ err });
+    }
+    console.log(user)
+    return res.json({
+      success: 'Viaje Aceptado con exito'
+    })
+  })
 }

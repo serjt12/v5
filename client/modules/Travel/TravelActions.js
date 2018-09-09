@@ -15,7 +15,6 @@ export function addTravel(travel) {
 }
 
 export function addTravelRequest(travel) {
-  console.log(travel)
   return (dispatch) => {
     return callApi('travels', 'post', {
       travel: {
@@ -53,13 +52,6 @@ export function fetchTravel(cuid) {
     return callApi(`travels/${cuid}`).then(res => dispatch(addTravel(res.travel)));
   };
 }
-
-export function AddTravelToUser(cuid) {
-  return (dispatch) => {
-    return callApi(`travels/${cuid}`).then(res => dispatch(addTravel(res.travel)));
-  };
-}
-
 
 export function deleteTravel(cuid) {
   return {

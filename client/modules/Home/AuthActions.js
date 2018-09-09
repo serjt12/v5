@@ -2,6 +2,7 @@ import callApi from '../../util/apiCaller';
 export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 export const ACTIVE_USER = 'ACTIVE_USER';
 export const SIGNUP_MSG = 'SIGNUP_MSG';
+export const ADD_TO_TRAVEL_MSG = 'ADD_TO_TRAVEL_MSG';
 import axios from 'axios';
 
 export function userAuth(user) {
@@ -17,7 +18,7 @@ export function fetchCurrentUser() {
   };
 }
 
-export function sendMsg(msg) {
+export function sendMsgSignup(msg) {
   return {
     type: SIGNUP_MSG,
     payload: msg,
@@ -31,11 +32,10 @@ export function addUserRequest(user) {
         cellphone: user.cellphone,
         password: user.password,
       },
-    }).then(res => dispatch(sendMsg(res)));
+    }).then(res => dispatch(sendMsgSignup(res)));
   };
 }
 export function addUserUpdateRequest(user, userID) {
-  console.log(Date.now)
   return (dispatch) => {
     return callApi(`update_user/${userID}`, 'put', {
       user: {
@@ -61,4 +61,20 @@ export function validateUser(user) {
 	})
 	.then(res => { console.log(res.config.data)	})
   }
+}
+export function sendMsgaddToTravel(msg) {
+  return {
+    type: ADD_TO_TRAVEL_MSG,
+    payload: msg,
+  };
+}
+export function addTravelToUserRequest(data) {
+  return (dispatch) => {
+    return callApi('confirmation', 'post', {
+      data: {
+        userid: data.userid,
+        travelid: data.travelid,
+      },
+    }).then(res => console.log('ADDTRAVELRES', res));
+  };
 }

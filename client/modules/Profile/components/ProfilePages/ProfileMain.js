@@ -17,9 +17,9 @@ import TravelCreateWidget from '../../../Travel/components/TravelCreateWidget/Tr
 class ProfileMain extends PureComponent {
 
   render() {
-    const userID = this.props.auth.currentUser._id;
-    const name = (this.props.auth && this.props.auth.currentUser.name !== undefined) ? (this.props.auth.currentUser.name) : [];
-    const { avatar, email, cellphone, city, credit, dateUpdated } = (this.props.auth.currentUser);
+    const userID = (this.props !== null && this.props.auth !== null && this.props.auth.currentUser !== null) ? this.props.auth.currentUser._id : null;
+    const name = (this.props.auth.currentUser !== null && this.props.auth && this.props.auth.currentUser.name !== undefined) ? (this.props.auth.currentUser.name) : [];
+    const { avatar, email, cellphone, city, credit, dateUpdated } = (this.props.auth.currentUser !== null ? this.props.auth.currentUser : null);
     return (
       <section className={styles['profile-container']}>
         <Helmet title={`TOBCITY - ${this.props.auth.currentUser.name}`} />

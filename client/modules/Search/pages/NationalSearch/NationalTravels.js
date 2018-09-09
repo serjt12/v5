@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SearchInput, { createFilter } from 'react-search-input';
 import styles from './nationalsearch.css';
 import moment from 'moment';
 import { Link } from 'react-router';
@@ -9,13 +10,28 @@ import Equipaje from './images/options/equipajeazul.png';
 import Cigarrillo from './images/options/cigarrilloazul.png';
 import Comida from './images/options/comidaazul.png';
 
+const KEYS_TO_FILTERS = ['from', 'to']
+
 class NationalTravels extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchTerm: '',
+    };
+    this.searchUpdated = this.searchUpdated.bind(this);
+  }
+  searchUpdated(term) {
+    this.setState({ searchTerm: term });
+  }
   render() {
     const { props: { national } } = this;
+    const filteredNacional = national.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
     return (
       <div>
         <div className={styles.ticket_container}>
-          {national.map((travel) => (
+          <SearchInput placeholder="Donde quieres ir?" className={styles['search-input']} onChange={this.searchUpdated} />
+          <h1>VIAJES NACIONALES</h1>
+          {filteredNacional.map((travel) => (
             <div key={travel._id} className={styles['tickets-inside']}>
               <img className={styles.ticket} src={Ticket} alt="Viaja con Tobcity" />
               <h4 className={styles.price}>$ {travel.price}</h4>

@@ -17,6 +17,7 @@ const travelSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User',
   },
+  passenger: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   traveltype: String,
   sits: { type: 'Number', default: '4' },
 });

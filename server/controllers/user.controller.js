@@ -1,9 +1,5 @@
 import User from '../models/user';
 
-export function addUserTravel(req, res) {
-  console.log('userID', req.params.userID)
-  console.log('body', req.body)
-}
 
 export function addUser(req, res) {
   const { cellphone, password } = req.body.user;
@@ -27,7 +23,7 @@ export function addUser(req, res) {
 
 /* UPDATE a user */
 export function updateUser(req, res, next) {
-  User.findByIdAndUpdate(req.params.userID, req.body.user, {new: true}, function (err, user) {
+  User.findByIdAndUpdate(req.params.userID, req.body.user, { new: true }, function (err, user) {
     if (err) return next(err);
     res.json({ userInfo: user });
   });
