@@ -7,7 +7,7 @@ import Credit from './images/credito.png';
 import Countdown from 'react-countdown-now';
 import { fetchTravel } from '../Travel/TravelActions';
 import { getTravel } from '../Travel/TravelReducer';
-import { addTravelToUserRequest, fetchCurrentUser } from '../Home/AuthActions';
+import { addTravelToUserRequest } from '../Home/AuthActions';
 
 
 class Payment extends PureComponent {
@@ -25,13 +25,18 @@ class Payment extends PureComponent {
     }, 3000);
     this.props.dispatch(fetchTravel(this.props.params.cuid));
   }
+  componentWillUnmount() {
+
+  }
   handleClick(travel) {
-    this.props.router.push('/profile')
+    this.props.router.push('/profile');
     this.props.dispatch(addTravelToUserRequest(travel));
   }
-
+  handleBack() {
+    this.props.router.goBack()
+  }
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     const travelid = (this.props.travel !== undefined) ? (this.props.travel._id) : {};
     const userid = (this.props.store.auth.currentUser !== undefined && this.props.store.auth.currentUser !== null) ? this.props.store.auth.currentUser._id : {};
     const data = { travelid, userid }
@@ -43,7 +48,7 @@ class Payment extends PureComponent {
     return (
       <div className={styles['payment-container']}>
         <div className={styles.outerbox}>
-          <span onClick={this.props.router.goBack} className={styles.closepayment}>X</span>
+          <span onClick={() => this.handleBack()} className={styles.closepayment}>X</span>
           <div className={styles.infobox}>
             <div className={styles.info}>
               <h5>VIAJE: {from.substring(0, 3).toUpperCase()}/{to.substring(0, 3).toUpperCase()} </h5>

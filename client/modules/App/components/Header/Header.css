@@ -24,7 +24,7 @@
 
 .add-travel-button {
   float: right;
-  width: 97px;
+  width: 113px;
   color: #00BFB5;
   font-weight: 700;
   text-align: center;
@@ -42,13 +42,13 @@
 .language-switcher ul {
   display: flex;
   position: relative;
-  top: 9px;
+  top: 0px;
   justify-content: space-around;
 }
 
 .language-switcher li {
   display: inline-block;
-  padding: 5px;
+  padding: 4px;
   cursor: pointer;
   color: #fff;
 }

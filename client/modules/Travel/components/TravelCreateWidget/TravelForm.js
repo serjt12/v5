@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
+import Map from '../../../../components/Map/MapContainer'
 import PropTypes from 'prop-types';
 import styles from './TravelForm.css';
 import { addTravelRequest } from '../../TravelActions';
@@ -18,6 +19,7 @@ const MyForm = ({
     handleChange
   }) => (
     (<Form className={styles['form-container']}>
+      <div className={styles.space} />
       <div>
         <Field
           className={styles.input}
@@ -36,6 +38,9 @@ const MyForm = ({
           placeholder="Hacia donde viajas"
         />
         {touched.to && errors.to && <div className={styles.error}>{errors.to}</div>}
+      </div>
+      <div className={styles.mapContainer}>
+        <Map />
       </div>
       <div>
         <Field

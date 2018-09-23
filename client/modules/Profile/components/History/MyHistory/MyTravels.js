@@ -11,6 +11,7 @@ class MyTravels extends Component {
     this.props.dispatch(fetchTravels());
   }
   render() {
+    // console.log('my travels props', this.props)
     const mytravels = this.props.travels.filter(travel => (travel.author._id === this.props.userID))
     return (
       <div>
@@ -28,7 +29,7 @@ class MyTravels extends Component {
     }
       </div>
    );
- }
+  }
 }
 
 function mapStateToProps(store) {

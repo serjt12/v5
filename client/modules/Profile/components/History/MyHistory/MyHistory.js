@@ -29,29 +29,19 @@ class MyHistory extends Component {
     return (
       <section>
         <div className={styles.togglebox}>
+          <p>TOBPASSENGER</p>
           <div className={styles.toggleinside}>
             <ToggleButton
               inactiveLabel={''}
               activeLabel={''}
               colors={{
                 activeThumb: {
-                  base: 'rgb(250,250,250)',
+                  base: 'rgb(255,230,8)',
                 },
                 inactiveThumb: {
-                  base: 'rgb(62,130,247)',
+                  base: 'rgb(255,230,8)',
                 },
-                active: {
-                  base: 'rgb(207,221,245)',
-                  hover: 'rgb(177, 191, 215)',
-                },
-                inactive: {
-                  base: 'rgb(65,66,68)',
-                  hover: 'rgb(95,96,98)',
-                }
               }}
-              trackStyle={styles.trackStyle}
-              thumbStyle={styles.thumbStyle}
-              thumbAnimateRange={[-10, 36]}
               value={this.state.value || false}
               onToggle={(value) => {
                 this.setState({
@@ -60,7 +50,7 @@ class MyHistory extends Component {
               }}
             />
           </div>
-          <p>TOBPASSENGER/TOBDRIVER</p>
+          <p>TOBDRIVER</p>
         </div>
         {(!this.props.showAddTravel) ?
           <div className={styles['myhistory-container']}>

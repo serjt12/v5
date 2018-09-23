@@ -1,10 +1,17 @@
-import { ADD_TRAVEL, ADD_TRAVELS, DELETE_TRAVEL, ADD_MY_TRAVELS } from './TravelActions';
+import { ADD_TRAVEL, ADD_TRAVELS, DELETE_TRAVEL, SHOW_MSG } from './TravelActions';
 
 // Initial State
-const initialState = { data: [] };
+const initialState = {
+  data: [],
+  msg: '',
+};
 
 const TravelReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SHOW_MSG :
+      return {
+        msg: action.msg,
+      };
     case ADD_TRAVEL :
       return {
         data: [action.travel, ...state.data],

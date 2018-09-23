@@ -1,42 +1,66 @@
-.item {
-  background-color: #FDFDFD;
-  color: #9B9794;
-  width: 314px;
-  margin: 6px;
-  border-radius: 5px;
-  border-bottom-left-radius: 0;
-}
-.myhistory-container ul {
-  display: inline-block;
-  position: relative;
-  top: 26px;
-}
-.myhistory-container {
-  position: relative;
+@media (min-width: 200px) {
+  .item {
+    background-color: #FDFDFD;
+    color: #9B9794;
+    width: 315px;
+    margin: 6px;
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+  }
+  .myhistory-container ul {
+    display: inline-block;
+    position: relative;
+    top: 26px;
+  }
+  .myhistory-container {
+    position: relative;
+    top: 33px;
+  }
+
+  .myhistory-title {
+    color: #9B9794;
+    font-size: 20px;
+    height: 39px;
+    position: relative;
+    top: 7px;
+  }
+  .none {
+    color: rgba(175,161,13,.32)
+  }
+  .deletebtn {
+    color: red;
+    cursor: pointer;
+    z-index: 100;
+    float: right;
+  }
+
+  .togglebox {
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+    top: 39px
+  }
+
+  .togglebox p {
+    font-weight: 800;
+  }
+
 }
 
-.myhistory-title {
-  color: #9B9794;
-  font-size: 20px;
-  height: 5s0px;
+@media (min-width: 768px) {
+  .item {
+    width: 290px;
+  }
 }
-.none {
-  color: rgba(175,161,13,.32)
-}
-.deletebtn {
-  color: red;
-  cursor: pointer;
-  z-index: 100;
-  float: right;
-}
-
-.togglebox {
-  display: flex;
-  flex-direction: column;
-  margin-top: 26px;
-}
-.toggleinside {
-  display: inline-block;
-  -ms-flex-direction: column;
-  text-align: -webkit-center;
+@media (min-width: 1000px) {
+  .togglebox p {
+    font-size: 10px;
+  }
+  .item {
+    width: 170px;
+    font-size: 10px;
+  }
+  .myhistory-title {
+    font-size: 10px;
+  }
 }

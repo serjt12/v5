@@ -8,7 +8,7 @@ import Nacional from './images/nacional.png';
 class Search extends PureComponent {
   render() {
     return (
-      <section>
+      <section className={styles.searchwrap}>
       {(!this.props.showAddTravel) ?
         <div className={styles['search-container']}>
           <div className={styles['title-container']}>

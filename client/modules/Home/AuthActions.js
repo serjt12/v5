@@ -75,6 +75,6 @@ export function addTravelToUserRequest(data) {
         userid: data.userid,
         travelid: data.travelid,
       },
-    }).then(res => console.log('ADDTRAVELRES', res));
+    }).then(res => dispatch(sendMsgaddToTravel(res)));
   };
 }

@@ -1,49 +1,58 @@
-.login-container {
-  font-size: 34px;
-  position: relative;
-  top: 28px;
-}
+@media (min-width: 200px) {
+  .login-container {
+    font-size: 34px;
+    position: relative;
+    top: 57px;
+    height: 240px;
+    width: 90%;
+  }
 
-.logout {
-  text-decoration: none;
-  color: #ff332d;
-  display: inline-block;
-  background-color: #00BFB5;
-  font-weight: bold;
-  padding: 0.2rem 3.2rem;
-  border-radius: 3px;
-  margin-top: 10px;
-}
-.toprofile {
-  text-decoration: none;
-  color: #fff;
-  display: inline-block;
-  background-color: #00BFB5;
-  font-weight: bold;
-  padding: 0.2rem  0.9rem;
-  border-radius: 3px;
-  margin-top: 10px;
-}
+  .logout {
+    text-decoration: none;
+    color: #ff332d;
+    display: inline-block;
+    background-color: #00BFB5;
+    font-weight: bold;
+    padding: 0.2rem 3.2rem;
+    border-radius: 3px;
+    margin-top: 10px;
+  }
+  .toprofile {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    background-color: #00BFB5;
+    font-weight: bold;
+    padding: 0.2rem  0.9rem;
+    border-radius: 3px;
+    margin-top: 10px;
+  }
 
-.face
-.google
-.logout
-.cell:hover {
-  transform: scale3d(1.1);
-}
-.face img {
-  width: 92%;
-}
-.google img{
-  width: 92%;
-}
-.cell img {
-  width: 92%;
-}
+  .face
+  .google
+  .logout
+  .cell:hover {
+    transform: scale3d(1.1);
+  }
+  .face img {
+    width: 92%;
+  }
+  .google img{
+    width: 92%;
+  }
+  .cell img {
+    width: 92%;
+  }
 
-.face
-.google
-.logout
-.cell:focus {
-  background-color: darken(#25d366, 15%);
+  .face
+  .google
+  .logout
+  .cell:focus {
+    background-color: darken(#25d366, 15%);
+  }
+}
+@media (min-width: 568px) {
+  .login-container {
+    width: 100%;
+  }
 }

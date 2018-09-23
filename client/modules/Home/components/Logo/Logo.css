@@ -11,10 +11,83 @@
     transform: rotate(1080deg);
   }
 .logo {
-  transition: all 3s;
-  transition-timing: ease-in-out;
   width: 176px;
+  animation-name: fadeOut;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  display: inline-flex !important;
+}
+.carousel-container {
   position: relative;
-  top: 77px;
-  left: 11px;
+  top: 70px;
+}
+
+.travelinfo-container {
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  color: #8f8f8f;
+}
+
+.travelinfo-image img{
+  display: inline-flex;
+}
+
+.travelinfo-name h3{
+  width: 208px;
+  display: inline-block;
+}
+
+.avatar{
+  width: 84px;
+  object-fit: contain;
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: 100% 100%;
+  transition: all 3s;
+}
+.avatar:hover {
+    transform: rotate(360deg);
+}
+
+.travelinfo-info p {
+  font-size: 11px;
+  color: #2aa89a
+}
+.travelinfo-info {
+  position: relative;
+  left: 0px;
+  height: 58px;
+  top: 10px;
+}
+
+.travelinfo-cupos {
+  color: #2aa89a;
+  font-weight: 800;
+  border: 3px solid #8f8f8f;
+  width: 60px;
+  display: inline-block;
+  font-size: .6rem;
+  margin-left: 10px;
+  border-radius: 5px 5px 0px 5px;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

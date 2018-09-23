@@ -2,17 +2,17 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styles from './history.css';
 import MyHistory from './MyHistory/MyHistory';
-import Title from '../ProfilePages/images/title.png'
+import Title from '../ProfilePages/images/title.png';
 class History extends PureComponent {
   render() {
     return (
 
-      <div>
+      <div className={styles.historywrap}>
       {(!this.props.showAddTravel) ?
-      <div className={styles['history-container']}>
-        <img className={styles.title} src={Title} alt="Mis Viajes Tobcity" />
-        <MyHistory />
-      </div> : null }
+        <div className={styles['history-container']}>
+          <img className={styles.title} src={Title} alt="Mis Viajes Tobcity" />
+          <MyHistory />
+        </div> : null}
       </div>
     );
   }

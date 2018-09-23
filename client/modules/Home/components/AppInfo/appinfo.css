@@ -1,0 +1,101 @@
+.info-container {
+  height: 500px;
+}
+
+.dotyellow {
+  height: 10px;
+  width: 10px;
+  margin: 1px;
+  background-color: #e6de34;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dotgreen {
+  height: 10px;
+  width: 10px;
+  margin: 1px;
+  background-color: #00d1cb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.steps-container {
+  background: #2aa89a;
+  height: 500px;
+  overflow: hidden;
+  color: white;
+  font-size: 12px;
+}
+
+.steps-container img{
+  width: 110px;
+}
+.steps-container p{
+  width: 225px;
+}
+.step1,
+.step2,
+.step3,
+.step4 {
+  position: relative;
+}
+.paso1img {
+  float: left;
+  position: absolute;
+  left: -57px;
+  top: 22px;
+}
+.text1 {
+  position: absolute;
+  top: 57px;
+  left: 71px;
+  text-align: left;
+}
+.paso2img {
+  float: right;
+  position: absolute;
+  right: -57px;
+  top: 138px;
+}
+.text2 {
+  position: absolute;
+  top: 158px;
+  right: 78px;
+  text-align: right;
+}
+.text2 h3 {
+  display: inline-block;
+}
+
+.paso3img {
+  float: left;
+  position: absolute;
+  left: -57px;
+  top: 222px;
+}
+.text3 {
+  position: absolute;
+  top: 257px;
+  left: 71px;
+  text-align: left;
+}
+.text3 h3 {
+  display: inline-block;
+}
+.paso4img {
+  float: right;
+  position: absolute;
+  right: -57px;
+  top: 329px;
+}
+.text4 {
+  position: absolute;
+  top: 367px;
+  right: 73px;
+  text-align: right;
+}
+@media (min-width: 568px) {
+  .info-container {
+    display: none;
+  }
+}

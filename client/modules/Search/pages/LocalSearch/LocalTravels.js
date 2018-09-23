@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchInput, { createFilter } from 'react-search-input'
+import SearchInput, { createFilter } from 'react-search-input';
 import styles from './localsearch.css';
 import moment from 'moment';
 import { Link } from 'react-router';
@@ -10,28 +10,30 @@ import Equipaje from './images/options/equipajeazul.png';
 import Cigarrillo from './images/options/cigarrilloazul.png';
 import Comida from './images/options/comidaazul.png';
 
-const KEYS_TO_FILTERS = ['from', 'to', 'name']
+const KEYS_TO_FILTERS = ['from', 'to', 'name'];
 
 class LocalTravels extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      searchTerm: ''
-    }
-    this.searchUpdated = this.searchUpdated.bind(this)
+      searchTerm: '',
+    };
+    this.searchUpdated = this.searchUpdated.bind(this);
   }
   searchUpdated(term) {
-    this.setState({ searchTerm: term })
+    this.setState({ searchTerm: term });
   }
   render() {
     const { props: { local } } = this;
-    const filteredLocal = local.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+    const filteredLocal = local.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
     return (
-      <div>
+      <div className={styles.localwrap}>
       {(filteredLocal.length !== 0) ?
         <div className={styles.ticket_container}>
           <SearchInput placeholder="Donde quieres ir?" className={styles['search-input']} onChange={this.searchUpdated} />
+          <h1 className={styles['viajes-title']}>VIAJES LOCALES</h1>
           {filteredLocal.map((travel) => (
+          (travel.sits > 0) ?
             <div key={travel._id} className={styles['tickets-inside']}>
               <img className={styles.ticket} src={Ticket} alt="Viaja con Tobcity" />
               <h4 className={styles.price}>$ {travel.price}</h4>
@@ -52,7 +54,8 @@ class LocalTravels extends Component {
               <Link to={`/travels/${travel.cuid}`} >
                 <img className={styles.car} src={Car} alt="Viaja con Tobcity" />
               </Link>
-            </div>))
+            </div> : null
+          ))
           }
         </div> : <div><h1>Aun no hay viajes disponibles</h1></div>
       }

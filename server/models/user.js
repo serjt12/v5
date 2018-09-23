@@ -10,6 +10,8 @@ const userSchema = new Schema({
     trim: true,
     match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
   },
+  confirmed: { type: 'Boolean', default: false },
+  authToken: { type: String, required: true, unique: true },
   credit: { type: 'Number', default: 0 },
   cellphone: { type: 'Number', default: '3777777777' },
   city: { type: String, default: 'Indicanos tu ciudad de origen' },

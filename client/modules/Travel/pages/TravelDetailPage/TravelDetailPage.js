@@ -21,92 +21,83 @@ import styles from './TravelDetailPage.css';
 // Import Actions
 import { fetchTravel } from '../../TravelActions';
 import { getTravel } from '../../TravelReducer';
-import { fetchCurrentUser } from '../../../Home/AuthActions';
 
 class TravelDetailPage extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return (this.props.travel.passengers !== nextProps.travel.passenger)
   }
-  render () {
+  render() {
     const avatar = ((this.props.user !== null) ? (this.props.user.avatar) : ('https://via.placeholder.com/350x150'));
+    const confirmed = ((this.props.user !== null) && (this.props.user.confirmed));
     const firstName = (this.props.user !== null) && this.props.user.name.split(' ')[0];
     const userID = (this.props.user !== null) ? this.props.user._id : '';
-    const travelID = (this.props.travel !== null) && this.props.travel._id;
     const passengersList = (this.props.travel !== null) && this.props.travel.passenger;
     const cuid = (this.props.travel !== null) && this.props.travel.cuid;
-    const passengers = (this.props.travel !== null) && this.props.travel.passenger;
-    function isBooked(pass) {
-      return pass === userID;
-    }
     const Pasajeros = passengersList.map((pass) => {
       return (
         <li key={pass._id} className={styles.item}>
-         {pass.name}
+          <img className={styles.passengerimg} src={pass.avatar} alt={`Tobpassenger ${pass.name}`} />{pass.name}
         </li>
-     )
-    })
-    const author = (userID === this.props.travel.author._id)
-    const tobpassenger = passengers.find(isBooked)
-    console.log('PROPS', this.props)
-    console.log('Passenger list', passengersList)
-    // console.log('PASSENGERS', passengers)
+     );
+    });
+    const author = (userID === this.props.travel.author._id);
+    const tobpassenger = passengersList.filter((user) => user._id === userID)
+    // console.log('PROPS', this.props)
+    // console.log('Passenger list', passengersList)
     // console.log('USER', userID)
     // console.log('TOBPASSENGERS', tobpassenger)
     // console.log('Author', author)
-  return (
-    <div>
-      <Helmet title={`Viaje hacia ${this.props.travel.to}`} />
-      <section className={styles.national_container}>
-      <TravelCreateWidget showAddTravel={this.props.showAddTravel} />
-      {(this.props.user !== null) ?
-        <div className={styles.detailtop}>
-          <div>
-            <img className={styles.sky} src={Sky} alt="Tobcity Divide Tus gastos" />
-            <img className={styles.circulo} src={Circulo} alt="Tobcity Divide Tus gastos" />
-            <Link to="/profile"><img className={styles.avatar} src={avatar} alt="Tobcity Divide Tus gastos" /></Link>
-          </div>
-          <h2>HOLA! {firstName.toUpperCase()}</h2>
-        </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
-      }
-      {(this.props.travel !== null) ?
-        <div className={styles['travel-detail']}>
-          <img className={styles.barra} alt="Opciones de viaje" src={Barra} />
-          <p className={styles.cities}>{this.props.travel.from}/{this.props.travel.to}</p>
-          <h3 className={styles.price}>$ {this.props.travel.price}</h3>
-          <h2>DRIVER: <br /> {this.props.travel.author.name}</h2>
-          <div className={styles.comments}>
-            <h4>Comentarios del TOBDRIVER: </h4>
-            <p>{this.props.travel.content}</p>
-          </div>
-          <div className={styles['options-container']}>
-            <img className={styles.optionsimg} alt="Opciones de viaje" src={Mascotas} />
-            <img className={styles.optionsimg} alt="Opciones de viaje" src={Equipaje} />
-            <img className={styles.optionsimg} alt="Opciones de viaje" src={Cigarrillo} />
-            <img className={styles.optionsimg} alt="Opciones de viaje" src={Comida} />
-            <ul>
-              <li>Usuarios programados para este viaje:</li>
-              {Pasajeros}
-            </ul>
-          </div>
-          <div className={styles.info}>
-            <p className={styles.fecha} >Hora: {moment(this.props.travel.date).format('HH mm')}</p>
-            <p className={styles.fecha} >Fecha: {moment(this.props.travel.date).format('MMM Do YY')}</p>
-            <p className={styles.cupos} >Puestos: {this.props.travel.sits}/4</p>
-          </div>
-          <img className={styles.car} src={Car} alt="Viaja con Tobcity" />
-          <div className={styles.actionsbtns}>
-          {
-            (tobpassenger !== undefined && !tobpassenger && !author) ?
-            <Link to={`/payment/${cuid}`} ><button className={styles.viajar}>VIAJAR</button></Link>
-            : null
+    return (
+      <div>
+        <Helmet title={`Viaje hacia ${this.props.travel.to}`} />
+        <section className={styles['detail-container']}>
+          <TravelCreateWidget showAddTravel={this.props.showAddTravel} />
+          {(this.props.user !== null) ?
+            <div className={styles.detailtop}>
+              <div>
+                <img className={styles.sky} src={Sky} alt="Tobcity Divide Tus gastos" />
+                <img className={styles.circulo} src={Circulo} alt="Tobcity Divide Tus gastos" />
+                <Link to="/profile"><img className={styles.avatar} src={avatar} alt="Tobcity Divide Tus gastos" /></Link>
+              </div>
+              <h2>HOLA! {firstName.toUpperCase()}</h2>
+            </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
           }
-            <button onClick={this.props.router.goBack} className={styles.cancelar}>CERRAR</button>
-          </div>
-        </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
-      }
-      </section>
-    </div>
-  ); }
+          {(this.props.travel !== null) ?
+            <div className={styles['travel-detail']}>
+              <img className={styles.barra} alt="Opciones de viaje" src={Barra} />
+              <p className={styles.cities}>{this.props.travel.from}/{this.props.travel.to}</p>
+              <h3 className={styles.price}>$ {this.props.travel.price}</h3>
+              <h2>DRIVER: <br /> {this.props.travel.author.name}</h2>
+              <div className={styles.comments}>
+                <h4>Comentarios del TOBDRIVER: </h4>
+                <p>{this.props.travel.content}</p>
+              </div>
+              <div className={styles['users-container']}>
+                <ul className={styles.passengers}>
+                  <li>Usuarios programados para este viaje:</li>
+                  {Pasajeros}
+                </ul>
+              </div>
+              <div className={styles.info}>
+                <p className={styles.fecha} >Hora: {moment(this.props.travel.date).format('HH mm')}</p>
+                <p className={styles.fecha} >Fecha: {moment(this.props.travel.date).format('MMM Do YY')}</p>
+                <p className={styles.cupos} >Puestos: {this.props.travel.sits}/4</p>
+              </div>
+              <img className={styles.car} src={Car} alt="Viaja con Tobcity" />
+              <div className={styles.actionsbtns}>
+              {
+                (tobpassenger.length === 0 && !author && confirmed) ?
+                  <Link to={`/payment/${cuid}`} ><button className={styles.viajar}>VIAJAR</button></Link>
+                : null
+              }
+                <button onClick={this.props.router.goBack} className={styles.cancelar}>CERRAR</button>
+              </div>
+            </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
+          }
+        </section>
+      </div>
+    );
+  }
 }
 
 // Actions required to provide data for this component to render in server side.
@@ -116,6 +107,7 @@ TravelDetailPage.need = [params => {
 
 // Retrieve data from store as this.props
 function mapStateToProps(store, props) {
+  // console.log('TRAVELS PASSENGERS', store.travel)
   return {
     showAddTravel: store.app.showAddTravel,
     user: store.auth.currentUser,

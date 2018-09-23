@@ -1,6 +1,8 @@
+
 .nationalsearchtop {
   height: 290px;
   position: relative;
+  text-align: center;
 }
 
 .nationalsearchtop h2{
@@ -37,10 +39,13 @@
 .ticket_container {
   display: inline-block;
 }
-
+.nationalwrap {
+  text-align: center;
+}
 .tickets-inside {
   position: relative;
   width: 328px;
+  height: 160px;
 }
 
 .tickets-inside h5{
@@ -80,7 +85,7 @@
 }
 .car {
   position: absolute;
-  bottom: 63px;
+  bottom: 40px;
   width: 76px;
   right: 17px;
 }
@@ -152,4 +157,9 @@
 
 .search-input > input:focus {
   outline: none;
+}
+
+.viajes-title{
+  color: #8f8f8f;
+  margin: 10px;
 }

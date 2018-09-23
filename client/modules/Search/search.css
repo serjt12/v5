@@ -1,19 +1,49 @@
-.search-local {
-  width: 239px;
-  cursor: pointer;
+@media (min-width: 200px) {
+  .search-local {
+    width: 239px;
+    cursor: pointer;
+  }
+  .search-nacional {
+    width: 239px;
+    cursor: pointer;
+  }
+  .title-container {
+    margin: 23px;
+    height: 36px;
+    background: #00BFB5;
+    color: white;
+    width: 67%;
+    display: inline-block;
+  }
+  .search-underline {
+    border-bottom: 1px solid white;
+  }
+  .searchwrap {
+    text-align: center;
+  }
 }
-.search-nacional {
-  width: 239px;
-  cursor: pointer;
+@media (min-width: 768px) {
+  .searchwrap {
+    position: relative;
+    top: 61px;
+    height: 238px;
+  }
+
+  .search-container  {
+    height: 301px;
+    width: 341px;
+    display: inline-block;
+    position: absolute;
+    right: 33px;
+    top: -225px;
+  }
 }
-.title-container {
-  margin: 23px;
-  height: 36px;
-  background: #00BFB5;
-  color: white;
-  width: 67%;
-  display: inline-block;
-}
-.search-underline {
-  border-bottom: 1px solid white;
+@media (min-width: 1000px) {
+  .searchwrap {
+    height: 100px;
+  }
+  .search-container {
+    left: 667px;
+    top: -312px;
+  }
 }

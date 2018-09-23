@@ -142,6 +142,9 @@ const renderFullPage = (html, initialState) => {
         <link rel="icon" type="image/png" href=${favicon144} sizes="144x144" />
         <link rel="icon" type="image/png" href=${favicon192} sizes="192x192" />
         <link href="https://fonts.googleapis.com/css?family=Baloo+Tammudu|Quicksand|Raleway" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
       </head>
       <body>
         <div id="root">${process.env.NODE_ENV === 'production' ? html : `<div>${html}</div>`}</div>

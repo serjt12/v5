@@ -5,9 +5,9 @@ import { Link } from 'react-router';
 import TravelCreateWidget from '../../../Travel/components/TravelCreateWidget/TravelCreateWidget';
 import { addTravelRequest } from '../../../Travel/TravelActions';
 import { toggleAddTravel } from '../../../App/AppActions';
-import LoginFace from './images/loginfacebook.png'
-import LoginGoogle from './images/logingmail.png'
-import LoginCell from './images/login-celular.png'
+import LoginFace from './images/loginfacebook.png';
+import LoginGoogle from './images/logingmail.png';
+import LoginCell from './images/login-celular.png';
 // Import Style
 import styles from './Login.css';
 

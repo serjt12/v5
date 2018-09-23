@@ -19,6 +19,10 @@ export class MapContainer extends Component {
     });
   }
   render() {
+    const style = {
+      width: '200px',
+      height: '200px'
+    }
     if (!this.props.google) {
       return (<div>Loading...</div>);
     }
@@ -27,10 +31,23 @@ export class MapContainer extends Component {
       <div
         style={{
           position: 'relative',
-          height: 'calc(100vh - 20px)'
+          display: 'inline-block',
+          height: '215px'
         }}
       >
-        <Map style={{}} google={this.props.google} zoom={14}>
+        <Map
+          style={style}
+          google={this.props.google}
+          initialCenter={{
+            lat: 6.2530408,
+            lng: -75.56457369999998,
+          }}
+          center={{
+            lat: this.props.lat,
+            lng: this.props.lng,
+          }}
+          zoom={14}
+        >
           <Marker
             onClick={this.onMarkerClick}
             icon={{
@@ -55,5 +72,6 @@ export class MapContainer extends Component {
 }
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyCdiwD9iE5Fjz4ZHIe5-eNB_j_4SFf4uMw',
-  v: '3.30'
+  v: '3.30',
+  language: 'es',
 })(MapContainer);
