@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 // import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import TravelForm from './TravelForm';
 import TravelTitle from './images/titlepublicar.png';
@@ -20,9 +19,5 @@ export class TravelCreateWidget extends PureComponent {
     );
   }
 }
-
-TravelCreateWidget.propTypes = {
-  showAddTravel: PropTypes.bool.isRequired,
-};
 
 export default (TravelCreateWidget);

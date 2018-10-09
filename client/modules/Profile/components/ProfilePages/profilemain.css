@@ -104,21 +104,16 @@
 
   .check{
     color: green;
-    position: absolute;
-    right: 29px;
-    top: 8px;
-    width: 17px;
-    display: inline-block;
   }
   .hide {
     visibility: hidden;
     position: relative;
-    top: -37px;
+    left: 88px;
     font-size: 10px;
   }
   .tooltip {
     position: relative;
-    top: -40px;
+    left: 88px;
     font-size: 10px;
   }
   .nocheck {
@@ -214,6 +209,7 @@
   }
   .profile-data {
     top: 183px;
+    left: 0px;
   }
 }
 @media (min-width: 1000px) {

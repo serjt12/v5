@@ -8,8 +8,8 @@ const config = {
   googleSecret: process.env.GOOGLE_SECRET || 'nPLz2CdPaw88dRNUC28lxJaJ',
   user: process.env.USER || 'jandreus87@gmail.com',
   pass: process.env.PASS || 'BMxyDpeTK3nv',
-  sendgridKeyid: process.env.SENDGRID_KEY_ID || 'l3mBCWJuTCSPP5_qXATBfg',
-  sendgridKey: process.env.SENDGRID_KEY || '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',
+  sendgridKeyid: process.env.SENDGRID_KEY_ID || 'JIS1LNBTSDqr_R5NI_ilvQ',
+  sendgridKey: process.env.SENDGRID_KEY || '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',
 };
 
 export default config;
