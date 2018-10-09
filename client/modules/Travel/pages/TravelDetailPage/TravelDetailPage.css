@@ -1,179 +1,362 @@
-.single-travel {
-  margin: 20px 0;
-  padding: 15px;
-  border-radius: 2px;
-}
+@media (min-width: 200px) {
+  .single-travel {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 2px;
+  }
 
-.travel-title{
-  font-size: 28px;
-  margin-bottom: 16px;
-  font-weight: 400;
-  color: #616161;
-}
-.travel-desc{
-  font-size: 14px;
-  color: #888;
-  margin-bottom: 8px;
-}
+  .travel-title{
+    font-size: 28px;
+    margin-bottom: 16px;
+    font-weight: 400;
+    color: #616161;
+  }
+  .travel-desc{
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+  }
 
-.circulo {
-  position: absolute;
-  top: 104px;
-  width: 261px;
-  right: 19px;
-  background-size: 100% 100%;
-}
+  .circulo {
+    position: absolute;
+    top: 104px;
+    width: 261px;
+    right: 19px;
+    background-size: 100% 100%;
+  }
 
-.avatar{
-  position: absolute;
-  width: 90px;
-  right: 35px;
-  top: 121px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-size: 100% 100%;
-  transition: all 3s;
-  transition-timing: ease-in-out;
-}
-.avatar:hover {
-    transform: rotate(360deg);
-}
+  .avatar{
+    position: absolute;
+    width: 90px;
+    right: 35px;
+    top: 121px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: 100% 100%;
+    transition: all 3s;
+    transition-timing: ease-in-out;
+  }
+  .avatar:hover {
+      transform: rotate(360deg);
+  }
 
-.travel-detail {
-  position: relative;
-  border: 1px solid rgba(150,147,153,.75);
-  border-radius: 3px;
-  height: 400px;
-  width: 60%;
-  text-align: center;
-  display: inline-block;
-}
-.detailtop {
-  text-align: center;
-}
-.detailtop h2{
-  width: 196px;
-  right: 60px;
-  color: #989895;
-  position: relative;
-  display: inline-block;
-}
-.detail-container {
-  height: 610px;
-  text-align: center;
-}
-.cities {
-  width: 215px;
-  position: absolute;
-  left: 0px;
-  top: 18px;
-  color: #fff;
-  font-weight: 700;
-  font-size: 18px;
-}
+  .travel-detail {
+    position: relative;
+    border: 1px solid rgba(150,147,153,.75);
+    border-radius: 3px;
+    height: 400px;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+  }
+  .detailtop {
+    text-align: center;
+  }
+  .detailtop h2{
+    width: 196px;
+    right: 60px;
+    color: #989895;
+    position: relative;
+    display: inline-block;
+  }
+  .detail-container {
+    height: 610px;
+    text-align: center;
+  }
+  .cities {
+    width: 215px;
+    position: absolute;
+    left: 0px;
+    top: 18px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  }
 
-.barra {
-  position: absolute;
-  width: 100%;
-  height: 59px;
-  left: 0px;
-  z-index: -10;
-}
+  .barra {
+    position: absolute;
+    width: 100%;
+    height: 59px;
+    left: 0px;
+    z-index: -10;
+  }
 
-.price {
-  position: absolute;
-  background: #00ACA3;
-  color: white;
-  position: absolute;
-  top: 18px;
-  width: 75px;
-  right: 48px;
-  border-radius: 4px 4px 4px 0px;
-}
+  .price {
+    position: absolute;
+    background: #00ACA3;
+    color: white;
+    position: absolute;
+    top: 18px;
+    width: 75px;
+    right: 48px;
+    border-radius: 4px 4px 4px 0px;
+  }
 
-.travel-detail h2{
-  width: 166px;
-  position: absolute;
-  left: 37px;
-  text-align: left;
-  display: inline-block;
-  top: 69px;
-  color: #8f8f8f;
-}
-.users-container {
-  font-size: 12px;
-  display: inline-block;
-  width: 319px;
-  position: absolute;
-  bottom: 33px;
-  height: 100px;
-  text-align: left;
-  left: 33px;
-  color: #888;
-}
-.passengers {
-  position: absolute;
-}
-.passengers li{
-  margin: 5px;
-}
+  .travel-detail h2{
+    width: 166px;
+    position: absolute;
+    left: 37px;
+    text-align: left;
+    display: inline-block;
+    top: 69px;
+    color: #8f8f8f;
+  }
+  .users-container {
+    font-size: 12px;
+    display: inline-block;
+    width: 319px;
+    position: absolute;
+    bottom: 33px;
+    height: 100px;
+    text-align: left;
+    left: 33px;
+    color: #888;
+  }
+  .passengers {
+    position: absolute;
+  }
+  .passengers li{
+    margin: 5px;
+  }
 
-.passengerimg {
-  width: 10%;
-  border-radius: 50%;
-  position: relative;
-  top: 5px;
-  margin-right: 10px;
-}
-.car {
-  position: absolute;
-  bottom: 150px;
-  width: 76px;
-  right: 42px;
-}
-.info {
-  font-size: 16px;
-  position: absolute;
-  top: 186px;
-  text-align: left;
-  left: 38px;
-  color: #8f8f8f;
-  display: inline-block;
-}
+  .passengerimg {
+    width: 10%;
+    border-radius: 50%;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+  }
+  .car {
+    position: absolute;
+    bottom: 150px;
+    width: 76px;
+    right: 42px;
+  }
+  .info {
+    font-size: 16px;
+    position: absolute;
+    top: 186px;
+    text-align: left;
+    left: 38px;
+    color: #8f8f8f;
+    display: inline-block;
+  }
 
 
-.viajar {
-  cursor: pointer;
-  float: right;
-  width: 97px;
-  color: white;
-  font-weight: 700;
-  text-align: center;
-  background-color: #00BFB5;
-}
-.cancelar {
-  cursor: pointer;
-  float: right;
-  width: 97px;
-  color: #00BFB5;
-  font-weight: 700;
-  text-align: center;
-  background-color: white;
-}
+  .viajar {
+    cursor: pointer;
+    float: right;
+    width: 97px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    background-color: rgb(42,168,154);
+  }
+  .cancelar {
+    cursor: pointer;
+    float: right;
+    width: 97px;
+    color: rgb(42,168,154);
+    font-weight: 700;
+    text-align: center;
+    background-color: white;
+  }
 
-.actionsbtns {
-  position: absolute;
-  bottom: -36px;
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+  .actionsbtns {
+    position: absolute;
+    bottom: -36px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .comments {
+    position: absolute;
+    right: 0px;
+    position: absolute;
+    right: 32px;
+    top: 75px;
+    color: #8f8f8f;
+    width: 130px;
+  }
 }
-.comments {
-  position: absolute;
-  right: 0px;
-  position: absolute;
-  right: 32px;
-  top: 75px;
-  color: #8f8f8f;
-  width: 130px;
+@media (min-width: 568px) {
+  .single-travel {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 2px;
+  }
+
+  .travel-title{
+    font-size: 28px;
+    margin-bottom: 16px;
+    font-weight: 400;
+    color: #616161;
+  }
+  .travel-desc{
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  .circulo {
+    position: absolute;
+    top: 104px;
+    width: 261px;
+    right: 19px;
+    background-size: 100% 100%;
+  }
+
+  .avatar{
+    position: absolute;
+    width: 90px;
+    right: 35px;
+    top: 121px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: 100% 100%;
+    transition: all 3s;
+    transition-timing: ease-in-out;
+  }
+  .avatar:hover {
+      transform: rotate(360deg);
+  }
+
+  .travel-detail {
+    position: relative;
+    border: 1px solid rgba(150,147,153,.75);
+    border-radius: 3px;
+    height: 400px;
+    width: 60%;
+    text-align: center;
+    display: inline-block;
+  }
+  .detailtop {
+    text-align: center;
+  }
+  .detailtop h2{
+    width: 196px;
+    right: 60px;
+    color: #989895;
+    position: relative;
+    display: inline-block;
+  }
+  .detail-container {
+    height: 610px;
+    text-align: center;
+  }
+  .cities {
+    width: 215px;
+    position: absolute;
+    left: 0px;
+    top: 18px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .barra {
+    position: absolute;
+    width: 100%;
+    height: 59px;
+    left: 0px;
+    z-index: -10;
+  }
+
+  .price {
+    position: absolute;
+    background: #00ACA3;
+    color: white;
+    position: absolute;
+    top: 18px;
+    width: 75px;
+    right: 48px;
+    border-radius: 4px 4px 4px 0px;
+  }
+
+  .travel-detail h2{
+    width: 166px;
+    position: absolute;
+    left: 37px;
+    text-align: left;
+    display: inline-block;
+    top: 69px;
+    color: #8f8f8f;
+  }
+  .users-container {
+    font-size: 12px;
+    display: inline-block;
+    width: 319px;
+    position: absolute;
+    bottom: 33px;
+    height: 100px;
+    text-align: left;
+    left: 33px;
+    color: #888;
+  }
+  .passengers {
+    position: absolute;
+  }
+  .passengers li{
+    margin: 5px;
+  }
+
+  .passengerimg {
+    width: 10%;
+    border-radius: 50%;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+  }
+  .car {
+    position: absolute;
+    bottom: 150px;
+    width: 76px;
+    right: 42px;
+  }
+  .info {
+    font-size: 16px;
+    position: absolute;
+    top: 186px;
+    text-align: left;
+    left: 38px;
+    color: #8f8f8f;
+    display: inline-block;
+  }
+
+
+  .viajar {
+    cursor: pointer;
+    float: right;
+    width: 97px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    background-color: rgb(42,168,154);
+  }
+  .cancelar {
+    cursor: pointer;
+    float: right;
+    width: 97px;
+    color: rgb(42,168,154);
+    font-weight: 700;
+    text-align: center;
+    background-color: white;
+  }
+
+  .actionsbtns {
+    position: absolute;
+    bottom: -36px;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .comments {
+    position: absolute;
+    right: 0px;
+    position: absolute;
+    right: 32px;
+    top: 75px;
+    color: #8f8f8f;
+    width: 130px;
+  }
 }

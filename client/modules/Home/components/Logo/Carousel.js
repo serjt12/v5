@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Slider from 'react-slick';
 import moment from 'moment';
 import styles from './Logo.css';
@@ -34,8 +35,7 @@ class SimpleSlider extends Component {
     this.props.dispatch(fetchTravels());
   }
   render() {
-    const allTravels = this.props.travels
-    console.log(allTravels)
+    const allTravels = this.props.travels;
     const settings = {
       dots: false,
       infinite: true,
@@ -46,11 +46,19 @@ class SimpleSlider extends Component {
     };
     return (
       <Slider {...settings}>
-          {allTravels.map(travel => ( <TravelInfo key={travel._id} travel={travel}></TravelInfo> ))}
+          {allTravels.map(travel => (<TravelInfo key={travel._id} travel={travel} />))}
       </Slider>
     );
   }
 }
+TravelInfo.propTypes = {
+  travel: PropTypes.object,
+  dispatch: PropTypes.fun,
+};
+SimpleSlider.propTypes = {
+  travels: PropTypes.object,
+  dispatch: PropTypes.fun,
+};
 
 function mapStateToProps(store) {
   return {

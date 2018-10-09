@@ -13,6 +13,7 @@ const strategy = new FacebookStrategy(
     profileFields: ['id', 'displayName', 'photos', 'email'],
     enableProof: true,
   },
+  // eslint-disable-next-line
   function (accessToken, refreshToken, profile, done) {
    // testing
     // console.log('===== FACEBOOK PROFILE =======')
@@ -20,6 +21,7 @@ const strategy = new FacebookStrategy(
     // console.log('======== END ===========')
    // code
     const { id, displayName, photos, emails } = profile;
+    // eslint-disable-next-line
     User.findOne({ 'facebook.facebookId': id }, (err, userMatch) => {
      // handle errors here:
       if (err) {
@@ -46,10 +48,9 @@ const strategy = new FacebookStrategy(
           authToken,
         });
        // save this user
+       // eslint-disable-next-line
         newFacebookUser.save((err1, savedUser) => {
           if (err1) {
-            console.log('Error!! saving the new facebook user');
-            console.log(err1);
             return done(null, false);
           } if (!err1) {
             const authenticationURL = `http://localhost:8000/api/verify_email?token=${savedUser.authToken}`;
@@ -67,7 +68,9 @@ const strategy = new FacebookStrategy(
               },
             };
             sendgrid.send(msg,
+            // eslint-disable-next-line
             function (err2, json) {
+              // eslint-disable-next-line
               if (err2) { return console.error(err2); }
             });
             return done(null, savedUser);

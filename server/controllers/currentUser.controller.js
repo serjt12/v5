@@ -1,4 +1,5 @@
 // Find my user
+// eslint-disable-next-line
 export function checkCurrentUser(req, res) {
 // console.log('===== user!!======');
 // console.log(req.user);

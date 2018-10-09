@@ -11,9 +11,9 @@ const userSchema = new Schema({
     match: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
   },
   confirmed: { type: 'Boolean', default: false },
-  authToken: { type: String, required: true, unique: true },
+  authyId: String,
   credit: { type: 'Number', default: 0 },
-  cellphone: { type: 'Number', default: '3777777777' },
+  cellphone: { type: 'Number' },
   city: { type: String, default: 'Indicanos tu ciudad de origen' },
   avatar: { type: String, default: 'https://via.placeholder.com/106x106' },
   google: {
@@ -26,9 +26,11 @@ const userSchema = new Schema({
     cellphone: { type: Number, unique: false },
     password: { type: String, unique: false },
   },
-  likes: { type: Schema.Types.ObjectId, ref: 'Like' },
   dateCreated: { type: 'Date', default: Date.now, required: true },
   dateUpdated: { type: 'Date' },
+  likes: [{ type: Schema.ObjectId, ref: 'Like' }],
+  rateCount: { type: 'Number', default: '0' },
+  rateValue: { type: 'Number', default: '0' },
 });
 // Define schema methods
 userSchema.methods = {

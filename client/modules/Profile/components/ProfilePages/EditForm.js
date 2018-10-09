@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
-import { addUserUpdateRequest } from '../../../Home/AuthActions';
+import { addUserUpdateRequest, sendUserCodeRequest } from '../../../Home/AuthActions';
 import styles from './profilemain.css';
-
 
 const MyForm = ({
     errors,
@@ -71,25 +70,28 @@ MyForm.propTypes = {
   handleBlur: PropTypes.func,
   isSubmitting: PropTypes.bool,
   props: PropTypes.object,
+  router: PropTypes.object,
 };
 const EnhancedForm = withFormik({
   mapPropsToValues({ email, cellphone, username, city }) {
     return {
       email,
-      cellphone,
+      cellphone: cellphone || '',
       username,
       city,
     };
   },
   validationSchema: Yup.object().shape({
     email: Yup.string().email().required('Es necesario tu email'),
-    cellphone: Yup.number().min(10, 'Verifica tu numero celular').required('Tu numero celular es necesario para continuar'),
+    cellphone: Yup.string().max(10, 'Verifica tu numero celular').min(10, 'Verifica tu numero celular')
+    .required('Tu numero celular es necesario para continuar'),
     username: Yup.string().required('Queremos saber tu nombre'),
     city: Yup.string().required('Es necesario que ingreses tu ciudad'),
   }),
   handleSubmit(values, { props, resetForm, setSubmitting }) {
     const userID = props.store.auth.currentUser._id;
     props.dispatch(addUserUpdateRequest(values, userID));
+    props.dispatch(sendUserCodeRequest(values.cellphone));
     setSubmitting(false);
     resetForm();
     props.router.push('/profile');

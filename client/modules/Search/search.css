@@ -7,12 +7,19 @@
     width: 239px;
     cursor: pointer;
   }
+  .title-container h1{
+    position: relative;
+    top: 8px;
+    font-weight: 800;
+  }
   .title-container {
-    margin: 23px;
+    font-size: 11px;
+    margin-bottom: 10px;
+    margin-top: 27px;
     height: 36px;
-    background: #00BFB5;
+    background: rgb(42, 168, 154);
     color: white;
-    width: 67%;
+    width: 76%;
     display: inline-block;
   }
   .search-underline {
@@ -25,25 +32,24 @@
 @media (min-width: 768px) {
   .searchwrap {
     position: relative;
-    top: 61px;
+    top: -157px;
     height: 238px;
-  }
-
-  .search-container  {
-    height: 301px;
-    width: 341px;
     display: inline-block;
-    position: absolute;
-    right: 33px;
-    top: -225px;
+    left: 442px
+  }
+  .title-container {
+    margin-top: 0px;
+    width: 100%;
+  }
+  .search-container  {
+    position: relative;
+    top: 21px;
   }
 }
 @media (min-width: 1000px) {
   .searchwrap {
     height: 100px;
-  }
-  .search-container {
-    left: 667px;
-    top: -312px;
+    top: -250px;
+    left: 700px;
   }
 }

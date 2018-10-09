@@ -33,18 +33,17 @@ class Payment extends PureComponent {
     this.props.dispatch(addTravelToUserRequest(travel));
   }
   handleBack() {
-    this.props.router.goBack()
+    this.props.router.goBack();
   }
   render() {
-    // console.log(this.props)
     const travelid = (this.props.travel !== undefined) ? (this.props.travel._id) : {};
     const userid = (this.props.store.auth.currentUser !== undefined && this.props.store.auth.currentUser !== null) ? this.props.store.auth.currentUser._id : {};
-    const data = { travelid, userid }
+    const data = { travelid, userid };
     const from = (this.props.travel !== undefined) ? (this.props.travel.from) : 'Desde';
     const to = (this.props.travel !== undefined) ? (this.props.travel.to) : 'Para';
     const date = (this.props.travel !== undefined) ? (this.props.travel.date) : Date.now();
     const price = (this.props.travel !== undefined) ? (this.props.travel.price) : '0000';
-    const visible = `${styles.methodp} ${styles.visible}`
+    const visible = `${styles.methodp} ${styles.visible}`;
     return (
       <div className={styles['payment-container']}>
         <div className={styles.outerbox}>

@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
-import Map from '../../../../components/Map/MapContainer'
+import Map from '../../../../components/Map/MapContainer';
 import PropTypes from 'prop-types';
 import styles from './TravelForm.css';
 import { addTravelRequest } from '../../TravelActions';
@@ -14,9 +14,8 @@ const MyForm = ({
     touched,
     handleBlur,
     isSubmitting,
-    setFieldValue,
     values,
-    handleChange
+    handleChange,
   }) => (
     (<Form className={styles['form-container']}>
       <div className={styles.space} />
@@ -124,6 +123,7 @@ MyForm.propTypes = {
   touched: PropTypes.object,
   handleBlur: PropTypes.func,
   isSubmitting: PropTypes.bool,
+  handleChange: PropTypes.fun,
 };
 
 const EnhancedForm = withFormik({

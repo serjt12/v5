@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styles from './Road.css';
 import Roadimg from './images/road.jpg';
 import Paso1 from './images/desk/paso1num.png';
@@ -10,7 +10,7 @@ import Buscarimg from './images/desk/buscar.png';
 import Paso4 from './images/desk/paso4num.png';
 import Calificarimg from './images/desk/calificar.png';
 
-class Road extends Component {
+class Road extends PureComponent {
   render() {
     return (
       <div className={styles['road-container']}>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchInput, { createFilter } from 'react-search-input';
+import PropTypes from 'prop-types';
 import styles from './nationalsearch.css';
 import moment from 'moment';
 import { Link } from 'react-router';
@@ -10,7 +11,7 @@ import Equipaje from './images/options/equipajeazul.png';
 import Cigarrillo from './images/options/cigarrilloazul.png';
 import Comida from './images/options/comidaazul.png';
 
-const KEYS_TO_FILTERS = ['from', 'to']
+const KEYS_TO_FILTERS = ['from', 'to'];
 
 class NationalTravels extends Component {
   constructor(props) {
@@ -31,8 +32,9 @@ class NationalTravels extends Component {
         <div className={styles.ticket_container}>
           <SearchInput placeholder="Donde quieres ir?" className={styles['search-input']} onChange={this.searchUpdated} />
           <h1 className={styles['viajes-title']}>VIAJES NACIONALES</h1>
-          {filteredNacional.map((travel) => (
-            (travel.sits > 0) ?
+          {(filteredNacional.length !== 0) ?
+            filteredNacional.map((travel) => (
+            (travel.sits > 0) &&
               <div key={travel._id} className={styles['tickets-inside']}>
                 <img className={styles.ticket} src={Ticket} alt="Viaja con Tobcity" />
                 <h4 className={styles.price}>$ {travel.price}</h4>
@@ -53,12 +55,16 @@ class NationalTravels extends Component {
                 <Link to={`/travels/${travel.cuid}`} >
                   <img className={styles.car} src={Car} alt="Viaja con Tobcity" />
                 </Link>
-              </div> : null
-            ))
+              </div>
+            )) : <div><h1>{`Parece que ${this.state.searchTerm} no fue encontrado`}</h1></div>
           }
         </div>
       </div>
-  ); }
+  );
+  }
 }
+NationalTravels.propTypes = {
+  national: PropTypes.array,
+};
 
 export default NationalTravels;

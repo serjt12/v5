@@ -1,6 +1,5 @@
 import Express from 'express';
 import corsPrefetch from 'cors-prefetch-middleware';
-import imagesUpload from 'images-upload-middleware';
 import compression from 'compression';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
@@ -70,7 +69,6 @@ if (process.env.NODE_ENV !== 'test') {
       console.error('Please make sure Mongodb is installed and running!'); // eslint-disable-line no-console
       throw error;
     }
-
     // feed some dummy data in DB.
   });
 }
@@ -94,30 +92,18 @@ app.use('/auth', auth);
 app.use('/api', currentUser);
 app.use('/api', travel);
 app.use('/api', user);
-app.post('/upload_image', imagesUpload('../dist/client',
-    'http://localhost:8000/dist/client'
-));
-// ===== testing middleware =====
-// app.use(function(req, res, next) {
-// 	console.log('===== passport user =======')
-// 	console.log(req.session)
-// 	console.log(req.user)
-// 	console.log('===== END =======')
-// 	next()
-// })
-// testing
-// app.get(
-// 	'/auth/google/callback',
-// 	(req, res, next) => {
-// 		console.log(`req.user: ${req.user}`)
-// 		console.log('======= /auth/google/callback was called! =====')
-// 		next()
-// 	},
-// 	passport.authenticate('google', { failureRedirect: '/travel' }),
-// 	(req, res) => {
-// 		res.redirect('/')
-// 	}
-// )
+
+const accountSid = 'ACd24751f50dd2fc77ff2a7f23e1e8d629'; // Your Account SID from www.twilio.com/console
+const authToken = 'c43e640c087b9646a7d5c39ce1599c25';   // Your Auth Token from www.twilio.com/console
+import Twilio from 'twilio';
+const client = new Twilio(accountSid, authToken);
+client.messages.create({
+  body: 'Holita de Tobcity!!!',
+  to: '+573053386099',  // Text this number
+  from: '+573015999375', // From a valid Twilio number
+})
+// eslint-disable-next-line
+.then((message) => console.log(message.sid));
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -144,7 +130,8 @@ const renderFullPage = (html, initialState) => {
         <link href="https://fonts.googleapis.com/css?family=Baloo+Tammudu|Quicksand|Raleway" rel="stylesheet">
         <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
       </head>
       <body>
         <div id="root">${process.env.NODE_ENV === 'production' ? html : `<div>${html}</div>`}</div>

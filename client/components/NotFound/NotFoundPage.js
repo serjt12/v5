@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import notFound from './notfound.svg';
+import notFound from './notfound.png';
 
 import styles from './NotFound.css';
 

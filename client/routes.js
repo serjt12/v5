@@ -3,7 +3,6 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './modules/App/App';
 import NotFoundPage from './components/NotFound/NotFoundPage';
-import Travel from './modules/Home/temp';
 import LogInForm from './modules/Home/components/Login/LoginPage/LoginPage';
 import Profile from './modules/Profile/Profile';
 import LocalTravels from './modules/Search/pages/LocalSearch/LocalSearch';
@@ -47,7 +46,6 @@ export default (
         });
       }}
     />
-    <Route exact path="/travel" component={Travel} />
     <Route exact path="/login" component={LogInForm} />
     <Route
       exact

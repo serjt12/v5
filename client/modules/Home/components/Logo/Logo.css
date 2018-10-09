@@ -1,76 +1,102 @@
-
-.emojis {
-  background-image: url('./images/circuloemoji.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  text-align: center;
-  height: 350px;
-}
-.logo:hover {
-    transform: rotate(1080deg);
+@media (min-width: 200px) {
+  .circulo {
+    height: 296px;
+    position: relative;
+    left: 10px;
   }
-.logo {
-  width: 176px;
-  animation-name: fadeOut;
-  animation-duration: 4s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  display: inline-flex !important;
-}
-.carousel-container {
-  position: relative;
-  top: 70px;
-}
+  .emojis {
+    width: 300px;
+  }
+  .logo:hover {
+      transform: rotate(1080deg);
+    }
+  .logo {
+    width: 176px;
+    animation-name: fadeOut;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    display: inline-flex !important;
+  }
+  .carousel-container {
+    position: relative;
+    top: -234px;
+    width: 303px;
+    text-align: center;
+    display: inline-block;
+  }
+  .travelinfo-container {
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    color: #8f8f8f;
+  }
 
-.travelinfo-container {
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-iteration-count: 1;
-  color: #8f8f8f;
-}
+  .travelinfo-image img{
+    display: inline-flex;
+  }
 
-.travelinfo-image img{
-  display: inline-flex;
-}
+  .travelinfo-name h3{
+    width: 208px;
+    display: inline-block;
+  }
 
-.travelinfo-name h3{
-  width: 208px;
-  display: inline-block;
-}
+  .avatar{
+    width: 84px;
+    object-fit: contain;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: 100% 100%;
+    transition: all 3s;
+  }
+  .avatar:hover {
+      transform: rotate(360deg);
+  }
 
-.avatar{
-  width: 84px;
-  object-fit: contain;
-  border-radius: 50%;
-  overflow: hidden;
-  background-size: 100% 100%;
-  transition: all 3s;
-}
-.avatar:hover {
-    transform: rotate(360deg);
-}
+  .travelinfo-info p {
+    font-size: 11px;
+    color: rgb(42,168,154)
+  }
+  .travelinfo-info {
+    position: relative;
+    left: 0px;
+    height: 58px;
+    top: 10px;
+  }
 
-.travelinfo-info p {
-  font-size: 11px;
-  color: #2aa89a
+  .travelinfo-cupos {
+    color: rgb(42,168,154);
+    font-weight: 800;
+    border: 3px solid #8f8f8f;
+    width: 60px;
+    display: inline-block;
+    font-size: .6rem;
+    margin-left: 10px;
+    border-radius: 5px 5px 0px 5px;
+  }
 }
-.travelinfo-info {
-  position: relative;
-  left: 0px;
-  height: 58px;
-  top: 10px;
+@media (min-width: 568px) {
+  .circulo {
+    height: 296px;
+    position: relative;
+    left: 15px;
+  }
 }
-
-.travelinfo-cupos {
-  color: #2aa89a;
-  font-weight: 800;
-  border: 3px solid #8f8f8f;
-  width: 60px;
-  display: inline-block;
-  font-size: .6rem;
-  margin-left: 10px;
-  border-radius: 5px 5px 0px 5px;
+@media (min-width: 1000px) {
+  .circulo {
+    height: 296px;
+    position: relative;
+    left: 100px;
+  }
+}
+@media (min-width: 1280px) {
+  .carousel-container {
+    top: -39px;
+    left: -292px;
+  }
+  .circulo {
+    left: 200px;
+  }
 }
 
 @keyframes fadeOut {

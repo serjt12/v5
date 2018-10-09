@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './myhistory.css';
+import PropTypes from 'prop-types';
 import Modal from 'react-responsive-modal';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -14,36 +15,51 @@ class MyPassenger extends Component {
     super();
     this.state = {
       showModal: true,
+      rating_half_star: 0,
     };
   }
   componentDidMount() {
     this.props.dispatch(fetchTravels());
   }
-  onStarClickHalfStar(rating, prevValue, author, e) {
-    const { props: { userID } } = this;
+  onStarClickHalfStar(rating, prevValue, travel, e) {
     const xPos = (e.pageX - e.currentTarget.getBoundingClientRect().left) / e.currentTarget.offsetWidth;
-
     if (xPos <= 0.5) {
+      // eslint-disable-next-line
       rating -= 0.5;
     }
-    this.props.dispatch(addRatingRequest(rating, userID, author))
-    console.log('author: %s, rating: %s, prevValue: %s', author, rating, prevValue);
+    this.props.dispatch(addRatingRequest(rating, travel, this.props.userID));
+  }
+  onStarHoverHalfStar(rating, prevValue, travel, e) {
+    const xPos = (e.pageX - e.currentTarget.getBoundingClientRect().left) / e.currentTarget.offsetWidth;
+    if (xPos <= 0.5) {
+      // eslint-disable-next-line
+      rating -= 0.5;
+    }
+    this.setState({
+      rating_half_star: rating,
+    });
+  }
+  onStarHoverOutHalfStar() {
+    this.setState({
+      rating_half_star: 0,
+    });
   }
   onCloseModal = () => {
     this.setState({
-      showModal: false
-    })
+      showModal: false,
+    });
   };
   render() {
-    // console.log(this.props.msg)
-    const superVar = (this.props.msg !== undefined && this.props.msg !== '')
-    // console.log('My passenger props', props)
-    const TravelsWithPassenger = (this.props.travels !== undefined) ? this.props.travels.filter(travel => (travel.passenger.length !== 0 )) : [];
-    // console.log('viajes donde yo soy el pasajero', TravelsWithPassenger)
+    const superVar = (this.props.msg !== undefined && this.props.msg !== '');
+    const likeMsg = (this.props.msglike !== undefined && this.props.msglike !== '');
+    const TravelsWithPassenger = (this.props.travels !== undefined) ? this.props.travels.filter(travel => (travel.passenger.length !== 0)) : [];
     return (
       <div>
         <Modal open={superVar && this.state.showModal} onClose={this.onCloseModal} center>
           <h2>{this.props.msg}</h2>
+        </Modal>
+        <Modal open={likeMsg && this.state.showModal} onClose={this.onCloseModal} center>
+          <h2>{this.props.msglike}</h2>
         </Modal>
         <li className={styles.item}>
           <h1 className={styles['myhistory-title']}>MY PASSENGER TRAVELS</h1>
@@ -61,12 +77,16 @@ class MyPassenger extends Component {
                             {travel.from}/{travel.to}/{moment(travel.date).format('MMM Do YY')}
                         </div>
                       </Link>
-                    {(moment(Date.now()).format() > travel.date) &&
+                    {(moment(Date.now()).format() > travel.date) ?
                       <StarRatingComponent
-                        name={travel.author._id}
-                        starColor="#2aa89a"
-                        emptyStarColor="#2aa89a"
-                        value={(travel.author.likes) ? travel.author.likes.likeCount : 0}
+                        editing={(travel.author.likes.length !== 0) ? !travel.author.likes.map(like => like.like)[0] : true}
+                        className={styles.starts}
+                        name={travel._id}
+                        starColor="rgb(42,168,154)"
+                        emptyStarColor="rgb(42,168,154)"
+                        value={travel.author.likes.length !== 0 ? travel.author.likes.map(like => like.value)[0] : this.state.rating_half_star}
+                        onStarHoverOut={this.onStarHoverOutHalfStar.bind(this)}
+                        onStarHover={this.onStarHoverHalfStar.bind(this)}
                         onStarClick={this.onStarClickHalfStar.bind(this)}
                         renderStarIcon={(index, value) => {
                           return (
@@ -83,13 +103,13 @@ class MyPassenger extends Component {
                             </span>
                           );
                         }}
-                      />}
+                      /> : null
+                    }
                     </div>
                     : null}
                   </div>
               );
               })}
-
             </li>
           );
         })}
@@ -98,11 +118,20 @@ class MyPassenger extends Component {
   }
 }
 
+MyPassenger.propTypes = {
+  userID: PropTypes.string,
+  dispatch: PropTypes.fun,
+  msg: PropTypes.string,
+  msglike: PropTypes.string,
+  travels: PropTypes.object,
+};
+
 function mapStateToProps(store) {
   return {
     userID: store.auth.currentUser._id,
     travels: getTravels(store),
     msg: store.travel.msg,
+    msglike: store.app.likeMsg,
   };
 }
 

@@ -1,7 +1,7 @@
 @media (min-width: 200px) {
   .history-container {
     height: 600px;
-    background: #00BFB5;
+    background: rgb(42,168,154);
     text-align: center;
     color: white;
     background-size: 100% 100%;
@@ -32,7 +32,7 @@
 @media (min-width: 1000px) {
   .historywrap {
     position: absolute;
-    left: 470px;
+    left: 435px;
     top: 448px;
   }
   .title {

@@ -2,11 +2,14 @@
   .item {
     background-color: #FDFDFD;
     color: #9B9794;
-    width: 315px;
+    width: 100%;
     margin: 6px;
     border-radius: 5px;
     border-bottom-left-radius: 0;
   }
+  .hide{
+    visibility: hidden;
+   }
   .myhistory-container ul {
     display: inline-block;
     position: relative;
@@ -49,7 +52,7 @@
 
 @media (min-width: 768px) {
   .item {
-    width: 290px;
+    width: 300px;
   }
 }
 @media (min-width: 1000px) {
@@ -57,7 +60,7 @@
     font-size: 10px;
   }
   .item {
-    width: 170px;
+    width: 210px;
     font-size: 10px;
   }
   .myhistory-title {

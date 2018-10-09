@@ -28,7 +28,7 @@ class NationalSearch extends PureComponent {
               <Link to="/profile"><img className={styles.avatar} src={avatar} alt="Tobcity Divide Tus gastos" /></Link>
             </div>
             <h2>HOLA! <br /> {firstName.toUpperCase()}</h2>
-          </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
+          </div> : <Loading type="oval" width={200} height={200} fill="rgb(42,168,154)" />
         }
         <NationalTravels national={nationaltravels} />
       </section>

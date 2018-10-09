@@ -2,6 +2,7 @@ import callApi from '../../util/apiCaller';
 
 // Export Constants
 export const TOGGLE_ADD_TRAVEL = 'TOGGLE_ADD_TRAVEL';
+export const LIKE_MSG = 'LIKE_MSG';
 
 // Export Actions
 export function toggleAddTravel() {
@@ -9,14 +10,21 @@ export function toggleAddTravel() {
     type: TOGGLE_ADD_TRAVEL,
   };
 }
+export function likeMsg(msg) {
+  return {
+    type: LIKE_MSG,
+    msg,
+  };
+}
 
-export function addRatingRequest(rating, userID, author) {
-  console.log('author: %s, rating: %s, userID: %s', author, rating, userID);
+export function addRatingRequest(rating, travel, passenger) {
   return (dispatch) => {
-    return callApi(`rate_user/${userID}`, 'post', {
-      likes: {
-        likes: rating,
+    return callApi('rate_user', 'post', {
+      like: {
+        travel,
+        rateValue: rating,
+        passenger,
       },
-    }).then(res => console.log(res));
+    }).then(res => dispatch(likeMsg(res)));
   };
 }

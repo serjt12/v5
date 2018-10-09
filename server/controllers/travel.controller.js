@@ -12,7 +12,13 @@ import sanitizeHtml from 'sanitize-html';
 export function getTravels(req, res) {
   Travel.find()
   .sort('-dateAdded')
-  .populate('passenger author')
+  .populate({
+    path: 'author',
+    populate: {
+      path: 'likes',
+    },
+  })
+  .populate('passenger')
   .exec((err, travels) => {
     if (err) {
       res.status(500).send(err);
@@ -44,6 +50,7 @@ export function addTravel(req, res) {
   User.findById(
     req.user._id,
   )
+  // eslint-disable-next-line
   .exec(function (err, user) {
     if (err) {
       res.json({ err });
@@ -98,8 +105,8 @@ export function deleteTravel(req, res) {
 }
 
 export function addUserTravel(req, res) {
-  const data = req.body.data
-  const { travelid, userid } = data
+  const data = req.body.data;
+  const { travelid, userid } = data;
   Travel.findByIdAndUpdate(
     travelid,
     {
@@ -109,6 +116,7 @@ export function addUserTravel(req, res) {
     { new: true },
   )
   .populate('passenger author')
+  // eslint-disable-next-line
   .exec(function (err, user) {
     if (err) {
       res.json({ err });

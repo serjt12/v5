@@ -8,10 +8,6 @@ import Helmet from 'react-helmet';
 import TravelCreateWidget from '../../../Travel/components/TravelCreateWidget/TravelCreateWidget';
 import Circulo from './images/circulo.png';
 import Sky from './images/sky.png';
-import Mascotas from './images/options/mascotaazul.png';
-import Equipaje from './images/options/equipajeazul.png';
-import Cigarrillo from './images/options/cigarrilloazul.png';
-import Comida from './images/options/comidaazul.png';
 import Car from './images/carro.png';
 import Barra from './images/barra.png';
 
@@ -23,8 +19,8 @@ import { fetchTravel } from '../../TravelActions';
 import { getTravel } from '../../TravelReducer';
 
 class TravelDetailPage extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return (this.props.travel.passengers !== nextProps.travel.passenger)
+  shouldComponentUpdate(nextProps) {
+    return (this.props.travel.passengers !== nextProps.travel.passenger);
   }
   render() {
     const avatar = ((this.props.user !== null) ? (this.props.user.avatar) : ('https://via.placeholder.com/350x150'));
@@ -41,7 +37,7 @@ class TravelDetailPage extends Component {
      );
     });
     const author = (userID === this.props.travel.author._id);
-    const tobpassenger = passengersList.filter((user) => user._id === userID)
+    const tobpassenger = passengersList.filter((user) => user._id === userID);
     // console.log('PROPS', this.props)
     // console.log('Passenger list', passengersList)
     // console.log('USER', userID)
@@ -60,7 +56,7 @@ class TravelDetailPage extends Component {
                 <Link to="/profile"><img className={styles.avatar} src={avatar} alt="Tobcity Divide Tus gastos" /></Link>
               </div>
               <h2>HOLA! {firstName.toUpperCase()}</h2>
-            </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
+            </div> : <Loading type="oval" width={200} height={200} fill="rgb(42,168,154)" />
           }
           {(this.props.travel !== null) ?
             <div className={styles['travel-detail']}>
@@ -92,7 +88,7 @@ class TravelDetailPage extends Component {
               }
                 <button onClick={this.props.router.goBack} className={styles.cancelar}>CERRAR</button>
               </div>
-            </div> : <Loading type="oval" width={200} height={200} fill="#00BFB5" />
+            </div> : <Loading type="oval" width={200} height={200} fill="rgb(42,168,154)" />
           }
         </section>
       </div>
@@ -107,7 +103,6 @@ TravelDetailPage.need = [params => {
 
 // Retrieve data from store as this.props
 function mapStateToProps(store, props) {
-  // console.log('TRAVELS PASSENGERS', store.travel)
   return {
     showAddTravel: store.app.showAddTravel,
     user: store.auth.currentUser,
@@ -116,7 +111,11 @@ function mapStateToProps(store, props) {
 }
 
 TravelDetailPage.propTypes = {
-
+  showAddTravel: PropTypes.fun,
+  travels: PropTypes.object,
+  router: PropTypes.object,
+  travel: PropTypes.array,
+  user: PropTypes.object,
 };
 
 export default connect(mapStateToProps)(TravelDetailPage);

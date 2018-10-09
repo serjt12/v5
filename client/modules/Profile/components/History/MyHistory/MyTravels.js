@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from './myhistory.css';
 import { Link } from 'react-router';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { fetchTravels } from '../../../../Travel/TravelActions';
@@ -12,7 +13,7 @@ class MyTravels extends Component {
   }
   render() {
     // console.log('my travels props', this.props)
-    const mytravels = this.props.travels.filter(travel => (travel.author._id === this.props.userID))
+    const mytravels = this.props.travels.filter(travel => (travel.author._id === this.props.userID));
     return (
       <div>
         <li className={styles.item}>
@@ -22,7 +23,7 @@ class MyTravels extends Component {
         mytravels.map((travel) => {
           return (
             <li key={travel._id} className={styles.item}> <Link to={`/travels/${travel.cuid}`}>{travel.from}/{travel.to}/{moment(travel.date).format('MMM Do YY')}</Link>
-              <span className={styles.deletebtn} onClick={() => this.props.handleDeleteTravel(travel.cuid)}>X</span>
+              <span className={styles.deletebtn} >X</span>
             </li>
           );
         }) : <li key="none" className={styles.item}><h2 className={styles.none}>Aun no postulas ningun viaje, hazlo ahora</h2></li>
@@ -31,7 +32,11 @@ class MyTravels extends Component {
    );
   }
 }
-
+MyTravels.propTypes = {
+  dispatch: PropTypes.fun,
+  travels: PropTypes.object,
+  userID: PropTypes.string,
+};
 function mapStateToProps(store) {
   return {
     userID: store.auth.currentUser._id,

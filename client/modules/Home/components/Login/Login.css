@@ -6,12 +6,19 @@
     height: 240px;
     width: 90%;
   }
+  .loginbox {
+    display: inline-flex;
+    flex-direction: column;
+    width: 233px;
+    position: relative;
+    left: 28px;
+  }
 
   .logout {
     text-decoration: none;
     color: #ff332d;
     display: inline-block;
-    background-color: #00BFB5;
+    background-color: rgb(42,168,154);
     font-weight: bold;
     padding: 0.2rem 3.2rem;
     border-radius: 3px;
@@ -21,7 +28,7 @@
     text-decoration: none;
     color: #fff;
     display: inline-block;
-    background-color: #00BFB5;
+    background-color: rgb(42,168,154);
     font-weight: bold;
     padding: 0.2rem  0.9rem;
     border-radius: 3px;
@@ -54,5 +61,6 @@
 @media (min-width: 568px) {
   .login-container {
     width: 100%;
+    text-align: center;
   }
 }

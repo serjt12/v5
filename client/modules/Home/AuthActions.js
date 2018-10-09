@@ -3,7 +3,6 @@ export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 export const ACTIVE_USER = 'ACTIVE_USER';
 export const SIGNUP_MSG = 'SIGNUP_MSG';
 export const ADD_TO_TRAVEL_MSG = 'ADD_TO_TRAVEL_MSG';
-import axios from 'axios';
 
 export function userAuth(user) {
   return {
@@ -48,20 +47,33 @@ export function addUserUpdateRequest(user, userID) {
     }).then(res => dispatch(userAuth(res)));
   };
 }
+// export function sendUserCodeRequest(cellphone) {
+  // return (dispatch) => {
+  //   return callApi(`update_user/${cellphone}`, 'put', {
+  //     user: {
+  //       email: user.email,
+  //       cellphone: user.cellphone,
+  //       name: user.username,
+  //       city: user.city,
+  //       dateUpdated: Date.now(),
+  //     },
+  //   }).then(res => dispatch(userAuth(res)));
+  // };
+// }
 
-export function validateUser(user) {
-  console.log('USER 2', user)
-  return (dispatch) => {
-    return axios
-	.post('/auth/login', {
-  user: {
-    password: user.passsword,
-    cellphone: user.cellphone,
-  }
-	})
-	.then(res => { console.log(res.config.data)	})
-  }
-}
+// export function validateUser(user) {
+//   console.log('USER 2', user)
+//   return (dispatch) => {
+//     return axios
+// 	.post('/auth/login', {
+//   user: {
+//     password: user.passsword,
+//     cellphone: user.cellphone,
+//   }
+// 	})
+// 	.then(res => { console.log(res.config.data)	})
+//   }
+// }
 export function sendMsgaddToTravel(msg) {
   return {
     type: ADD_TO_TRAVEL_MSG,

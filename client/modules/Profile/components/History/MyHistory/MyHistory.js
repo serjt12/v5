@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styles from './myhistory.css';
 import MyTravels from './MyTravels';
 import MyPassenger from './MyPassenger';
@@ -10,12 +11,7 @@ import { fetchTravels, deleteTravelRequest } from '../../../../Travel/TravelActi
 import { getTravels } from '../../../../Travel/TravelReducer';
 
 class MyHistory extends Component {
-  constructor(props) {
-    super(props);
-    this.state = ({
-      ToggleHistory: true,
-    });
-  }
+
   componentDidMount() {
     this.props.dispatch(fetchTravels());
   }
@@ -25,7 +21,6 @@ class MyHistory extends Component {
     }
   };
   render() {
-    const { state: { ToggleHistory } } = this;
     return (
       <section>
         <div className={styles.togglebox}>
@@ -41,12 +36,18 @@ class MyHistory extends Component {
                 inactiveThumb: {
                   base: 'rgb(255,230,8)',
                 },
+                active: {
+                  base: 'rgb(249,249,249)',
+                },
+                inactive: {
+                  base: 'rgb(249,249,249)',
+                },
               }}
               value={this.state.value || false}
               onToggle={(value) => {
                 this.setState({
                   value: !value,
-                })
+                });
               }}
             />
           </div>
@@ -56,7 +57,7 @@ class MyHistory extends Component {
           <div className={styles['myhistory-container']}>
             <ul>
               {(this.state.value) ?
-                <MyTravels showAddTravel={this.props.showAddPost} handleDeleteTravel={this.handleDeleteTravel} userID={this.props.userID} travels={this.props.travels} /> :
+                <MyTravels showAddTravel={this.props.showAddTravel} handleDeleteTravel={this.handleDeleteTravel} userID={this.props.userID} travels={this.props.travels} /> :
                 <MyPassenger handleDeleteTravel={this.handleDeleteTravel} />
               }
             </ul>
@@ -65,6 +66,12 @@ class MyHistory extends Component {
     );
   }
 }
+MyHistory.propTypes = {
+  dispatch: PropTypes.fun,
+  showAddTravel: PropTypes.boolean,
+  userID: PropTypes.string,
+  travels: PropTypes.object,
+};
 
 function mapStateToProps(store) {
   return {

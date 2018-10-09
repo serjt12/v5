@@ -1,6 +1,30 @@
 @media (min-width: 200px) {
+  .ratingstars {
+    color: rgb(42,168,154);
+    font-size: 12px;
+    font-weight: 800;
+    margin: 5px;
+  }
+  .ratingbox {
+    position: relative;
+    width: 310px;
+    height: 15px;
+    top: 15px;
+    left: 13px;
+    display: flex;
+    flex-direction: column;
+  }
+  .stars {
+    width: 33%;
+    background: rgb(42,168,154);
+    padding: 6px;
+    border-radius: 5px 5px 5px 0px;
+  }
   .profile-container {
     height: 618px;
+  }
+  .form-container {
+    text-align: center;
   }
   .sky {
     position: absolute;
@@ -8,7 +32,6 @@
     width: 100%;
     margin-top: -15px;
     background-size: 100% 100%;
-    opacity: 0.5;
   }
 
   .skyprofile {
@@ -54,6 +77,7 @@
     height: 201px;
     display: inline-block;
     color: gray;
+    right: -38px;
   }
   .profile-data h2 {
     display: inline-block;
@@ -71,6 +95,7 @@
   .box img {
     width: 10%;
     position: absolute;
+    top: 0px;
     left: 0px;
   }
   .box span {
@@ -93,20 +118,32 @@
   }
   .tooltip {
     position: relative;
-    top: -37px;
+    top: -40px;
     font-size: 10px;
   }
   .nocheck {
-    color: red;
-    position: absolute;
-    right: -25px;
-    top: 8px;
+    position: relative;
+    left: 30px;
   }
-  .citybox {
+  .nocheck .aqui {
+    margin-left: 0px;
+  }
+  .aqui:hover {
+    color: yellow;
+    margin-left: 0px;
+  }
+  .nocheck i{
+    margin-left: 10px;
+    color: red;
+  }
+  .cityboxmob {
     position: absolute;
     right: 10px;
   }
-  .city {
+  .cityboxdesk {
+    display: none;
+  }
+  .citymob {
     position: relative;
     width: 227px;
   }
@@ -114,20 +151,22 @@
     flex-direction: column;
     position: absolute;
     width: 92px;
-    right: 7px;
+    left: 210px;
     top: 229px;
     font-size: 12px;
   }
   .edit {
     text-decoration: none;
-    color: #00BFB5;
+    color: rgb(42,168,154);
     display: inline-block;
     font-weight: bold;
     padding: 0.2rem 1rem;
     border-radius: 3px;
     margin-top: 10px;
   }
-
+  .edit img {
+    width: 50%;
+  }
   .error {
     color: red;
     font-size: .65rem;
@@ -144,15 +183,15 @@
     text-decoration: none;
     color: white;
     display: inline-block;
-    background-color: #00BFB5;
+    background-color: rgb(42,168,154);
     font-weight: bold;
     padding: 0.2rem 1rem;
     border-radius: 3px;
     margin-top: 10px;
   }
 }
-@media (min-width: 568px) {
-  .citybox {
+@media (min-width: 768px) {
+  .cityboxmob {
     display: none;
   }
   .logo {
@@ -194,16 +233,31 @@
     top: 71px;
   }
   .editbox {
-    left: 310px;
+    left: 240px;
   }
   .profile-data {
     top: 446px;
-    left: 167px;
+    left: 120px;
     position: absolute;
   }
   .profiletop {
     top: 142px;
-    left: 184px;
+    left: 144px;
     position: absolute;
+  }
+  .tooltip {
+    width: 90px;
+    left: -35px;
+  }
+  .cityboxdesk {
+    display: block;
+    position: absolute;
+    opacity: 1;
+    top: 148px;
+    left: -70px;
+    width: 89%;
+  }
+  .sky {
+    height: 47%;
   }
 }

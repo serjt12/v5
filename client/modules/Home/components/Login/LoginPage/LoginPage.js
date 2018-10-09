@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import FormLogin from './LoginForm';
 
-class LoginPage extends Component {
+class LoginPage extends PureComponent {
   render() {
     return (
       <div className="LoginForm">
