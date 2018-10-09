@@ -123,7 +123,7 @@ MyForm.propTypes = {
   touched: PropTypes.object,
   handleBlur: PropTypes.func,
   isSubmitting: PropTypes.bool,
-  handleChange: PropTypes.fun,
+  handleChange: PropTypes.func,
 };
 
 const EnhancedForm = withFormik({

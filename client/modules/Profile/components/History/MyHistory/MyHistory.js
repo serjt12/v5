@@ -7,19 +7,16 @@ import MyPassenger from './MyPassenger';
 import ToggleButton from 'react-toggle-button';
 
 // Import Actions
-import { fetchTravels, deleteTravelRequest } from '../../../../Travel/TravelActions';
+import { fetchTravels } from '../../../../Travel/TravelActions';
 import { getTravels } from '../../../../Travel/TravelReducer';
 
 class MyHistory extends Component {
-
+  state = ({
+    value: false,
+  })
   componentDidMount() {
     this.props.dispatch(fetchTravels());
   }
-  handleDeleteTravel = travel => {
-    if (confirm('Do you want to delete this post')) { // eslint-disable-line
-      this.props.dispatch(deleteTravelRequest(travel));
-    }
-  };
   render() {
     return (
       <section>
@@ -57,8 +54,8 @@ class MyHistory extends Component {
           <div className={styles['myhistory-container']}>
             <ul>
               {(this.state.value) ?
-                <MyTravels showAddTravel={this.props.showAddTravel} handleDeleteTravel={this.handleDeleteTravel} userID={this.props.userID} travels={this.props.travels} /> :
-                <MyPassenger handleDeleteTravel={this.handleDeleteTravel} />
+                <MyTravels userID={this.props.userID} travels={this.props.travels} /> :
+                <MyPassenger />
               }
             </ul>
           </div> : null}
@@ -67,10 +64,10 @@ class MyHistory extends Component {
   }
 }
 MyHistory.propTypes = {
-  dispatch: PropTypes.fun,
-  showAddTravel: PropTypes.boolean,
+  dispatch: PropTypes.func,
   userID: PropTypes.string,
-  travels: PropTypes.object,
+  travels: PropTypes.array,
+  showAddTravel: PropTypes.bool,
 };
 
 function mapStateToProps(store) {

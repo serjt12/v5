@@ -120,10 +120,10 @@ class MyPassenger extends Component {
 
 MyPassenger.propTypes = {
   userID: PropTypes.string,
-  dispatch: PropTypes.fun,
+  dispatch: PropTypes.func,
   msg: PropTypes.string,
   msglike: PropTypes.string,
-  travels: PropTypes.object,
+  travels: PropTypes.array,
 };
 
 function mapStateToProps(store) {

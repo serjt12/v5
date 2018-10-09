@@ -111,7 +111,7 @@ function mapStateToProps(store, props) {
 }
 
 TravelDetailPage.propTypes = {
-  showAddTravel: PropTypes.fun,
+  showAddTravel: PropTypes.func,
   travels: PropTypes.object,
   router: PropTypes.object,
   travel: PropTypes.array,

@@ -33,7 +33,7 @@ class MyTravels extends Component {
   }
 }
 MyTravels.propTypes = {
-  dispatch: PropTypes.fun,
+  dispatch: PropTypes.func,
   travels: PropTypes.object,
   userID: PropTypes.string,
 };
