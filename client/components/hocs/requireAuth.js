@@ -9,9 +9,9 @@ export default (ChildComponent) => {
     render() {
       switch (this.props.currentUser) {
         case false:
-          return (<div>Por favor <Link to="/">registrate</Link> para continuar!!</div>);
+          return (<div>Por favor registrate <Link to="/"> AQUI</Link> para continuar!!</div>);
         case null:
-          return (<Loading type="oval" width={200} height={200} fill="#00BFB5" />);
+          return (<Loading type="oval" width={200} height={200} fill="rgb(42,168,154)" />);
         default:
           return <ChildComponent {...this.props} />;
       }
@@ -26,5 +26,5 @@ export default (ChildComponent) => {
     auth: PropTypes.bool,
   };
 
-  return connect(mapStateToProps)(RequireAuth)
+  return connect(mapStateToProps)(RequireAuth);
 };

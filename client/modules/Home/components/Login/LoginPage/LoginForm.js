@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
 import styles from './LoginForm.css';
+import { validateUser } from '../../../AuthActions';
 
 const MyForm = ({
     errors,
@@ -60,7 +61,6 @@ const EnhancedForm = withFormik({
     password: Yup.string().min(6, 'La contraseña debe tener minimo 6 caracteres').required('Tu contraseña es necesaria para continuar'),
   }),
   handleSubmit(values, { resetForm, props, setSubmitting }) {
-    console.log('VALUES 1', values)
     props.dispatch(validateUser(values));
     setSubmitting(false);
     resetForm();

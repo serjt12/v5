@@ -12,11 +12,11 @@ const travelSchema = new Schema({
   dateAdded: { type: 'Date', default: Date.now, required: true },
   dateUpdated: { type: 'Date' },
   destino: { type: 'String' },
-  likes: { type: Schema.ObjectId, ref: 'User' },
   author: {
     type: Schema.ObjectId,
     ref: 'User',
   },
+  passenger: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   traveltype: String,
   sits: { type: 'Number', default: '4' },
 });

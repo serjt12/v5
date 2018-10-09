@@ -1,0 +1,112 @@
+@media (min-width: 200px) {
+  .road-container {
+    display: none;
+  }
+}
+@media (min-width: 568px) {
+  .road-container {
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    right: 0px;
+    top: 0;
+    z-index: -100;
+  }
+  .roadimg{
+    width: 100%;
+    height: 729px;
+  }
+  .step1 {
+    position: absolute;
+    left: 16px;
+    top: 82px;
+    display: flex;
+    width: 38%;
+  }
+  .paso1img,
+  .paso2img,
+  .paso3img,
+  .paso4img {
+    width: 50px;
+    height: 50px;
+  }
+  .text1,
+  .text2,
+  .text3 {
+    position: relative;
+    top: 10px;
+    width: 297;
+    font-size: 8px;
+    color: #959595
+  }
+  .text1 h4,
+  .text2 h4,
+  .text3 h4,
+  .text4 h4{
+    color: rgb(42,168,154);
+  }
+  .text4 {
+    position: relative;
+    top: 5px;
+    left: 5px;
+    width: 199px;
+    font-size: 8px;
+  }
+  .registroimg {
+    width: 30px;
+    position: absolute;
+    left: -44px;
+    top: 0px;
+  }
+  .step2 {
+    position: absolute;
+    right: 96px;
+    top: 210px;
+    display: -ms-flexbox;
+    display: flex;
+    width: 43%;
+  }
+  .editimg {
+    width: 30px;
+    position: relative;
+    right: 82px;
+    top: -30px;
+  }
+  .step3 {
+    position: absolute;
+    left: 70px;
+    top: 335px;
+    display: flex;
+    width: 43%;
+  }
+  .buscarimg {
+    width: 30px;
+    position: relative;
+    right: -110px;
+    top: -30px;
+  }
+  .step4 {
+    position: absolute;
+    right: 30px;
+    top: 470px;
+    display: flex;
+    width: 45%;
+  }
+
+  .calificarimg {
+    width: 30px;
+    position: absolute;
+    left: -70px;
+    top: 3px;
+  }
+}
+@media (min-width: 1000px) {
+  .calificarimg {
+    right: 230px;
+  }
+  .buscarimg {
+    top: -30px;
+    left: 220px;
+  }
+}

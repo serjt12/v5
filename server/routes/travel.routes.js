@@ -15,4 +15,7 @@ router.route('/travels').post(TravelController.addTravel);
 // Delete a travel by cuid
 router.route('/travels/:cuid').delete(TravelController.deleteTravel);
 
+// Add a user to a travel
+router.route('/confirmation').post(TravelController.addUserTravel);
+
 export default router;

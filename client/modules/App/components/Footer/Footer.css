@@ -1,17 +1,16 @@
-.footer{
-  text-align: center;
-  padding: 56px 0;
-  background-image: url('./images/bgfooter.png');
-  background-repeat: no-repeat;
-}
 
-.face,
-.google,
-.twitter,
-.insta,
-.phone {
-  width: 39px;
-  margin: 8px;
-  position: relative;
-  bottom: -41px;
+@media (min-width: 200px) {
+  .face,
+  .google,
+  .twitter,
+  .insta,
+  .phone {
+    width: 39px;
+    margin: 8px;
+    position: relative;
+  }
+  .footer{
+    text-align: center;
+    width: 100%;
+  }
 }

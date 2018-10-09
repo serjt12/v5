@@ -1,12 +1,12 @@
-// Find my travels
+// Find my user
+// eslint-disable-next-line
 export function checkCurrentUser(req, res) {
 // console.log('===== user!!======');
 // console.log(req.user);
   const userInfo = req.user;
-// console.log(userInfo);
   if (userInfo) {
     return res.send({ userInfo });
   } if (!userInfo) {
-    return res.json({ user: null });
+    return res.json({ userInfo: null });
   }
 }

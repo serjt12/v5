@@ -1,0 +1,134 @@
+.payment-container {
+  text-align: center;
+}
+.outerbox {
+  border: 1px solid rgba(177,177,177,.84);
+  width: 263px;
+  height: 464px;
+  display: inline-block;
+  border-radius: 5px 5px 5px 0px;
+  position: relative;
+}
+
+.infobox {
+  height: 50%;
+  position: relative;
+  top: 40px;
+}
+
+.info {
+  border-radius: 3px 3px 3px 0px;
+  border: 1px solid rgba(177,177,177,.84);
+  height: 155px;
+  width: 175px;
+  display: inline-block;
+  color: #797874;
+  padding: 10px;
+}
+.paymethodbox {
+  height: 50%;
+}
+.paymethodbox{
+  color: #797874;
+}
+.methodp {
+  position: relative;
+  top: 35px;
+  display: inline-flex;
+  width: 78%;
+  justify-content: space-around;
+}
+
+.methodp img {
+  width: 82px;
+  height: 84px;
+}
+.dotbox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 30px;
+}
+.dotyellow {
+  height: 10px;
+  width: 10px;
+  margin: 1px;
+  background-color: #e6de34;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dotgreen {
+  height: 10px;
+  width: 10px;
+  margin: 1px;
+  background-color: #00d1cb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.visible {
+  animation-name: fadeOut;
+  animation-duration: 3s;animation-duration: 3s;
+  animation-fill-mode: both;animation-fill-mode: both;
+}
+
+@keyframes fadeOut {
+   0% {opacity: 1;}
+   100% {opacity: 0;}
+}
+.dias {
+  position: absolute;
+  left: 0px;
+  top: -70px;
+  font-weight: 400;
+  font-size: 19px;
+  color: gray
+}
+.countdownbox {
+  position: relative;
+  top: 89px;
+  font-size: 40px;
+  background: #01A79A;
+  color: white;
+  width: 235px;
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 5px;
+  height: 78px;
+}
+.pricepayment {
+  position: absolute;
+  background: #00ACA3;
+  color: white;
+  position: absolute;
+  top: 83px;
+  width: 99px;
+  right: 85px;
+  border-radius: 4px 4px 4px 0px;
+}
+
+.continuar {
+  height: 31px;
+  background-color: #FFC736;
+  cursor: pointer;
+  color: #3d3d3d;
+  font-weight: 800;
+  width: 100px;
+  position: absolute;
+  bottom: -15px;
+  left: 65px;
+  border-style: none;
+  border-radius: 3px;
+}
+
+.closepayment{
+  top: 5px;
+  position: absolute;
+  right: 8px;
+  border: 1px solid white;
+  background: #FFC736;
+  cursor: pointer;
+  width: 20px;
+  border-radius: 50%;
+
+}

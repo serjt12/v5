@@ -68,9 +68,9 @@ export class App extends Component {
             Logged={(this.props.auth.currentUser)}
           />
           <div className={styles.container}>
-            {(this.state.isMounted) ? this.props.children : <Loading type="oval" width={200} height={200} fill="#00BFB5" />}
+            {(this.state.isMounted) ? this.props.children : <Loading type="oval" width={200} height={200} fill="rgb(42,168,154)" />}
           </div>
-          <Footer />
+          {(!this.props.showAddTravel) ? <Footer /> : null}
         </div>
       </div>
     );
@@ -82,12 +82,14 @@ App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   intl: PropTypes.object.isRequired,
   auth: PropTypes.object,
+  showAddTravel: PropTypes.bool,
 };
 
 
 // Retrieve data from store as props
 function mapStateToProps(store) {
   return {
+    showAddTravel: store.app.showAddTravel,
     intl: store.intl,
     auth: store.auth,
   };

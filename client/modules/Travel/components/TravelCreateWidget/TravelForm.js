@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
+import Map from '../../../../components/Map/MapContainer';
 import PropTypes from 'prop-types';
 import styles from './TravelForm.css';
 import { addTravelRequest } from '../../TravelActions';
@@ -13,11 +14,11 @@ const MyForm = ({
     touched,
     handleBlur,
     isSubmitting,
-    setFieldValue,
     values,
-    handleChange
+    handleChange,
   }) => (
     (<Form className={styles['form-container']}>
+      <div className={styles.space} />
       <div>
         <Field
           className={styles.input}
@@ -36,6 +37,9 @@ const MyForm = ({
           placeholder="Hacia donde viajas"
         />
         {touched.to && errors.to && <div className={styles.error}>{errors.to}</div>}
+      </div>
+      <div className={styles.mapContainer}>
+        <Map />
       </div>
       <div>
         <Field
@@ -119,6 +123,7 @@ MyForm.propTypes = {
   touched: PropTypes.object,
   handleBlur: PropTypes.func,
   isSubmitting: PropTypes.bool,
+  handleChange: PropTypes.func,
 };
 
 const EnhancedForm = withFormik({
@@ -145,8 +150,6 @@ const EnhancedForm = withFormik({
     sits: Yup.number().max(4, 'Maximo 4 cupos').required('Es necesario que ingreses los cupos disponibles'),
   }),
   handleSubmit(values, { resetForm, props, setSubmitting }) {
-    console.log('VALUES 1', values);
-    console.log('PROPS', props);
     props.dispatch(toggleAddTravel());
     props.dispatch(addTravelRequest(values));
     setSubmitting(false);

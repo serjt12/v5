@@ -7,6 +7,7 @@ const router = new Router();
 // Get current user
 router.route('/current_user').get(CurrentUserController.checkCurrentUser);
 // Logout current user
+
 router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');

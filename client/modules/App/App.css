@@ -1,6 +1,13 @@
-.container {
-  width: 100%;
-  padding: 15px;
-  margin: 0 auto;
-  text-align: center;
+@media (min-width: 200px) {
+  .container {
+    width: 100%;
+    padding: 15px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+@media (min-width: 568px) {
+  .container {
+    text-align: inherit;
+  }
 }

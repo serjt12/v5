@@ -1,7 +1,8 @@
 .header {
-  background: #00BFB5;
+  background: rgb(42,168,154);
   background-size: cover;
   border-bottom: 1px solid #ccc;
+  height: 44px;
 }
 
 .content {
@@ -23,8 +24,8 @@
 
 .add-travel-button {
   float: right;
-  width: 97px;
-  color: #00BFB5;
+  width: 113px;
+  color: rgb(42,168,154);
   font-weight: 700;
   text-align: center;
   background-color: white;
@@ -32,24 +33,22 @@
 .logout-button {
   float: right;
   width: 97px;
-  color: #00BFB5;
+  color: rgb(42,168,154);
   font-weight: 700;
   text-align: center;
   background-color: white;
 }
 
-.language-switcher {
-  background: rgba(0, 0, 0, 0.1);
-}
-
 .language-switcher ul {
   display: flex;
+  position: relative;
+  top: 0px;
   justify-content: space-around;
 }
 
 .language-switcher li {
   display: inline-block;
-  padding: 5px;
+  padding: 4px;
   cursor: pointer;
   color: #fff;
 }

@@ -1,4 +1,5 @@
 import Travel from '../models/travel';
+import User from '../models/user';
 import cuid from 'cuid';
 import sanitizeHtml from 'sanitize-html';
 
@@ -10,8 +11,14 @@ import sanitizeHtml from 'sanitize-html';
  */
 export function getTravels(req, res) {
   Travel.find()
-  .populate('author')
   .sort('-dateAdded')
+  .populate({
+    path: 'author',
+    populate: {
+      path: 'likes',
+    },
+  })
+  .populate('passenger')
   .exec((err, travels) => {
     if (err) {
       res.status(500).send(err);
@@ -40,13 +47,25 @@ export function addTravel(req, res) {
   newTravel.sits = sanitizeHtml(newTravel.sits);
   newTravel.author = req.user._id;
   newTravel.cuid = cuid();
-  newTravel.markModified('hour');
-  newTravel.save((err, saved) => {
+  User.findById(
+    req.user._id,
+  )
+  // eslint-disable-next-line
+  .exec(function (err, user) {
     if (err) {
-      res.status(500).send(err);
-      console.log(err);
+      res.json({ err });
     }
-    res.json({ travel: saved });
+    if (!user.confirmed) {
+      res.json({ msg: 'Aun no has confirmado tu mail' });
+    }
+    if (user.confirmed) {
+      newTravel.save((err1, saved) => {
+        if (err1) {
+          res.status(500).send(err1);
+        }
+        res.json({ travel: saved });
+      });
+    }
   });
 }
 
@@ -58,7 +77,7 @@ export function addTravel(req, res) {
  */
 export function getTravel(req, res) {
   Travel.findOne({ cuid: req.params.cuid })
-  .populate('author')
+  .populate('passenger author')
   .exec((err, travel) => {
     if (err) {
       res.status(500).send(err);
@@ -68,7 +87,7 @@ export function getTravel(req, res) {
 }
 
 /**
- * Delete a post
+ * Delete a trvel
  * @param req
  * @param res
  * @returns void
@@ -82,5 +101,35 @@ export function deleteTravel(req, res) {
     travel.remove(() => {
       res.status(200).end();
     });
+  });
+}
+
+export function addUserTravel(req, res) {
+  const data = req.body.data;
+  const { travelid, userid } = data;
+  Travel.findByIdAndUpdate(
+    travelid,
+    {
+      $push: { passenger: userid },
+      $inc: { sits: -1 },
+    },
+    { new: true },
+  )
+  .populate('passenger author')
+  // eslint-disable-next-line
+  .exec(function (err, user) {
+    if (err) {
+      res.json({ err });
+    }
+    if (!user.confirmed) {
+      return res.json({
+        fail: 'Aun no has confirmado tu mail',
+      });
+    }
+    if (user.confirmed) {
+      return res.json({
+        success: 'Viaje Aceptado con exito',
+      });
+    }
   });
 }

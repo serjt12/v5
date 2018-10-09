@@ -3,12 +3,11 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './modules/App/App';
 import NotFoundPage from './components/NotFound/NotFoundPage';
-import Travel from './modules/Home/temp';
 import LogInForm from './modules/Home/components/Login/LoginPage/LoginPage';
 import Profile from './modules/Profile/Profile';
 import LocalTravels from './modules/Search/pages/LocalSearch/LocalSearch';
 import NationalTravels from './modules/Search/pages/NationalSearch/NationalSearch';
-
+import EditForm from './modules/Profile/components/ProfilePages/EditForm';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -26,6 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Home/components/Login/SignupPage/SignupPage');
+  require('./modules/Payment/Payment');
 }
 // react-router setup with code-splitting
 // More info: http://blog.mxstbr.com/2016/01/react-apps-with-pages/
@@ -46,8 +46,7 @@ export default (
         });
       }}
     />
-    <Route exact path="travel" component={Travel} />
-    <Route exact path="login" component={LogInForm} />
+    <Route exact path="/login" component={LogInForm} />
     <Route
       exact
       path="/signup"
@@ -60,6 +59,16 @@ export default (
     <Route exact path="/profile" component={Profile} />
     <Route exact path="/local_travels" component={LocalTravels} />
     <Route exact path="/national_travels" component={NationalTravels} />
+    <Route exact path="/edit_form/:userID" component={EditForm} />
+    <Route
+      exact
+      path="/payment/:cuid"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Payment/Payment').default);
+        });
+      }}
+    />
     <Route path="*" component={NotFoundPage} />
   </Route>
 );
