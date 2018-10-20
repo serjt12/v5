@@ -3,6 +3,8 @@ export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 export const ACTIVE_USER = 'ACTIVE_USER';
 export const SIGNUP_MSG = 'SIGNUP_MSG';
 export const ADD_TO_TRAVEL_MSG = 'ADD_TO_TRAVEL_MSG';
+export const CONFIRM_MSG = 'CONFIRM_MSG';
+export const CODE_MSG = 'CODE_MSG';
 
 export function userAuth(user) {
   return {
@@ -38,7 +40,6 @@ export function addUserUpdateRequest(user, userID) {
   return (dispatch) => {
     return callApi(`update_user/${userID}`, 'put', {
       user: {
-        email: user.email,
         cellphone: user.cellphone,
         name: user.username,
         city: user.city,
@@ -47,33 +48,38 @@ export function addUserUpdateRequest(user, userID) {
     }).then(res => dispatch(userAuth(res)));
   };
 }
-// export function sendUserCodeRequest(cellphone) {
-  // return (dispatch) => {
-  //   return callApi(`update_user/${cellphone}`, 'put', {
-  //     user: {
-  //       email: user.email,
-  //       cellphone: user.cellphone,
-  //       name: user.username,
-  //       city: user.city,
-  //       dateUpdated: Date.now(),
-  //     },
-  //   }).then(res => dispatch(userAuth(res)));
-  // };
-// }
-
-// export function validateUser(user) {
-//   console.log('USER 2', user)
-//   return (dispatch) => {
-//     return axios
-// 	.post('/auth/login', {
-//   user: {
-//     password: user.passsword,
-//     cellphone: user.cellphone,
-//   }
-// 	})
-// 	.then(res => { console.log(res.config.data)	})
-//   }
-// }
+export function sendMsgConfirm(msgConfirm) {
+  return {
+    type: CONFIRM_MSG,
+    payload: msgConfirm,
+  };
+}
+export function sendUserCodeRequest(cellphone) {
+  return (dispatch) => {
+    return callApi('verify_cell', 'post', {
+      user: {
+        code: '57',
+        cellphone,
+      },
+    }).then(res => dispatch(sendMsgConfirm(res)));
+  };
+}
+export function sendMsgVerify(msgCellVerify) {
+  return {
+    type: CODE_MSG,
+    payload: msgCellVerify,
+  };
+}
+export function sendUserCodeConfirm(code, userID) {
+  return (dispatch) => {
+    return callApi('confirm_code', 'post', {
+      user: {
+        code,
+        userID,
+      },
+    }).then(res => dispatch(sendMsgVerify(res)));
+  };
+}
 export function sendMsgaddToTravel(msg) {
   return {
     type: ADD_TO_TRAVEL_MSG,

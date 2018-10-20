@@ -2,6 +2,8 @@ import User from '../models/user';
 import Like from '../models/like';
 import Travel from '../models/travel';
 import keys from '../config';
+// Create authenticated Authy and Twilio API clients
+const authy = require('authy')(keys.authyKey);
 const sendgrid = require('@sendgrid/mail');
 sendgrid.setApiKey(keys.sendgridKey);
 
@@ -66,16 +68,33 @@ export function rateUser(req, res, next) {
   });
 }
 
-/* verify a user email */
-export function verifyEmail(req, res, next) {
-  const token = req.query.token;
-  const redirectURL = 'http://localhost:8000/';
-  User.update({ authToken: token },
-    {
-      $set: { confirmed: true } },
-// eslint-disable-next-line
-    function (err, user) {
-      if (err) return next(err);
-      res.status(200).redirect(redirectURL);
+/* verify code */
+export function confirmCode(req, res) {
+  const _id = req.body.user.userID;
+  const { code } = req.body.user;
+  User.findById({ _id }, (err, userMatch) => {
+    // eslint-disable-next-line
+    authy.phones().verification_check(userMatch.cellphone, '57', code, function (err1, res1) {
+      if (err1) return res.json(err1);
+      User.findOneAndUpdate({ _id }, {
+        $set: { confirmed: true },
+      }, (err2, user) => {
+        if (err2) return res.json(err2);
+        res.status(200).json({ msgCellVerify: 'Tu numero celular ha sido confirmado' });
+      });
     });
+  })
+}
+/* verify a user cellphone */
+export function verifyCell(req, res) {
+  const { code, cellphone } = req.body.user;
+  User.update({ cellphone }, (err, userMatch) => {
+    if (userMatch) {
+      // eslint-disable-next-line
+      authy.phones().verification_start(cellphone, code, { locale: 'es', code_length: '4' }, function (err1, res1) {
+        if (err1) return res.json(err1);
+        res.status(200).json({ msgConfirm: 'Verifica el codigo que ha sido enviado a tu celular' });
+      });
+    }
+  });
 }

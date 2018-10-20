@@ -1,7 +1,4 @@
 @media (min-width: 200px) {
-  .section{
-    text-align: center;
-  }
   .search-local {
     width: 239px;
     cursor: pointer;
@@ -11,8 +8,6 @@
     cursor: pointer;
   }
   .title-container h1{
-    position: relative;
-    top: 8px;
     font-weight: 800;
   }
   .title-container {
@@ -31,43 +26,31 @@
   .searchwrap {
     text-align: center;
   }
-  .searchwrapprofile {
-    text-align: center;
-  }
 }
 @media (min-width: 768px) {
   .searchwrap {
     position: absolute;
-    top: 531px;
+    top: 537px;
     display: inline-block;
-    left: 22px;
-    width: 38%
+    right: 112px;
   }
   .title-container {
     margin-top: 0px;
     width: 100%;
   }
-  .searchwrapprofile {
+  .search-container  {
     position: relative;
-    top: -174px;
-    left: 414px;
-    display: inline-block;
+    top: 21px;
+  }
+  .space {
+    height: 200px;
   }
 }
 @media (min-width: 1000px) {
-  .searchwrapprofile {
-    top: -267px;
-    left: 680px;
-  }
-  .searchwrap {
-    left: 741px;
+  .search-container  {
     position: absolute;
-    top: 334px;
-    width: 22%;
-  }
-}
-@media (min-width: 1200px) {
-  .searchwrap {
-    left: 941px;
+    top: 39px;
+    display: inline-block;
+    left: -191px;
   }
 }

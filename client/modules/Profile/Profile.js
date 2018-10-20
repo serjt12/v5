@@ -10,7 +10,7 @@ class Profile extends PureComponent {
       <div>
         <ProfilePage />
         <HystoryPage />
-        <SearchPage />
+        <SearchPage zone="profile" />
       </div>
     );
   }

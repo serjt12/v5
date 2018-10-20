@@ -2,12 +2,14 @@ import React, { PureComponent } from 'react';
 import Loading from 'react-loading-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import TravelCreateWidget from '../../../Travel/components/TravelCreateWidget/TravelCreateWidget';
+import Search from '../../Search';
+import TopDrivers from '../../TopDriver/TopDriver';
 import { fetchTravels } from '../../../Travel/TravelActions';
 import LocalTravels from './LocalTravels';
 import styles from './localsearch.css';
 import Circulo from './images/circulo.png';
 import Sky from './images/sky.png';
+import Logo from './images/logo.png';
 
 class LocalSearch extends PureComponent {
   componentDidMount() {
@@ -18,8 +20,7 @@ class LocalSearch extends PureComponent {
     const avatar = ((this.props.user.currentUser !== null) ? (this.props.user.currentUser.avatar) : ('https://via.placeholder.com/350x150'));
     const firstName = ((this.props.user.currentUser !== null) && (this.props.user.currentUser.name.split(' ')[0]));
     return (
-      <section className={styles.local_container}>
-        <TravelCreateWidget showAddTravel={this.props.showAddTravel} />
+      <section className={styles['local-container']}>
         {(this.props.user.currentUser !== null) ?
           <div className={styles.localsearchtop}>
             <div>
@@ -30,7 +31,10 @@ class LocalSearch extends PureComponent {
             <h2>HOLA! <br /> {firstName.toUpperCase()}</h2>
           </div> : <Loading type="oval" width={200} height={200} fill="rgb(42,168,154)" />
         }
+        <TopDrivers travels={this.props.travels} />
         <LocalTravels local={localtravels} />
+        <img className={styles.logo} src={Logo} alt="Tobcity Divide Tus gastos" />
+        <Search zone="local" />
       </section>
     );
   }

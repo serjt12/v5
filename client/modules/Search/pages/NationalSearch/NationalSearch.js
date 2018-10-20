@@ -2,12 +2,15 @@ import React, { PureComponent } from 'react';
 import Loading from 'react-loading-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import TopDrivers from '../../TopDriver/TopDriver';
+import Search from '../../Search';
 import TravelCreateWidget from '../../../Travel/components/TravelCreateWidget/TravelCreateWidget';
 import { fetchTravels } from '../../../Travel/TravelActions';
 import NationalTravels from './NationalTravels';
 import styles from './nationalsearch.css';
 import Circulo from './images/circulo.png';
 import Sky from './images/sky.png';
+import Logo from './images/logo.png';
 
 class NationalSearch extends PureComponent {
   componentDidMount() {
@@ -18,7 +21,7 @@ class NationalSearch extends PureComponent {
     const avatar = ((this.props.user.currentUser !== null) ? (this.props.user.currentUser.avatar) : ('https://via.placeholder.com/350x150'));
     const firstName = ((this.props.user.currentUser !== null) && (this.props.user.currentUser.name.split(' ')[0]));
     return (
-      <section className={styles.national_container}>
+      <section className={styles['national-container']}>
         <TravelCreateWidget showAddTravel={this.props.showAddTravel} />
         {(this.props.user.currentUser !== null) ?
           <div className={styles.nationalsearchtop}>
@@ -30,7 +33,10 @@ class NationalSearch extends PureComponent {
             <h2>HOLA! <br /> {firstName.toUpperCase()}</h2>
           </div> : <Loading type="oval" width={200} height={200} fill="rgb(42,168,154)" />
         }
+        <TopDrivers travels={this.props.travels} />
         <NationalTravels national={nationaltravels} />
+        <img className={styles.logo} src={Logo} alt="Tobcity Divide Tus gastos" />
+        <Search zone="national" />
       </section>
     );
   }

@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import styles from './profilemain.css';
 import { connect } from 'react-redux';
 import StarRatingComponent from 'react-star-rating-component';
 import moment from 'moment';
 import { Link } from 'react-router';
+import Modal from 'react-responsive-modal';
 import Helmet from 'react-helmet';
 import Sky from './images/superior.png';
 import CirculoMob from './images/circulo-perfilmob.png';
@@ -17,11 +18,25 @@ import MoneyIcon from './images/money.png';
 import Cityimgmob from './images/ciudadmob.png';
 import Cityimgdesk from './images/ciudaddesk.png';
 import TravelCreateWidget from '../../../Travel/components/TravelCreateWidget/TravelCreateWidget';
+import Confirm from './Code';
 
-class ProfileMain extends PureComponent {
+class ProfileMain extends Component {
   state =({
+    confirmModal: true,
+    verifyModal: true,
     tooltip: false,
   })
+  onCloseModalC = () => {
+    this.setState({
+      confirmModal: false,
+    });
+  };
+  onCloseModalV = () => {
+    this.setState({
+      verifyModal: false,
+    });
+    window.location.reload();
+  };
   handleOnHover = () => {
     this.setState({
       tooltip: true,
@@ -38,12 +53,19 @@ class ProfileMain extends PureComponent {
     const { avatar, email, cellphone, city, credit, dateUpdated, dateCreated, confirmed, rateValue, rateCount } = (this.props.auth.currentUser !== null ?
     this.props.auth.currentUser : null);
     const avg = rateValue / rateCount;
+    console.log(this.props.auth)
     return (
       <section className={styles['profile-container']}>
         <Helmet title={`TOBCITY - ${this.props.auth.currentUser.name}`} />
         <TravelCreateWidget showAddTravel={this.props.app.showAddTravel} />
         {(!this.props.app.showAddTravel) ?
           <div className={styles.profilewrap}>
+            <Modal open={this.props.auth.msgConfirm !== '' && this.state.confirmModal} onClose={this.onCloseModalC} center>
+              <h2>{this.props.auth.msgConfirm}</h2>
+            </Modal>
+            <Modal open={this.props.auth.msgCellVerify !== '' && this.state.verifyModal} onClose={this.onCloseModalV} center>
+              <h2>{this.props.auth.msgCellVerify}</h2>
+            </Modal>
             <div className={styles.skyprofile}>
               <img className={styles.sky} src={Sky} alt="Tobcity Divide Tus gastos" />
               <div className={styles.profiletop}>
@@ -61,17 +83,21 @@ class ProfileMain extends PureComponent {
               </div>
               <div className={styles.box}>
                 <img src={CellIcon} alt="cell de registro para Tobcity" />
-                {confirmed ?
-                  <div className={styles.check}>
-                    <span>{cellphone}</span>
-                    <i className="fas fa-check-circle" onMouseEnter={this.handleOnHover} onMouseLeave={this.handleOnLeave} />
-                    <p className={(this.state.tooltip) ? styles.tooltip : styles.hide} >Mail Confirmado!</p>
-                  </div>
-                  :
-                  <div className={styles.nocheck}>
-                    Confirma tu numero celular <Link to={`/edit_form/${userID}`}><span className={styles.aqui}>aqui</span></Link>
-                    <i className="fas fa-exclamation-circle" onMouseEnter={this.handleOnHover} onMouseLeave={this.handleOnLeave} />
-                  </div>
+                {
+                  // eslint-disable-next-line
+                  confirmed && cellphone ?
+                    <div className={styles.check}>
+                      <span>{cellphone}</span>
+                      <i className="fas fa-check-circle" onMouseEnter={this.handleOnHover} onMouseLeave={this.handleOnLeave} />
+                      <p className={(this.state.tooltip) ? styles.tooltip : styles.hide} >Numero Celular Confirmado!</p>
+                    </div> :
+                  !confirmed && !cellphone ?
+                    <div className={styles.nocheck}>
+                      Confirma tu numero celular <Link to={`/edit_form_cell/${userID}`}><span className={styles.aqui}>AQUI!</span></Link>
+                      <i className="fas fa-exclamation-circle" onMouseEnter={this.handleOnHover} onMouseLeave={this.handleOnLeave} />
+                    </div> :
+                  !confirmed && cellphone &&
+                    <Confirm />
                 }
               </div>
               <div className={styles.box}><img src={CityIcon} alt="ciudad de registro para Tobcity" /> <span>{city}</span> </div>

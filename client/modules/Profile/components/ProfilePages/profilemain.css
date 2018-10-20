@@ -1,4 +1,7 @@
 @media (min-width: 200px) {
+  .wholeC {
+    text-align: center;
+  }
   .ratingstars {
     color: rgb(42,168,154);
     font-size: 12px;
@@ -21,7 +24,7 @@
     border-radius: 5px 5px 5px 0px;
   }
   .profile-container {
-    height: 618px;
+    height: 657px;
   }
   .form-container {
     text-align: center;
@@ -68,6 +71,9 @@
     top: 70px;
     position: absolute;
     right: 32px;
+  }
+  .logoform {
+    width: 102px;
   }
   .profile-data {
     position: relative;
@@ -184,6 +190,30 @@
     border-radius: 3px;
     margin-top: 10px;
   }
+  .btnconfirm {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    background-color: rgb(42,168,154);
+    font-weight: bold;
+    padding: 0.2rem 1rem;
+    border-radius: 3px;
+  }
+  .confirm-container {
+    display: flex;
+    position: relative;
+    left: 33px;
+  }
+  .confirm-container input {
+    width: 116px;
+    margin: 0px;
+  }
+  .errorconfirm {
+    color: red;
+    font-size: .65rem;
+    position: absolute;
+  }
 }
 @media (min-width: 768px) {
   .cityboxmob {
@@ -240,10 +270,6 @@
     top: 142px;
     left: 144px;
     position: absolute;
-  }
-  .tooltip {
-    width: 90px;
-    left: -35px;
   }
   .cityboxdesk {
     display: block;

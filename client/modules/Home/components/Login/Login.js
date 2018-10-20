@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router';
 import TravelCreateWidget from '../../../Travel/components/TravelCreateWidget/TravelCreateWidget';
 import { addTravelRequest } from '../../../Travel/TravelActions';
 import { toggleAddTravel } from '../../../App/AppActions';
 import LoginFace from './images/loginfacebook.png';
 import LoginGoogle from './images/logingmail.png';
+import Entrar from './images/entrar.png';
+import Salir from './images/cerrar.png';
 
 // Import Style
 import styles from './Login.css';
@@ -20,8 +21,8 @@ class Login extends PureComponent {
     const { props: { auth: { currentUser } } } = this;
     const authButton = currentUser ? (
       <div className={styles.loginbox}>
-        <Link className={styles.toprofile} to="/profile"><span>Ve a tu Perfil</span></Link>
-        <a className={styles.logout} href="api/logout"><FormattedMessage id="logout" /></a>
+        <Link className={styles.toprofile} to="/profile"><img src={Entrar} alt="Ve a tu perfil" /></Link>
+        <a className={styles.logout} href="api/logout"><img src={Salir} alt="Cerrar Sesion " /></a>
       </div>
     ) : (
       <div className={styles.accessbtn}>
@@ -32,7 +33,6 @@ class Login extends PureComponent {
     // console.log(this.props)
     return (
       <div>
-        <TravelCreateWidget addTravel={this.handleAddTravel} showAddTravel={this.props.app.showAddTravel} />
         <div className={styles['login-container']}>
           {authButton}
         </div>

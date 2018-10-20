@@ -2,6 +2,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 import User from '../../models/user';
 import keys from '../../config';
 const sendgrid = require('@sendgrid/mail');
+import crypto from 'crypto';
 sendgrid.setApiKey(keys.sendgridKey);
 // const accountSid = 'ACa497ac5ff81be239ab9872116847f1fe';
 // const authToken = '5e9a37dcdfa426cfe471ccc8d764d5a1';
@@ -40,11 +41,14 @@ const strategy = new GoogleStrategy(
        // console.log(id)
        // console.log(profile)
        // console.log('====== post save ....')
+        const seed = crypto.randomBytes(20);
+        const authyId = crypto.createHash('sha1').update(seed + emails[0].value).digest('hex');
         const newGoogleUser = new User({
           'google.googleId': id,
           name: displayName,
           email: emails[0].value,
           avatar: _json.image.url,
+          authyId,
         });
        // save this user
        // eslint-disable-next-line

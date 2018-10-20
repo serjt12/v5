@@ -1,25 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
-
+import Salir from './images/cerrarwhite.png';
+import Postular from './images/postular.png';
+import Hamburguer from './Hamburger';
 // Import Style
 import styles from './Header.css';
 
-export function Header(props) {
+
+export function Header(props, context) {
   return (
     <div className={styles.header}>
       <div className={styles['language-switcher']}>
         <ul>
+          <li><Hamburguer Logged={props.Logged} /></li>
           {
             (props.Logged)
             ?
             (
               <div className={styles.btncont}>
                 <li>
-                  <a href="#" className={styles['add-travel-button']} onClick={props.toggleAddTravel}><FormattedMessage id="addTravel" /></a>
+                {
+                  context.router.isActive('/profile', true) ?
+                    <a href="#" className={styles['add-travel-button']} onClick={props.toggleAddTravel}><img src={Postular} alt="Postular un viaje" /></a>
+                  : null
+                }
                 </li>
                 <li>
-                  <a href="http://localhost:8000/api/logout" className={styles['logout-button']} ><FormattedMessage id="logout" /></a>
+                  <a href="http://localhost:8000/api/logout" className={styles['logout-button']} ><img src={Salir} alt="Cerrar Sesion" /></a>
                 </li>
               </div>
             )

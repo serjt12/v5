@@ -1,3 +1,6 @@
+@media (max-width: 200px){
+
+}
 .header {
   background: rgb(42,168,154);
   background-size: cover;
@@ -11,57 +14,53 @@
   overflow: auto;
 }
 
-.site-title {
-  font-weight: 300;
-  font-size: 42px;
-  float: left;
-}
-
-.site-title a {
-  text-decoration: none;
-  color: #FFF;
-}
-
-.add-travel-button {
-  float: right;
-  width: 113px;
-  color: rgb(42,168,154);
-  font-weight: 700;
-  text-align: center;
-  background-color: white;
-}
-.logout-button {
-  float: right;
-  width: 97px;
-  color: rgb(42,168,154);
-  font-weight: 700;
-  text-align: center;
-  background-color: white;
-}
-
-.language-switcher ul {
-  display: flex;
-  position: relative;
-  top: 0px;
-  justify-content: space-around;
-}
-
-.language-switcher li {
-  display: inline-block;
-  padding: 4px;
-  cursor: pointer;
-  color: #fff;
-}
-
-.language-switcher li:first-child {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.selected {
-  border-bottom: 1px solid #fff;
-}
 .btncont {
   display: inline-flex;
+}
+.btncont img {
+  width: 105px;
+  height: 36px;
+}
+.logout-button img {
+  width: 105px;
+  height: 30px;
+  position: relative;
+  top: 4px;
+}
+
+.language-switcher ul{
+  text-align: left;
+  margin-left: 50px;
+}
+.menuimg {
+  display: inline-block;
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+}
+.menuimg img{
+  width: 42px;
+}
+
+.menu {
+  position: absolute;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  top: 43px;
+  background: rgba(30,140,134,.8);
+  z-index: 1;
+  width: 50%;
+  height: 100vh;
+}
+.menu span {
+  color: white;
+  font-weight: 800;
+  font-size: .9rem;
+}
+.menu a {
+  text-align: right;
+  margin: 4px;
 }
 @media (max-width: 767px){
 
