@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styles from './Road.css';
+import styles from './road.css';
 import Roadimg from './images/road.jpg';
 import Paso1 from './images/desk/paso1num.png';
 import Registroimg from './images/desk/registroimg.png';
