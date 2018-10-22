@@ -60,7 +60,8 @@
 }
 .menu a {
   text-align: right;
-  margin: 4px;
+  margin-right: 52px;
+  margin-top: 40px;
 }
 @media (max-width: 767px){
 
