@@ -1,4 +1,7 @@
 @media (min-width: 200px) {
+  .wholeC {
+    text-align: center;
+  }
   .ratingstars {
     color: rgb(42,168,154);
     font-size: 12px;
@@ -21,7 +24,7 @@
     border-radius: 5px 5px 5px 0px;
   }
   .profile-container {
-    height: 618px;
+    height: 657px;
   }
   .form-container {
     text-align: center;
@@ -69,6 +72,9 @@
     position: absolute;
     right: 32px;
   }
+  .logoform {
+    width: 102px;
+  }
   .profile-data {
     position: relative;
     text-align: left;
@@ -104,21 +110,16 @@
 
   .check{
     color: green;
-    position: absolute;
-    right: 29px;
-    top: 8px;
-    width: 17px;
-    display: inline-block;
   }
   .hide {
     visibility: hidden;
     position: relative;
-    top: -37px;
+    left: 88px;
     font-size: 10px;
   }
   .tooltip {
     position: relative;
-    top: -40px;
+    left: 88px;
     font-size: 10px;
   }
   .nocheck {
@@ -189,6 +190,30 @@
     border-radius: 3px;
     margin-top: 10px;
   }
+  .btnconfirm {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    background-color: rgb(42,168,154);
+    font-weight: bold;
+    padding: 0.2rem 1rem;
+    border-radius: 3px;
+  }
+  .confirm-container {
+    display: flex;
+    position: relative;
+    left: 33px;
+  }
+  .confirm-container input {
+    width: 116px;
+    margin: 0px;
+  }
+  .errorconfirm {
+    color: red;
+    font-size: .65rem;
+    position: absolute;
+  }
 }
 @media (min-width: 768px) {
   .cityboxmob {
@@ -214,6 +239,7 @@
   }
   .profile-data {
     top: 183px;
+    left: 0px;
   }
 }
 @media (min-width: 1000px) {
@@ -244,10 +270,6 @@
     top: 142px;
     left: 144px;
     position: absolute;
-  }
-  .tooltip {
-    width: 90px;
-    left: -35px;
   }
   .cityboxdesk {
     display: block;

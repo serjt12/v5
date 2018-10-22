@@ -1,0 +1,41 @@
+@media (min-width: 200px) {
+  .top-driver-container {
+    height: 186px;
+    width: 100%;
+    background: #1e8c86;
+    color: white;
+    display: inline-block;
+    text-align: center;
+  }
+  .top-driver-container h4 {
+    margin: 10px;
+  }
+  .top-driver-image img{
+    display: inline-flex !important;
+  }
+  .avatar{
+    width: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+    overflow: hidden;
+    background-size: 100% 100%;
+    transition: all 3s;
+  }
+
+}
+@media (min-width: 768px) {
+  .top-driver-container {
+    width: 38%;
+    position: absolute;
+    top: 300px;
+    left: 19px;
+  }
+}
+@media (min-width: 1000px) {
+  .top-driver-container {
+    width: 26%;
+    position: absolute;
+    left: 46px;
+    top: 381px;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchInput, { createFilter } from 'react-search-input';
 import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
 import styles from './localsearch.css';
 import moment from 'moment';
 import { Link } from 'react-router';
@@ -36,6 +37,9 @@ class LocalTravels extends Component {
             filteredLocal.map((travel) => (
             (travel.sits > 0) &&
               <div key={travel._id} className={styles['tickets-inside']}>
+                <Helmet>
+                  <meta name="keywords" content={`${travel.to}`} />
+                </Helmet>
                 <img className={styles.ticket} src={Ticket} alt="Viaja con Tobcity" />
                 <h4 className={styles.price}>$ {travel.price}</h4>
                 <h5>DRIVER: <br /> {travel.author.name}</h5>

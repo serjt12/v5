@@ -22,9 +22,7 @@ class MyTravels extends Component {
       {(mytravels.length !== 0 && mytravels !== null) ?
         mytravels.map((travel) => {
           return (
-            <li key={travel._id} className={styles.item}> <Link to={`/travels/${travel.cuid}`}>{travel.from}/{travel.to}/{moment(travel.date).format('MMM Do YY')}</Link>
-              <span className={styles.deletebtn} >X</span>
-            </li>
+            <li key={travel._id} className={styles.item}> <Link to={`/travels/${travel.cuid}`}>{travel.from}/{travel.to}/{moment(travel.date).format('MMM Do YY')}</Link></li>
           );
         }) : <li key="none" className={styles.item}><h2 className={styles.none}>Aun no postulas ningun viaje, hazlo ahora</h2></li>
     }
@@ -34,7 +32,7 @@ class MyTravels extends Component {
 }
 MyTravels.propTypes = {
   dispatch: PropTypes.func,
-  travels: PropTypes.object,
+  travels: PropTypes.array,
   userID: PropTypes.string,
 };
 function mapStateToProps(store) {

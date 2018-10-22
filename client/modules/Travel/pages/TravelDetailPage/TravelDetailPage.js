@@ -104,7 +104,6 @@ TravelDetailPage.need = [params => {
 // Retrieve data from store as this.props
 function mapStateToProps(store, props) {
   return {
-    showAddTravel: store.app.showAddTravel,
     user: store.auth.currentUser,
     travel: getTravel(store, props.params.cuid),
   };
@@ -112,9 +111,9 @@ function mapStateToProps(store, props) {
 
 TravelDetailPage.propTypes = {
   showAddTravel: PropTypes.func,
-  travels: PropTypes.object,
+  travels: PropTypes.array,
   router: PropTypes.object,
-  travel: PropTypes.array,
+  travel: PropTypes.object,
   user: PropTypes.object,
 };
 

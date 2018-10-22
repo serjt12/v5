@@ -7,8 +7,10 @@ const router = new Router();
 router.route('/update_user/:userID').put(UserController.updateUser);
 // Rate a user
 router.route('/rate_user').post(UserController.rateUser);
-// Confirm an email
-router.route('/verify_email').get(UserController.verifyEmail);
+// Confirm cellphone
+router.route('/verify_cell').post(UserController.verifyCell);
+// Confirm code
+router.route('/confirm_code').post(UserController.confirmCode);
 
 
 export default router;

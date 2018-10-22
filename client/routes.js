@@ -3,11 +3,12 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './modules/App/App';
 import NotFoundPage from './components/NotFound/NotFoundPage';
-import LogInForm from './modules/Home/components/Login/LoginPage/LoginPage';
 import Profile from './modules/Profile/Profile';
+import Politicas from './modules/Home/Policies';
 import LocalTravels from './modules/Search/pages/LocalSearch/LocalSearch';
 import NationalTravels from './modules/Search/pages/NationalSearch/NationalSearch';
 import EditForm from './modules/Profile/components/ProfilePages/EditForm';
+import EditFormCell from './modules/Profile/components/ProfilePages/EditFormCell';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -46,20 +47,12 @@ export default (
         });
       }}
     />
-    <Route exact path="/login" component={LogInForm} />
-    <Route
-      exact
-      path="/signup"
-      getComponent={(nextState, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./modules/Home/components/Login/SignupPage/SignupPage').default);
-        });
-      }}
-    />
     <Route exact path="/profile" component={Profile} />
+    <Route exact path="/policies" component={Politicas} />
     <Route exact path="/local_travels" component={LocalTravels} />
     <Route exact path="/national_travels" component={NationalTravels} />
     <Route exact path="/edit_form/:userID" component={EditForm} />
+    <Route exact path="/edit_form_cell/:userID" component={EditFormCell} />
     <Route
       exact
       path="/payment/:cuid"

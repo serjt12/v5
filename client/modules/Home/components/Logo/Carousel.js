@@ -52,7 +52,7 @@ class SimpleSlider extends Component {
   }
 }
 TravelInfo.propTypes = {
-  travel: PropTypes.array,
+  travel: PropTypes.object,
   dispatch: PropTypes.func,
 };
 SimpleSlider.propTypes = {

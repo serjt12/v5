@@ -1,6 +1,65 @@
+@media (min-width: 200px) {
+  .policontainer {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+  }
+  .policontainer h1{
+    position: relative;
+  }
+  .termcontainer {
+    text-align: center;
+  }
+  .terms {
+    overflow-y: scroll;
+    height: 200px;
+    position: absolute;
+    bottom: 153px;
+  }
+  .bg {
+    width: 100%;
+    position: relative;
+  }
+  .logo {
+    width: 102px;
+  }
+}
 @media (min-width: 568px) {
   .home-container {
     width: 50%;
     display: inline-block;
+  }
+  .terms {
+    top: 802px;
+  }
+  .policontainer h1{
+    display: inline-block;
+    top: 282px;
+  }
+  .logo {
+    left: 259px;
+    position: absolute;
+    width: 228px;
+  }
+}
+@media (min-width: 1000px) {
+  .logo {
+    left: 354px;
+    position: absolute;
+    width: 294px;
+  }
+  .policontainer {
+    display: block;
+  }
+  .terms {
+    top: 1200px;
+  }
+  .policontainer h1{
+    top: 450px;
+  }
+}
+@media (min-width: 1200px) {
+  .terms {
+    top: 1500px;
   }
 }

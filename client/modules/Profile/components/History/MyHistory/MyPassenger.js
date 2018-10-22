@@ -48,6 +48,7 @@ class MyPassenger extends Component {
     this.setState({
       showModal: false,
     });
+    window.location.reload();
   };
   render() {
     const superVar = (this.props.msg !== undefined && this.props.msg !== '');

@@ -13,26 +13,8 @@
     position: relative;
     left: 28px;
   }
-
-  .logout {
-    text-decoration: none;
-    color: #ff332d;
-    display: inline-block;
-    background-color: rgb(42,168,154);
-    font-weight: bold;
-    padding: 0.2rem 3.2rem;
-    border-radius: 3px;
-    margin-top: 10px;
-  }
-  .toprofile {
-    text-decoration: none;
-    color: #fff;
-    display: inline-block;
-    background-color: rgb(42,168,154);
-    font-weight: bold;
-    padding: 0.2rem  0.9rem;
-    border-radius: 3px;
-    margin-top: 10px;
+  .loginbox img{
+    width: 214px;
   }
 
   .face

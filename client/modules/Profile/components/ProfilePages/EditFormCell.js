@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { withFormik, Form, Field } from 'formik';
 import PropTypes from 'prop-types';
 import Logo from './images/logo.png';
-import { addUserUpdateRequest } from '../../../Home/AuthActions';
+import { addUserUpdateRequest, sendUserCodeRequest } from '../../../Home/AuthActions';
 import styles from './profilemain.css';
 const MyForm = ({
     errors,
@@ -13,12 +13,24 @@ const MyForm = ({
     isSubmitting,
     handleBlur,
     props,
+    cellphone,
   }) => (
     (
   <div className={styles.wholeC}>
     <img className={styles.logoform} src={Logo} alt="Tobcity Divide Tus gastos" />
 
     <Form className={styles['form-container']}>
+    {!cellphone ?
+      <div>
+        <Field
+          type="number"
+          name="cellphone"
+          onBlur={handleBlur}
+          placeholder="Numero de celular"
+        />
+        {touched.cellphone && errors.cellphone && <div className={styles.error}>{errors.cellphone}</div>}
+      </div> : null
+    }
       <div>
         <Field
           type="text"
@@ -62,20 +74,24 @@ MyForm.propTypes = {
   router: PropTypes.object,
 };
 const EnhancedForm = withFormik({
-  mapPropsToValues({ email, username, city }) {
+  mapPropsToValues({ email, cellphone, username, city }) {
     return {
       email,
+      cellphone: cellphone || '',
       username,
       city,
     };
   },
   validationSchema: Yup.object().shape({
+    cellphone: Yup.string().max(10, 'Verifica tu numero celular').min(10, 'Verifica tu numero celular')
+    .required('Tu numero celular es necesario para continuar'),
     username: Yup.string().required('Queremos saber tu nombre'),
     city: Yup.string().required('Es necesario que ingreses tu ciudad'),
   }),
   handleSubmit(values, { props, resetForm, setSubmitting }) {
     const userID = props.store.auth.currentUser._id;
     props.dispatch(addUserUpdateRequest(values, userID));
+    props.dispatch(sendUserCodeRequest(values.cellphone));
     setSubmitting(false);
     resetForm();
     props.router.push('/profile');

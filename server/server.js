@@ -93,18 +93,6 @@ app.use('/api', currentUser);
 app.use('/api', travel);
 app.use('/api', user);
 
-const accountSid = 'ACd24751f50dd2fc77ff2a7f23e1e8d629'; // Your Account SID from www.twilio.com/console
-const authToken = 'c43e640c087b9646a7d5c39ce1599c25';   // Your Auth Token from www.twilio.com/console
-import Twilio from 'twilio';
-const client = new Twilio(accountSid, authToken);
-client.messages.create({
-  body: 'Holita de Tobcity!!!',
-  to: '+573053386099',  // Text this number
-  from: '+573015999375', // From a valid Twilio number
-})
-// eslint-disable-next-line
-.then((message) => console.log(message.sid));
-
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
   const head = Helmet.rewind();
